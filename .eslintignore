@@ -1,0 +1,9 @@
+node_modules
+package.json
+rn-cli.config.js
+.eslintrc.js
+android
+ios
+__mocks__
+packages/*/lib
+react-native.config.js

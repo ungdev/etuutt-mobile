@@ -1,10 +1,12 @@
 {
   "expo": {
-    "name": "my-utt-mobile2",
-    "slug": "my-utt-mobile2",
-    "version": "1.0.0",
+    "name": "My UTT",
+    "slug": "myutt",
+    "privacy": "public",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "platforms": ["ios", "android"],
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -13,14 +15,17 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
+    "assetBundlePatterns": ["**/*"],
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "fr.uttnetgroup.myutt"
+    },
+    "android": {
+      "package": "fr.uttnetgroup.myutt",
+      "versionCode": 2000000
     }
   }
 }
