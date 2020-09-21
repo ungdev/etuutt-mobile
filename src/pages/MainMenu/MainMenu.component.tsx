@@ -4,13 +4,14 @@ import { Dimensions, ScrollView, StyleSheet, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { GridButton } from '../../components/GridButton';
 import { paths } from '../../navigation/paths';
+import { colors } from '../../theme/theme';
 
-const GREY = '#C6C6C6';
+const iconSize = 70;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GREY,
+    ...colors.pages,
   },
   grid: {
     flex: 1,
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   empty: {
-    width: Dimensions.get('window').width / 3 - 6,
+    width: Dimensions.get('window').width / 3 - 6, // TODO refacto
     height: Dimensions.get('window').width / 3 - 6,
     marginHorizontal: 1,
     marginVertical: 1,
@@ -116,7 +117,7 @@ export const MainMenu: FunctionComponent = () => {
         <GridButton
           key={key++}
           title={section.name}
-          image={<Icon name={section.icon} size={70} color="#333" />}
+          image={<Icon name={section.icon} size={iconSize} color={colors.icons.color} />}
           onPress={() => onButtonPress(section.destination)}
         />
       );
