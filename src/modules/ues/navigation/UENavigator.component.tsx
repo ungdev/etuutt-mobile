@@ -1,30 +1,44 @@
-import React, { FunctionComponent, useState } from 'react';
-import { Dimensions } from 'react-native';
-import { SceneMap, TabView } from 'react-native-tab-view';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import React, { FunctionComponent } from 'react';
+import { SafeAreaView } from 'react-native';
 import { paths } from '../../../navigation/paths';
-import { MyUE, SearchUE } from '../pages';
 
-const renderScene = SceneMap({
-  [paths.myUE.name]: MyUE,
-  [paths.searchUE.name]: SearchUE,
-});
-
-const initialLayout = { width: Dimensions.get('window').width };
+const UETab = createMaterialTopTabNavigator();
 
 export const UENavigator: FunctionComponent = () => {
-  const [index, setIndex] = useState(0);
-  const [routes] = useState([
-    { key: paths.myUE.name, title: 'First' },
-    { key: paths.searchUE.name, title: 'Second' },
-  ]);
-
   return (
-    <TabView
-      navigationState={{ index, routes }}
-      renderScene={renderScene}
-      onIndexChange={setIndex}
-      initialLayout={initialLayout}
-      tabBarPosition="bottom"
-    />
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#DA8F20' }}>
+      <UETab.Navigator
+        tabBarPosition="bottom"
+        initialRouteName={paths.myUE.name}
+        springConfig={{ damping: 30 }}
+        tabBarOptions={{
+          showIcon: true,
+          iconStyle: {
+            width: '100%',
+            height: 27,
+          },
+          activeTintColor: '#ffffff',
+          inactiveTintColor: '#000000',
+          style: {
+            backgroundColor: '#DA8F20',
+          },
+          labelStyle: {
+            fontSize: 11,
+            textAlign: 'center',
+            padding: 0,
+            marginTop: 7,
+          },
+          tabStyle: {
+            width: '100%',
+            padding: 0,
+          },
+          indicatorStyle: {
+            backgroundColor: '#ffffff',
+            height: 3,
+          },
+        }}
+      ></UETab.Navigator>
+    </SafeAreaView>
   );
 };
