@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { paths } from '../../../navigation/paths';
+import i18n from '../../internationalization/service/i18n.service';
 import { ChoiceUE, MyUE, SearchUE } from '../pages';
 
 const UETab = createMaterialTopTabNavigator();
