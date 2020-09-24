@@ -32,7 +32,6 @@ export const UENavigator: FunctionComponent = () => {
             marginTop: 7,
           },
           tabStyle: {
-            width: '100%',
             padding: 0,
           },
           indicatorStyle: {
