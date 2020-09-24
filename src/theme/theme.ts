@@ -10,14 +10,17 @@ const palette = {
 
 // Here we define themed colors. This has more a logical sens, for example "buttons", "pages", ...
 export const colors = {
+  button: {
+    backgroundColor: palette.purple,
+  },
   pages: {
-    backgroundColor: palette.grey,
+    backgroundColor: palette.white,
   },
   ues: {
     cs: palette.purple,
     st: palette.darkPurple,
   },
-  icons: { color: palette.darkGrey },
+  icons: { color: palette.white },
 };
 
 //Here we define possible weights that will be used by our typos

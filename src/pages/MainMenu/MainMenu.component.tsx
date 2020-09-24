@@ -15,12 +15,12 @@ const styles = StyleSheet.create({
   },
   grid: {
     flex: 1,
-    marginTop: 3,
+    marginTop: 7,
   },
   row: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
   empty: {
     width: Dimensions.get('window').width / 3 - 6, // TODO refacto
@@ -63,44 +63,60 @@ export const MainMenu: FunctionComponent = () => {
   const grid: any[] = [];
   const content = [
     {
+      visible: true,
       name: 'Mon profil',
-      icon: 'user',
+      icon: 'user-circle-o',
       destination: 'profile',
+      color: '#34A9DB',
     },
     {
+      visible: true,
       name: 'Guide des UEs',
       icon: 'book',
       destination: 'ue',
+      color: '#DA8F20',
     },
     {
+      visible: true,
       name: 'Emploi du temps',
       icon: 'table',
       destination: 'edt',
+      color: '#C6BB59',
     },
     {
+      visible: true,
       name: 'Événements',
       icon: 'calendar',
       destination: 'events',
+      color: '#2F7C8D',
     },
     {
+      visible: true,
       name: 'Trombinoscopes',
-      icon: 'address-book',
+      icon: 'address-card-o',
       destination: 'trombi',
+      color: '#B11818',
     },
     {
+      visible: true,
       name: 'Associations',
-      icon: 'users',
+      icon: 'group',
       destination: 'orgas',
+      color: '#288642',
     },
     {
+      visible: true,
       name: 'À propos',
-      icon: 'question',
+      icon: 'info',
       destination: 'about',
+      color: '#CD7069',
     },
     {
+      visible: true,
       name: 'Se déconnecter',
       icon: 'sign-out',
       destination: 'logout',
+      color: '#928989',
     },
   ];
 
@@ -117,8 +133,16 @@ export const MainMenu: FunctionComponent = () => {
         <GridButton
           key={key++}
           title={section.name}
-          image={<Icon name={section.icon} size={iconSize} color={colors.icons.color} />}
+          image={
+            <Icon
+              name={section.icon}
+              size={iconSize}
+              color={colors.icons.color}
+              style={{ position: 'absolute', top: 18 }}
+            />
+          }
           onPress={() => onButtonPress(section.destination)}
+          color={section.color}
         />
       );
     });
