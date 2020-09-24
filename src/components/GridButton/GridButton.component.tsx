@@ -5,31 +5,39 @@ interface GridButtonProps {
   onPress: () => void;
   image: ReactNode;
   title: string;
+  color: string;
 }
 
-const BACKGROUND_COLOR = '#FFFFFF';
-
 const styles = StyleSheet.create({
-  container: {
-    width: Dimensions.get('window').width / 3 - 6,
-    height: Dimensions.get('window').width / 3 - 6,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginHorizontal: 1,
-    marginVertical: 1,
-    backgroundColor: BACKGROUND_COLOR,
-  },
   title: {
     position: 'absolute',
-    bottom: 5,
-    fontSize: 10,
+    bottom: 9,
+    fontSize: 14,
     textAlign: 'center',
+    color: '#ffffff',
   },
 });
 
-export const GridButton: FunctionComponent<GridButtonProps> = ({ onPress, image, title }) => {
+export const GridButton: FunctionComponent<GridButtonProps> = ({
+  onPress,
+  image,
+  title,
+  color,
+}) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity
+      style={{
+        width: Dimensions.get('window').width / 3 - 6,
+        height: Dimensions.get('window').width / 3 - 6,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginHorizontal: 1,
+        marginVertical: 1,
+        backgroundColor: color,
+        borderRadius: 12,
+      }}
+      onPress={onPress}
+    >
       {image}
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
