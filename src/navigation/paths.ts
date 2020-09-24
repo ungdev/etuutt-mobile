@@ -5,6 +5,9 @@ export const paths = {
   myUE: {
     name: 'myUE',
   },
+  choiceUE: {
+    name: 'choiceUE',
+  },
   searchUE: {
     name: 'searchUE',
   },
