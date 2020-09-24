@@ -1,20 +1,10 @@
-# My UTT
+# etuutt-mobile
 
-## Requirement :
+This is the repo for the My UTT mobile application
 
-- React Native with expo
+## Summary
 
-## Installation :
-
-1. clone repository
-
-- git clone https://github.com/ungdev/etuutt-mobile.git
-- cd etuutt-mobile
-
-3. install dependencies :
-
-- yarn
-
-4. launch the app on expo :
-
-- yarn start
+- [Install](./docs/install.md)
+- [Contribute](./docs/contribute.md)
+- [Test](./docs/test.md)
+- [Internationalization](./docs/internationalization.md)
