@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { paths } from '../../../navigation/paths';
+import i18n from '../../internationalization/service/i18n.service';
 import { ChoiceUE, MyUE, SearchUE } from '../pages';
 
 const UETab = createMaterialTopTabNavigator();
@@ -47,6 +48,7 @@ export const UENavigator: FunctionComponent = () => {
             tabBarIcon: ({ color }) => {
               return <Icon name="folder" size={27} color={color} />;
             },
+            title: i18n.t('myUE.title'),
           }}
         />
         <UETab.Screen
@@ -56,6 +58,7 @@ export const UENavigator: FunctionComponent = () => {
             tabBarIcon: ({ color }) => {
               return <Icon name="search" size={27} color={color} />;
             },
+            title: i18n.t('searchUE.title'),
           }}
         />
         <UETab.Screen
@@ -65,6 +68,7 @@ export const UENavigator: FunctionComponent = () => {
             tabBarIcon: ({ color }) => {
               return <Icon name="folder" size={27} color={color} />;
             },
+            title: i18n.t('choiceUE.title'),
           }}
         />
       </UETab.Navigator>
