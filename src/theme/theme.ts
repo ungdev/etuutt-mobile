@@ -27,6 +27,9 @@ export const colors = {
     inactive: palette.black,
     background: palette.orange,
   },
+  text: {
+    light: palette.white,
+  },
 };
 
 //Here we define possible weights that will be used by our typos

@@ -1,32 +1,29 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 import { Modal, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
-import { colors, shadows, spacing } from '../../theme/theme';
+import { colors, radius, shadows, spacing } from '../../theme/theme';
 
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 22,
+    marginTop: spacing * 4,
   },
   modalView: {
-    margin: 20,
+    margin: spacing * 4,
     backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
+    borderRadius: radius.medium,
+    padding: spacing * 9,
     alignItems: 'center',
     ...shadows.lightShadow,
   },
   openButton: {
     ...colors.button,
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
+    borderRadius: radius.medium,
+    padding: spacing * 2,
   },
   textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
+    color: colors.text.light,
   },
   modalText: {
     marginBottom: spacing * 4,
