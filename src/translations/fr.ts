@@ -1,8 +1,13 @@
 export const fr = {
-  myUE: {
-    title: 'My UEs',
-  },
-  searchUE: {
-    title: 'Search UE',
+  ue: {
+    myUE: {
+      title: 'Mes UEs',
+    },
+    searchUE: {
+      title: 'Rechercher une UE',
+    },
+    choiceUE: {
+      title: 'Choix Intelligent',
+    },
   },
 };
