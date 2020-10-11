@@ -6,6 +6,7 @@ const palette = {
   white: '#ffffff',
   darkPurple: '#8A3581',
   purple: '#9C497C',
+  orange: '#DA8F20',
 };
 
 // Here we define themed colors. This has more a logical sens, for example "buttons", "pages", ...
@@ -22,6 +23,10 @@ export const colors = {
     st: palette.darkPurple,
   },
   icons: { color: palette.white },
+  tabBar: {
+    inactive: palette.black,
+    background: palette.orange,
+  },
 };
 
 //Here we define possible weights that will be used by our typos
@@ -105,6 +110,11 @@ export const typos = {
     fontSize: 16,
     lineHeight: 24,
     fontWeight: weights.bold,
+  },
+  xxs: {
+    fontSize: 11,
+    lineHeight: 13,
+    fontWeight: weights.medium,
   },
 };
 

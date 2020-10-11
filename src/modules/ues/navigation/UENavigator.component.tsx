@@ -1,71 +1,78 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import React, { FunctionComponent } from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { paths } from '../../../navigation/paths';
-import i18n from '../../internationalization/service/i18n.service';
+import { colors, spacing, typos } from '../../../theme/theme';
 import { ChoiceUE, MyUE, SearchUE } from '../pages';
 
 const UETab = createMaterialTopTabNavigator();
+const bouncingTab = 30;
+const iconSize = 27;
+
+const styles = StyleSheet.create({
+  icon: {
+    width: '100%',
+  },
+  container: { flex: 1, backgroundColor: colors.tabBar.background },
+  label: {
+    ...typos.xxs,
+    textAlign: 'center',
+    padding: 0,
+    marginTop: spacing * 2,
+  },
+  tab: {
+    padding: 0,
+  },
+  indicator: {
+    backgroundColor: colors.icons.color,
+    height: spacing,
+  },
+});
 
 export const UENavigator: FunctionComponent = () => {
+  const renderIcon = (iconName: string) => ({ color }: { color: string }) => (
+    <Icon name={iconName} size={iconSize} color={color} />
+  );
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#DA8F20' }}>
+    <SafeAreaView style={styles.container}>
       <UETab.Navigator
         tabBarPosition="bottom"
         initialRouteName={paths.myUE.name}
-        springConfig={{ damping: 30 }}
+        springConfig={{ damping: bouncingTab }}
         tabBarOptions={{
           showIcon: true,
-          iconStyle: {
-            width: '100%',
-            height: 27,
-          },
-          activeTintColor: '#ffffff',
-          inactiveTintColor: '#000000',
+          iconStyle: styles.icon,
+          activeTintColor: colors.icons.color,
+          inactiveTintColor: colors.tabBar.inactive,
           style: {
-            backgroundColor: '#DA8F20',
+            backgroundColor: colors.tabBar.background,
           },
-          labelStyle: {
-            fontSize: 11,
-            textAlign: 'center',
-            padding: 0,
-            marginTop: 7,
-          },
-          tabStyle: {
-            padding: 0,
-          },
-          indicatorStyle: {
-            backgroundColor: '#ffffff',
-            height: 3,
-          },
+          labelStyle: styles.label,
+          tabStyle: styles.tab,
+          indicatorStyle: styles.indicator,
         }}
       >
         <UETab.Screen
           name={paths.myUE.name}
           component={MyUE}
           options={{
-            tabBarIcon: ({ color }) => {
-              return <Icon name="folder" size={27} color={color} />;
-            },
+            tabBarIcon: renderIcon('folder'),
           }}
         />
         <UETab.Screen
           name={paths.searchUE.name}
           component={SearchUE}
           options={{
-            tabBarIcon: ({ color }) => {
-              return <Icon name="search" size={27} color={color} />;
-            },
+            tabBarIcon: renderIcon('search'),
           }}
         />
         <UETab.Screen
           name={paths.choiceUE.name}
           component={ChoiceUE}
           options={{
-            tabBarIcon: ({ color }) => {
-              return <Icon name="folder" size={27} color={color} />;
-            },
+            tabBarIcon: renderIcon('gear'),
           }}
         />
       </UETab.Navigator>
