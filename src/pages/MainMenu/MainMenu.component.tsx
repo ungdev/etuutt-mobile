@@ -1,12 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { FunctionComponent } from 'react';
 import { Dimensions, ScrollView, StyleSheet, View } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { GridButton } from '../../components/GridButton';
 import { paths } from '../../navigation/paths';
-import { colors } from '../../theme/theme';
-
-const iconSize = 70;
+import { colors, spacing } from '../../theme/theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,18 +12,16 @@ const styles = StyleSheet.create({
   },
   grid: {
     flex: 1,
-    marginTop: 7,
+    marginTop: spacing * 2,
   },
   row: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around',
   },
   empty: {
-    width: Dimensions.get('window').width / 3 - 6, // TODO refacto
-    height: Dimensions.get('window').width / 3 - 6,
-    marginHorizontal: 1,
-    marginVertical: 1,
+    width: Dimensions.get('screen').width / 3 - spacing * 2,
+    height: Dimensions.get('screen').width / 3 - spacing * 2,
+    margin: spacing,
   },
 });
 
@@ -133,14 +128,7 @@ export const MainMenu: FunctionComponent = () => {
         <GridButton
           key={key++}
           title={section.name}
-          image={
-            <Icon
-              name={section.icon}
-              size={iconSize}
-              color={colors.icons.color}
-              style={{ position: 'absolute', top: 18 }}
-            />
-          }
+          iconName={section.icon}
           onPress={() => onButtonPress(section.destination)}
           color={section.color}
         />

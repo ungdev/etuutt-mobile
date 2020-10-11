@@ -12,6 +12,7 @@ const palette = {
 export const colors = {
   button: {
     backgroundColor: palette.purple,
+    color: palette.white,
   },
   pages: {
     backgroundColor: palette.white,
@@ -122,6 +123,7 @@ export const shadows = {
 
 export const radius = {
   medium: 16,
+  small: 12,
 };
 
 export const spacing = 4;
