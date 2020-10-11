@@ -7,6 +7,12 @@ const palette = {
   darkPurple: '#8A3581',
   purple: '#9C497C',
   orange: '#DA8F20',
+  curiousBlue: '#34A9DB',
+  yellow: '#C6BB59',
+  calypsoBlue: '#2F7C8D',
+  red: '#B11818',
+  green: '#288642',
+  pink: '#CD7069',
 };
 
 // Here we define themed colors. This has more a logical sens, for example "buttons", "pages", ...
@@ -29,6 +35,16 @@ export const colors = {
   },
   text: {
     light: palette.white,
+  },
+  menuButton: {
+    profile: palette.curiousBlue,
+    ue: palette.orange,
+    edt: palette.yellow,
+    event: palette.calypsoBlue,
+    trombi: palette.red,
+    assos: palette.green,
+    about: palette.pink,
+    sign_out: palette.grey,
   },
 };
 
