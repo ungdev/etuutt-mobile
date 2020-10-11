@@ -4,6 +4,7 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { paths } from '../../../navigation/paths';
 import { colors, spacing, typos } from '../../../theme/theme';
+import i18n from '../../internationalization/service/i18n.service';
 import { ChoiceUE, MyUE, SearchUE } from '../pages';
 
 const UETab = createMaterialTopTabNavigator();
@@ -20,6 +21,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 0,
     marginTop: spacing * 2,
+    textTransform: 'none',
   },
   tab: {
     padding: 0,
@@ -59,6 +61,7 @@ export const UENavigator: FunctionComponent = () => {
           component={MyUE}
           options={{
             tabBarIcon: renderIcon('folder'),
+            tabBarLabel: i18n.t('ue.myUE.title'),
           }}
         />
         <UETab.Screen
@@ -66,6 +69,7 @@ export const UENavigator: FunctionComponent = () => {
           component={SearchUE}
           options={{
             tabBarIcon: renderIcon('search'),
+            tabBarLabel: i18n.t('ue.searchUE.title'),
           }}
         />
         <UETab.Screen
@@ -73,6 +77,7 @@ export const UENavigator: FunctionComponent = () => {
           component={ChoiceUE}
           options={{
             tabBarIcon: renderIcon('gear'),
+            tabBarLabel: i18n.t('ue.choiceUE.title'),
           }}
         />
       </UETab.Navigator>
