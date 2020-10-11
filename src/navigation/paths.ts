@@ -1,12 +1,21 @@
 export const paths = {
   mainMenu: {
-    name: 'mainMenu',
+    name: 'Mon Tableau de Bord',
+  },
+  settings: {
+    name: 'Réglages',
+  },
+  settingNotification: {
+    name: 'Notifications',
   },
   myUE: {
-    name: 'myUE',
+    name: 'Mes UEs',
+  },
+  choiceUE: {
+    name: 'Choix Intelligent',
   },
   searchUE: {
-    name: 'searchUE',
+    name: 'Rechercher',
   },
-  ue: { name: 'ue' },
+  ue: { name: 'Guide des UEs' },
 };

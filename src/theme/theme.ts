@@ -6,18 +6,50 @@ const palette = {
   white: '#ffffff',
   darkPurple: '#8A3581',
   purple: '#9C497C',
+  orange: '#DA8F20',
+  curiousBlue: '#34A9DB',
+  yellow: '#C6BB59',
+  calypsoBlue: '#2F7C8D',
+  red: '#B11818',
+  green: '#288642',
+  pink: '#CD7069',
+  blue: '#2B92CD',
 };
 
 // Here we define themed colors. This has more a logical sens, for example "buttons", "pages", ...
 export const colors = {
+  button: {
+    backgroundColor: palette.purple,
+    color: palette.white,
+  },
   pages: {
-    backgroundColor: palette.grey,
+    backgroundColor: palette.white,
   },
   ues: {
     cs: palette.purple,
     st: palette.darkPurple,
   },
-  icons: { color: palette.darkGrey },
+  icons: { color: palette.white },
+  tabBar: {
+    inactive: palette.black,
+    background: palette.orange,
+  },
+  text: {
+    light: palette.white,
+  },
+  menuButton: {
+    profile: palette.curiousBlue,
+    ue: palette.orange,
+    edt: palette.yellow,
+    event: palette.calypsoBlue,
+    trombi: palette.red,
+    assos: palette.green,
+    about: palette.pink,
+    sign_out: palette.grey,
+  },
+  header: {
+    backgroundColor: palette.blue,
+  },
 };
 
 //Here we define possible weights that will be used by our typos
@@ -102,6 +134,11 @@ export const typos = {
     lineHeight: 24,
     fontWeight: weights.bold,
   },
+  xxs: {
+    fontSize: 11,
+    lineHeight: 13,
+    fontWeight: weights.medium,
+  },
 };
 
 export const shadows = {
@@ -119,6 +156,7 @@ export const shadows = {
 
 export const radius = {
   medium: 16,
+  small: 12,
 };
 
 export const spacing = 4;

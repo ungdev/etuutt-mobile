@@ -1,12 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { FunctionComponent } from 'react';
 import { Dimensions, ScrollView, StyleSheet, View } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { GridButton } from '../../components/GridButton';
 import { paths } from '../../navigation/paths';
-import { colors } from '../../theme/theme';
-
-const iconSize = 70;
+import { colors, spacing } from '../../theme/theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,18 +12,16 @@ const styles = StyleSheet.create({
   },
   grid: {
     flex: 1,
-    marginTop: 3,
+    marginTop: spacing * 2,
   },
   row: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
   },
   empty: {
-    width: Dimensions.get('window').width / 3 - 6, // TODO refacto
-    height: Dimensions.get('window').width / 3 - 6,
-    marginHorizontal: 1,
-    marginVertical: 1,
+    width: Dimensions.get('screen').width / 3 - spacing * 2,
+    height: Dimensions.get('screen').width / 3 - spacing * 2,
+    margin: spacing,
   },
 });
 
@@ -63,44 +58,60 @@ export const MainMenu: FunctionComponent = () => {
   const grid: any[] = [];
   const content = [
     {
+      visible: true,
       name: 'Mon profil',
-      icon: 'user',
+      icon: 'user-circle-o',
       destination: 'profile',
+      color: colors.menuButton.profile,
     },
     {
+      visible: true,
       name: 'Guide des UEs',
       icon: 'book',
       destination: 'ue',
+      color: colors.menuButton.ue,
     },
     {
+      visible: true,
       name: 'Emploi du temps',
       icon: 'table',
       destination: 'edt',
+      color: colors.menuButton.edt,
     },
     {
+      visible: true,
       name: 'Événements',
       icon: 'calendar',
       destination: 'events',
+      color: colors.menuButton.event,
     },
     {
+      visible: true,
       name: 'Trombinoscopes',
-      icon: 'address-book',
+      icon: 'address-card-o',
       destination: 'trombi',
+      color: colors.menuButton.trombi,
     },
     {
+      visible: true,
       name: 'Associations',
-      icon: 'users',
+      icon: 'group',
       destination: 'orgas',
+      color: colors.menuButton.assos,
     },
     {
+      visible: true,
       name: 'À propos',
-      icon: 'question',
+      icon: 'info',
       destination: 'about',
+      color: colors.menuButton.about,
     },
     {
+      visible: true,
       name: 'Se déconnecter',
       icon: 'sign-out',
       destination: 'logout',
+      color: colors.menuButton.sign_out,
     },
   ];
 
@@ -117,8 +128,9 @@ export const MainMenu: FunctionComponent = () => {
         <GridButton
           key={key++}
           title={section.name}
-          image={<Icon name={section.icon} size={iconSize} color={colors.icons.color} />}
+          iconName={section.icon}
           onPress={() => onButtonPress(section.destination)}
+          color={section.color}
         />
       );
     });
