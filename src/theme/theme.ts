@@ -13,6 +13,7 @@ const palette = {
   red: '#B11818',
   green: '#288642',
   pink: '#CD7069',
+  blue: '#2B92CD',
 };
 
 // Here we define themed colors. This has more a logical sens, for example "buttons", "pages", ...
@@ -45,6 +46,9 @@ export const colors = {
     assos: palette.green,
     about: palette.pink,
     sign_out: palette.grey,
+  },
+  header: {
+    backgroundColor: palette.blue,
   },
 };
 
