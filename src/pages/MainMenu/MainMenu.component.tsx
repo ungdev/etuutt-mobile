@@ -1,27 +1,14 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { FunctionComponent } from 'react';
-import { Dimensions, ScrollView, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { GridButton } from '../../components/GridButton';
 import { paths } from '../../navigation/paths';
-import { palette, spacing } from '../../theme/theme';
+import { palette } from '../../theme/theme';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: palette.white,
-  },
-  grid: {
-    flex: 1,
-    marginTop: spacing * 2,
-  },
-  row: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  empty: {
-    width: Dimensions.get('screen').width / 3 - spacing * 2,
-    height: Dimensions.get('screen').width / 3 - spacing * 2,
-    margin: spacing,
   },
 });
 
@@ -30,8 +17,6 @@ export const MainMenu: FunctionComponent = () => {
   const onButtonPress = (destination: string) => {
     navigate(destination);
   };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const grid: any[] = [];
   const content = [
     {
       visible: true,
@@ -91,42 +76,20 @@ export const MainMenu: FunctionComponent = () => {
     },
   ];
 
-  const gridContent = [];
-  for (let i = 0; i < content.length; i += 3) {
-    gridContent.push(content.slice(i, i + 3));
-  }
-
-  let key = 0;
-  gridContent.forEach((row) => {
-    const rowContent = [];
-    row.forEach((section) => {
-      rowContent.push(
-        <GridButton
-          key={key++}
-          title={section.name}
-          iconName={section.icon}
-          onPress={() => onButtonPress(section.destination)}
-          color={section.color}
-        />
-      );
-    });
-
-    if (rowContent.length < 3) {
-      rowContent.push(<View style={styles.empty} key={key++} />);
-    }
-    if (rowContent.length < 3) {
-      rowContent.push(<View style={styles.empty} key={key++} />);
-    }
-    grid.push(
-      <View key={key++} style={styles.row}>
-        {rowContent}
-      </View>
-    );
-  });
-
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.grid}>{grid}</ScrollView>
+      <FlatList
+        numColumns={3}
+        data={content}
+        renderItem={({ item }) => (
+          <GridButton
+            title={item.name}
+            iconName={item.icon}
+            onPress={() => onButtonPress(item.destination)}
+            color={item.color}
+          />
+        )}
+      />
     </View>
   );
 };
