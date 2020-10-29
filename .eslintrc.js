@@ -17,12 +17,13 @@ module.exports = {
   },
   rules: {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
-    // e.g. "@typescript-eslint/explicit-function-return-type": "off",
-    'prettier/prettier':['error', {endOfLine: '\n'}]
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'prettier/prettier': ['error', { endOfLine: 'lf' }],
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/ban-ts-comment': 'warn',
     '@typescript-eslint/indent': 'off',
+    'react/display-name': 'off',
     'react/prop-types': 'off',
     'react-native/sort-styles': 'off',
     'no-console': ['error', { allow: ['warn', 'error'] }],
