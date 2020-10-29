@@ -41,7 +41,7 @@ export const UENavigator: FunctionComponent = () => {
     <SafeAreaView style={styles.container}>
       <UETab.Navigator
         tabBarPosition="bottom"
-        initialRouteName={paths.myUE.name}
+        initialRouteName={paths.ue.tabs.myUE.name}
         springConfig={{ damping: bouncingTab }}
         tabBarOptions={{
           showIcon: true,
@@ -57,7 +57,7 @@ export const UENavigator: FunctionComponent = () => {
         }}
       >
         <UETab.Screen
-          name={paths.myUE.name}
+          name={paths.ue.tabs.myUE.name}
           component={MyUE}
           options={{
             tabBarIcon: renderIcon('folder'),
@@ -65,7 +65,7 @@ export const UENavigator: FunctionComponent = () => {
           }}
         />
         <UETab.Screen
-          name={paths.searchUE.name}
+          name={paths.ue.tabs.searchUE.name}
           component={SearchUE}
           options={{
             tabBarIcon: renderIcon('search'),
@@ -73,7 +73,7 @@ export const UENavigator: FunctionComponent = () => {
           }}
         />
         <UETab.Screen
-          name={paths.choiceUE.name}
+          name={paths.ue.tabs.choiceUE.name}
           component={ChoiceUE}
           options={{
             tabBarIcon: renderIcon('gear'),
