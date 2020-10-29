@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Dimensions, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { colors, radius, spacing, typos } from '../../theme/theme';
+import { palette, radius, spacing, typos } from '../../theme/theme';
 
 const iconSize = 70;
 
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   title: {
     ...typos.xs,
     textAlign: 'center',
-    color: colors.button.color,
+    color: palette.white,
   },
   container: {
     width: Dimensions.get('screen').width / 3 - spacing * 2,
@@ -36,7 +36,7 @@ export const GridButton: FunctionComponent<GridButtonProps> = ({
 }) => {
   return (
     <TouchableOpacity style={[styles.container, { backgroundColor: color }]} onPress={onPress}>
-      <Icon name={iconName} size={iconSize} color={colors.icons.color} style={{}} />
+      <Icon name={iconName} size={iconSize} color={palette.white} style={{}} />
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );

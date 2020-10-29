@@ -1,5 +1,5 @@
-// Here we define all our colors, but do not use them directly in components
-const palette = {
+// Here we define all our colors
+export const palette = {
   black: '#000000',
   grey: '#C6C6C6',
   darkGrey: '#333',
@@ -14,42 +14,6 @@ const palette = {
   green: '#288642',
   pink: '#CD7069',
   blue: '#2B92CD',
-};
-
-// Here we define themed colors. This has more a logical sens, for example "buttons", "pages", ...
-export const colors = {
-  button: {
-    backgroundColor: palette.purple,
-    color: palette.white,
-  },
-  pages: {
-    backgroundColor: palette.white,
-  },
-  ues: {
-    cs: palette.purple,
-    st: palette.darkPurple,
-  },
-  icons: { color: palette.white },
-  tabBar: {
-    inactive: palette.black,
-    background: palette.orange,
-  },
-  text: {
-    light: palette.white,
-  },
-  menuButton: {
-    profile: palette.curiousBlue,
-    ue: palette.orange,
-    edt: palette.yellow,
-    event: palette.calypsoBlue,
-    trombi: palette.red,
-    assos: palette.green,
-    about: palette.pink,
-    sign_out: palette.grey,
-  },
-  header: {
-    backgroundColor: palette.blue,
-  },
 };
 
 //Here we define possible weights that will be used by our typos

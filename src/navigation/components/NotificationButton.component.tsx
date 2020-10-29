@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 import { Modal, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
-import { colors, radius, shadows, spacing } from '../../theme/theme';
+import { palette, radius, shadows, spacing } from '../../theme/theme';
 
 const styles = StyleSheet.create({
   centeredView: {
@@ -11,19 +11,20 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: spacing * 4,
-    backgroundColor: 'white',
+    backgroundColor: palette.white,
     borderRadius: radius.medium,
     padding: spacing * 9,
     alignItems: 'center',
     ...shadows.lightShadow,
   },
   openButton: {
-    ...colors.button,
+    backgroundColor: palette.purple,
+    color: palette.white,
     borderRadius: radius.medium,
     padding: spacing * 2,
   },
   textStyle: {
-    color: colors.text.light,
+    color: palette.white,
   },
   modalText: {
     marginBottom: spacing * 4,
@@ -47,10 +48,7 @@ export const NotificationButton: FunctionComponent<NotificationButtonProps> = ({
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Hello World!</Text>
 
-            <TouchableHighlight
-              style={{ ...styles.openButton, backgroundColor: '#2196F3' }}
-              onPress={hideModal}
-            >
+            <TouchableHighlight style={styles.openButton} onPress={hideModal}>
               <Text style={styles.textStyle}>Hide Modal</Text>
             </TouchableHighlight>
           </View>
