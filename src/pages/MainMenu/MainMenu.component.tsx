@@ -28,31 +28,7 @@ const styles = StyleSheet.create({
 export const MainMenu: FunctionComponent = () => {
   const { navigate } = useNavigation();
   const onButtonPress = (destination: string) => {
-    switch (destination) {
-      case 'events':
-        navigate('Events');
-        break;
-      case 'orgas':
-        navigate('Assos');
-        break;
-      case 'about':
-        navigate('About');
-        break;
-      case 'profile':
-        navigate('Profile');
-        break;
-      case 'ue':
-        navigate(paths.ue.name);
-        break;
-      case 'edt':
-        navigate('Timetable');
-        break;
-      case 'trombi':
-        navigate('Trombi');
-        break;
-      default:
-        break;
-    }
+    navigate(destination);
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const grid: any[] = [];
@@ -68,7 +44,7 @@ export const MainMenu: FunctionComponent = () => {
       visible: true,
       name: 'Guide des UEs',
       icon: 'book',
-      destination: 'ue',
+      destination: paths.ue.name,
       color: palette.orange,
     },
     {
