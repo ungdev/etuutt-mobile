@@ -1,6 +1,16 @@
 export const en = {
   mainMenu: {
     title: 'My Dashboard',
+    buttons: {
+      profile: 'My Profile',
+      ue: 'UEs Guide',
+      timetable: 'Timetable',
+      events: 'Events',
+      trombi: 'Trombinoscope',
+      assos: 'Associations',
+      about: 'About',
+      logout: 'Logout',
+    },
   },
   ue: {
     myUE: {

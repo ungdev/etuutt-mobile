@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { FunctionComponent } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { GridButton } from '../../components/GridButton';
+import i18n from '../../modules/internationalization/service/i18n.service';
 import { paths } from '../../navigation/paths';
 import { palette } from '../../theme/theme';
 
@@ -20,56 +21,56 @@ export const MainMenu: FunctionComponent = () => {
   const content = [
     {
       visible: true,
-      name: 'Mon profil',
+      name: 'profile',
       icon: 'user-circle-o',
       destination: 'profile',
       color: palette.curiousBlue,
     },
     {
       visible: true,
-      name: 'Guide des UEs',
+      name: 'ue',
       icon: 'book',
       destination: paths.ue.name,
       color: palette.orange,
     },
     {
       visible: true,
-      name: 'Emploi du temps',
+      name: 'timetable',
       icon: 'table',
-      destination: 'edt',
+      destination: 'timetable',
       color: palette.yellow,
     },
     {
       visible: true,
-      name: 'Événements',
+      name: 'events',
       icon: 'calendar',
       destination: 'events',
       color: palette.calypsoBlue,
     },
     {
       visible: true,
-      name: 'Trombinoscopes',
+      name: 'trombi',
       icon: 'address-card-o',
       destination: 'trombi',
       color: palette.red,
     },
     {
       visible: true,
-      name: 'Associations',
+      name: 'assos',
       icon: 'group',
-      destination: 'orgas',
+      destination: 'assos',
       color: palette.green,
     },
     {
       visible: true,
-      name: 'À propos',
+      name: 'about',
       icon: 'info',
       destination: 'about',
       color: palette.pink,
     },
     {
       visible: true,
-      name: 'Se déconnecter',
+      name: 'logout',
       icon: 'sign-out',
       destination: 'logout',
       color: palette.grey,
@@ -83,7 +84,7 @@ export const MainMenu: FunctionComponent = () => {
         data={content}
         renderItem={({ item }) => (
           <GridButton
-            title={item.name}
+            title={i18n.t(`mainMenu.buttons.${item.name}`)}
             iconName={item.icon}
             onPress={() => onButtonPress(item.destination)}
             color={item.color}
