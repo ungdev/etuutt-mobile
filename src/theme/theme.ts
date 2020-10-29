@@ -13,7 +13,7 @@ export const palette = {
   red: '#B11818',
   green: '#288642',
   pink: '#CD7069',
-  blue: '#2B92CD',
+  blue: '#0C5487',
 };
 
 //Here we define possible weights that will be used by our typos
@@ -70,12 +70,12 @@ export const typos = {
   },
   mb: {
     fontSize: 20,
-    lineHeight: 30,
+    lineHeight: 23,
     fontWeight: weights.bold,
   },
   m: {
     fontSize: 20,
-    lineHeight: 30,
+    lineHeight: 23,
     fontWeight: weights.regular,
   },
   s: {
@@ -121,6 +121,7 @@ export const shadows = {
 export const radius = {
   medium: 16,
   small: 12,
+  extraSmall: 8,
 };
 
 export const spacing = 4;
