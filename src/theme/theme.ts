@@ -44,9 +44,9 @@ export const typos = {
     fontWeight: weights.bold,
   },
   h2: {
-    fontSize: 40,
-    lineHeight: 56,
-    fontWeight: weights.bold,
+    fontSize: 36,
+    lineHeight: 42,
+    fontWeight: weights.regular,
   },
   h3: {
     fontSize: 32,
