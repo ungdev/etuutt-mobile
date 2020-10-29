@@ -26,5 +26,12 @@ export const en = {
   },
   profile: {
     title: 'My Profile',
+    section: {
+      studentNumber: 'Student Number',
+      branch: 'Branch',
+      email: 'Email',
+      gender: 'Gender',
+      birthdate: 'Birthdate',
+    },
   },
 };

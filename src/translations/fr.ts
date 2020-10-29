@@ -26,5 +26,12 @@ export const fr = {
   },
   profile: {
     title: 'Mon Profil',
+    section: {
+      studentNumber: 'Numéro Étudiant',
+      branch: 'Branche',
+      email: 'E-Mail',
+      gender: 'Sexe',
+      birthdate: 'Date de naissance',
+    },
   },
 };
