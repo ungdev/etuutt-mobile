@@ -1,156 +1,96 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { FunctionComponent } from 'react';
-import { Dimensions, ScrollView, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { GridButton } from '../../components/GridButton';
+import i18n from '../../modules/internationalization/service/i18n.service';
 import { paths } from '../../navigation/paths';
-import { palette, spacing } from '../../theme/theme';
+import { palette } from '../../theme/theme';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: palette.white,
   },
-  grid: {
-    flex: 1,
-    marginTop: spacing * 2,
-  },
-  row: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  empty: {
-    width: Dimensions.get('screen').width / 3 - spacing * 2,
-    height: Dimensions.get('screen').width / 3 - spacing * 2,
-    margin: spacing,
-  },
 });
 
 export const MainMenu: FunctionComponent = () => {
   const { navigate } = useNavigation();
   const onButtonPress = (destination: string) => {
-    switch (destination) {
-      case 'events':
-        navigate('Events');
-        break;
-      case 'orgas':
-        navigate('Assos');
-        break;
-      case 'about':
-        navigate('About');
-        break;
-      case 'profile':
-        navigate('Profile');
-        break;
-      case 'ue':
-        navigate(paths.ue.name);
-        break;
-      case 'edt':
-        navigate('Timetable');
-        break;
-      case 'trombi':
-        navigate('Trombi');
-        break;
-      default:
-        break;
-    }
+    navigate(destination);
   };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const grid: any[] = [];
   const content = [
     {
       visible: true,
-      name: 'Mon profil',
+      name: 'profile',
       icon: 'user-circle-o',
       destination: 'profile',
       color: palette.curiousBlue,
     },
     {
       visible: true,
-      name: 'Guide des UEs',
+      name: 'ue',
       icon: 'book',
-      destination: 'ue',
+      destination: paths.ue.name,
       color: palette.orange,
     },
     {
       visible: true,
-      name: 'Emploi du temps',
+      name: 'timetable',
       icon: 'table',
-      destination: 'edt',
+      destination: 'timetable',
       color: palette.yellow,
     },
     {
       visible: true,
-      name: 'Événements',
+      name: 'events',
       icon: 'calendar',
       destination: 'events',
       color: palette.calypsoBlue,
     },
     {
       visible: true,
-      name: 'Trombinoscopes',
+      name: 'trombi',
       icon: 'address-card-o',
       destination: 'trombi',
       color: palette.red,
     },
     {
       visible: true,
-      name: 'Associations',
+      name: 'assos',
       icon: 'group',
-      destination: 'orgas',
+      destination: 'assos',
       color: palette.green,
     },
     {
       visible: true,
-      name: 'À propos',
+      name: 'about',
       icon: 'info',
       destination: 'about',
       color: palette.pink,
     },
     {
       visible: true,
-      name: 'Se déconnecter',
+      name: 'logout',
       icon: 'sign-out',
       destination: 'logout',
       color: palette.grey,
     },
   ];
 
-  const gridContent = [];
-  for (let i = 0; i < content.length; i += 3) {
-    gridContent.push(content.slice(i, i + 3));
-  }
-
-  let key = 0;
-  gridContent.forEach((row) => {
-    const rowContent = [];
-    row.forEach((section) => {
-      rowContent.push(
-        <GridButton
-          key={key++}
-          title={section.name}
-          iconName={section.icon}
-          onPress={() => onButtonPress(section.destination)}
-          color={section.color}
-        />
-      );
-    });
-
-    if (rowContent.length < 3) {
-      rowContent.push(<View style={styles.empty} key={key++} />);
-    }
-    if (rowContent.length < 3) {
-      rowContent.push(<View style={styles.empty} key={key++} />);
-    }
-    grid.push(
-      <View key={key++} style={styles.row}>
-        {rowContent}
-      </View>
-    );
-  });
-
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.grid}>{grid}</ScrollView>
+      <FlatList
+        numColumns={3}
+        data={content}
+        renderItem={({ item }) => (
+          <GridButton
+            title={i18n.t(`mainMenu.buttons.${item.name}`)}
+            iconName={item.icon}
+            onPress={() => onButtonPress(item.destination)}
+            color={item.color}
+          />
+        )}
+      />
     </View>
   );
 };
