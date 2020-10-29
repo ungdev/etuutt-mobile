@@ -24,4 +24,7 @@ export const en = {
     },
     title: 'UEs Guide',
   },
+  profile: {
+    title: 'My Profile',
+  },
 };
