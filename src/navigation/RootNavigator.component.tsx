@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React, { FunctionComponent } from 'react';
 import { StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import i18n from '../modules/internationalization/service/i18n.service';
 import { UENavigator } from '../modules/ues/navigation';
 import { FavorisButton } from '../modules/ues/pages/ChoiceUE/components/FavorisButton.component';
 import { MainMenu } from '../pages';
@@ -39,6 +40,7 @@ export const RootNavigator: FunctionComponent = () => {
           name={paths.mainMenu.name}
           component={MainMenu}
           options={{
+            title: i18n.t('mainMenu.title'),
             headerTitleAlign: 'center',
             headerLeft: () => (
               <NotificationButton
@@ -70,6 +72,7 @@ export const RootNavigator: FunctionComponent = () => {
           name={paths.ue.name}
           component={UENavigator}
           options={{
+            title: i18n.t('ue.title'),
             headerTitleAlign: 'center',
             headerRight: () => (
               <FavorisButton
