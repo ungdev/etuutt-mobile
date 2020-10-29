@@ -3,12 +3,12 @@ import React, { FunctionComponent } from 'react';
 import { Dimensions, ScrollView, StyleSheet, View } from 'react-native';
 import { GridButton } from '../../components/GridButton';
 import { paths } from '../../navigation/paths';
-import { colors, spacing } from '../../theme/theme';
+import { palette, spacing } from '../../theme/theme';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    ...colors.pages,
+    backgroundColor: palette.white,
   },
   grid: {
     flex: 1,
@@ -62,56 +62,56 @@ export const MainMenu: FunctionComponent = () => {
       name: 'Mon profil',
       icon: 'user-circle-o',
       destination: 'profile',
-      color: colors.menuButton.profile,
+      color: palette.curiousBlue,
     },
     {
       visible: true,
       name: 'Guide des UEs',
       icon: 'book',
       destination: 'ue',
-      color: colors.menuButton.ue,
+      color: palette.orange,
     },
     {
       visible: true,
       name: 'Emploi du temps',
       icon: 'table',
       destination: 'edt',
-      color: colors.menuButton.edt,
+      color: palette.yellow,
     },
     {
       visible: true,
       name: 'Événements',
       icon: 'calendar',
       destination: 'events',
-      color: colors.menuButton.event,
+      color: palette.calypsoBlue,
     },
     {
       visible: true,
       name: 'Trombinoscopes',
       icon: 'address-card-o',
       destination: 'trombi',
-      color: colors.menuButton.trombi,
+      color: palette.red,
     },
     {
       visible: true,
       name: 'Associations',
       icon: 'group',
       destination: 'orgas',
-      color: colors.menuButton.assos,
+      color: palette.green,
     },
     {
       visible: true,
       name: 'À propos',
       icon: 'info',
       destination: 'about',
-      color: colors.menuButton.about,
+      color: palette.pink,
     },
     {
       visible: true,
       name: 'Se déconnecter',
       icon: 'sign-out',
       destination: 'logout',
-      color: colors.menuButton.sign_out,
+      color: palette.grey,
     },
   ];
 

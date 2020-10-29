@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { UENavigator } from '../modules/ues/navigation';
 import { FavorisButton } from '../modules/ues/pages/ChoiceUE/components/FavorisButton.component';
 import { MainMenu } from '../pages';
-import { colors } from '../theme/theme';
+import { palette } from '../theme/theme';
 import { NotificationButton } from './components/NotificationButton.component';
 import { paths } from './paths';
 
@@ -19,10 +19,10 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   headerTitle: {
-    color: colors.text.light,
+    color: palette.white,
   },
   header: {
-    backgroundColor: colors.header.backgroundColor,
+    backgroundColor: palette.blue,
   },
 });
 
@@ -46,7 +46,7 @@ export const RootNavigator: FunctionComponent = () => {
                   <Icon
                     name={'bell'}
                     size={iconSize}
-                    color={colors.icons.color}
+                    color={palette.white}
                     style={styles.buttonHeader}
                   />
                 }
@@ -58,7 +58,7 @@ export const RootNavigator: FunctionComponent = () => {
                   <Icon
                     name={'ellipsis-v'}
                     size={iconSize}
-                    color={colors.icons.color}
+                    color={palette.white}
                     style={styles.buttonHeader}
                   />
                 }
@@ -77,7 +77,7 @@ export const RootNavigator: FunctionComponent = () => {
                   <Icon
                     name={'heart-o'}
                     size={iconSize}
-                    color={colors.icons.color}
+                    color={palette.white}
                     style={styles.buttonHeader}
                   />
                 }

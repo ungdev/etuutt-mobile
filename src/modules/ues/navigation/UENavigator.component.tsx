@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { paths } from '../../../navigation/paths';
-import { colors, spacing, typos } from '../../../theme/theme';
+import { palette, spacing, typos } from '../../../theme/theme';
 import i18n from '../../internationalization/service/i18n.service';
 import { ChoiceUE, MyUE, SearchUE } from '../pages';
 
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   icon: {
     width: '100%',
   },
-  container: { flex: 1, backgroundColor: colors.tabBar.background },
+  container: { flex: 1, backgroundColor: palette.orange },
   label: {
     ...typos.xxs,
     textAlign: 'center',
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     padding: 0,
   },
   indicator: {
-    backgroundColor: colors.icons.color,
+    backgroundColor: palette.white,
     height: spacing,
   },
 });
@@ -46,10 +46,10 @@ export const UENavigator: FunctionComponent = () => {
         tabBarOptions={{
           showIcon: true,
           iconStyle: styles.icon,
-          activeTintColor: colors.icons.color,
-          inactiveTintColor: colors.tabBar.inactive,
+          activeTintColor: palette.white,
+          inactiveTintColor: palette.black,
           style: {
-            backgroundColor: colors.tabBar.background,
+            backgroundColor: palette.orange,
           },
           labelStyle: styles.label,
           tabStyle: styles.tab,
