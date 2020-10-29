@@ -4,6 +4,7 @@ import React, { FunctionComponent } from 'react';
 import { StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import i18n from '../modules/internationalization/service/i18n.service';
+import { ProfilePage } from '../modules/profile/pages';
 import { UENavigator } from '../modules/ues/navigation';
 import { FavorisButton } from '../modules/ues/pages/ChoiceUE/components/FavorisButton.component';
 import { MainMenu } from '../pages';
@@ -86,6 +87,14 @@ export const RootNavigator: FunctionComponent = () => {
                 }
               />
             ),
+          }}
+        />
+        <RootStack.Screen
+          name={paths.profile.name}
+          component={ProfilePage}
+          options={{
+            title: i18n.t('profile.title'),
+            headerTitleAlign: 'center',
           }}
         />
       </RootStack.Navigator>

@@ -23,7 +23,7 @@ export const MainMenu: FunctionComponent = () => {
       visible: true,
       name: 'profile',
       icon: 'user-circle-o',
-      destination: 'profile',
+      destination: paths.profile.name,
       color: palette.curiousBlue,
     },
     {
