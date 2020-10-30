@@ -31,6 +31,7 @@ interface ProfileSectionProps {
   icon: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const ProfileSection: FunctionComponent<ProfileSectionProps> = ({ title, value, icon }) => {
   return (
     <View style={styles.container}>
