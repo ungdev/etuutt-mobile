@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { HorizontalSpacer } from '../../../../components/HorizontalSpacer';
+import { University } from '../../../../components/Icons';
 import { ProfilePicture } from '../../../../components/ProfilePicture';
 import { palette, spacing, typos } from '../../../../theme/theme';
 import i18n from '../../../internationalization/service/i18n.service';
@@ -40,6 +41,7 @@ export const ProfilePage: FunctionComponent = () => {
           size={PROFILE_PICTURE_SIZE}
           imageUri="https://img.lemde.fr/2020/03/24/0/0/3479/2319/688/0/60/0/80264c8_WAS471_HEALTH-CORONAVIRUS-USA_0324_11.JPG"
         />
+        <University color={palette.blue} size={100} />
         <Text style={styles.fullName}>DONALD TRUMP</Text>
         <View style={styles.separator} />
         <ProfileSection title={i18n.t('profile.section.studentNumber')} value="38277" icon="" />
