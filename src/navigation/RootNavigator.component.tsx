@@ -2,8 +2,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React, { FunctionComponent } from 'react';
 import { StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import Cog from '../../assets/icons/cog.svg';
+import Notifications from '../../assets/icons/notifications.svg';
+import Heart from '../../assets/icons/heart.svg';
 import i18n from '../modules/internationalization/service/i18n.service';
 import { ProfilePage } from '../modules/profile/pages';
 import { UENavigator } from '../modules/ues/navigation';
@@ -48,12 +49,7 @@ export const RootNavigator: FunctionComponent = () => {
             headerLeft: () => (
               <NotificationButton
                 image={
-                  <Icon
-                    name={'bell'}
-                    size={iconSize}
-                    color={palette.white}
-                    style={styles.buttonHeader}
-                  />
+                  <Notifications width={iconSize} height={iconSize} color={palette.white} style={styles.buttonHeader}/>
                 }
               />
             ),
@@ -76,12 +72,7 @@ export const RootNavigator: FunctionComponent = () => {
             headerRight: () => (
               <FavorisButton
                 image={
-                  <Icon
-                    name={'heart-o'}
-                    size={iconSize}
-                    color={palette.white}
-                    style={styles.buttonHeader}
-                  />
+                  <Heart width={iconSize} height={iconSize} color={palette.white} style={styles.buttonHeader}/>
                 }
               />
             ),

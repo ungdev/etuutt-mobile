@@ -4,9 +4,15 @@ import { HorizontalSpacer } from '../../../../components/HorizontalSpacer';
 import { ProfilePicture } from '../../../../components/ProfilePicture';
 import { palette, spacing, typos } from '../../../../theme/theme';
 import i18n from '../../../internationalization/service/i18n.service';
+import Adresscard from '../../../../../assets/icons/addresscard.svg';
+import University from '../../../../../assets/icons/university.svg';
+import Envelope from '../../../../../assets/icons/envelope.svg';
+import Malefemale from '../../../../../assets/icons/malefemale.svg';
+import Birthdaycake from '../../../../../assets/icons/birthdaycake.svg';
 import { ProfileSection } from './components/ProfileSection';
 
 const PROFILE_PICTURE_SIZE = 120;
+const iconSize = 50;
 
 const styles = StyleSheet.create({
   container: {
@@ -25,8 +31,8 @@ const styles = StyleSheet.create({
     color: palette.black,
   },
   separator: {
-    backgroundColor: palette.black,
-    height: 1,
+    backgroundColor: palette.blue,
+    height: 2,
     width: '100%',
     marginTop: spacing * 2,
   },
@@ -42,19 +48,20 @@ export const ProfilePage: FunctionComponent = () => {
         />
         <Text style={styles.fullName}>DONALD TRUMP</Text>
         <View style={styles.separator} />
-        <ProfileSection title={i18n.t('profile.section.studentNumber')} value="38277" icon="" />
         <HorizontalSpacer size={3} />
-        <ProfileSection title={i18n.t('profile.section.branch')} value="TC01" icon="" />
+  <ProfileSection title={i18n.t('profile.section.studentNumber')} value="38277" icon={<Adresscard width={iconSize} height={iconSize} color={palette.white}/>}/>
+        <HorizontalSpacer size={3} />
+        <ProfileSection title={i18n.t('profile.section.branch')} value="TC01" icon={<University width={iconSize} height={iconSize} color={palette.white}/>} />
         <HorizontalSpacer size={3} />
         <ProfileSection
           title={i18n.t('profile.section.email')}
           value="donald.trump@usa.com"
-          icon=""
+          icon={<Envelope width={iconSize} height={iconSize} color={palette.white}/>}
         />
         <HorizontalSpacer size={3} />
-        <ProfileSection title={i18n.t('profile.section.gender')} value="Homme" icon="" />
+        <ProfileSection title={i18n.t('profile.section.gender')} value="Homme" icon={<Malefemale width={iconSize} height={iconSize} color={palette.white}/>} />
         <HorizontalSpacer size={3} />
-        <ProfileSection title={i18n.t('profile.section.birthdate')} value="14/01/1946" icon="" />
+        <ProfileSection title={i18n.t('profile.section.birthdate')} value="14/01/1946" icon={<Birthdaycake width={iconSize} height={iconSize} color={palette.white}/>} />
         <HorizontalSpacer size={3} />
       </ScrollView>
     </View>
