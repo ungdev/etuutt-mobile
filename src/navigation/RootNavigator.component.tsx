@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React, { FunctionComponent } from 'react';
 import { StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Cog from '../../assets/icons/cog.svg';
 import i18n from '../modules/internationalization/service/i18n.service';
 import { ProfilePage } from '../modules/profile/pages';
 import { UENavigator } from '../modules/ues/navigation';
@@ -19,14 +20,13 @@ const styles = StyleSheet.create({
   buttonHeader: {
     marginLeft: 15,
     marginRight: 15,
-  },
-  headerTitle: {
-    color: palette.white,
+    
   },
   header: {
     backgroundColor: palette.blue,
   },
 });
+
 
 export const RootNavigator: FunctionComponent = () => {
   return (
@@ -35,6 +35,8 @@ export const RootNavigator: FunctionComponent = () => {
         screenOptions={{
           headerStyle: styles.header,
           headerTitleStyle: styles.headerTitle,
+          headerBackTitleStyle: styles.headerTitle,
+          headerTintColor: "white",
         }}
       >
         <RootStack.Screen
@@ -58,14 +60,10 @@ export const RootNavigator: FunctionComponent = () => {
             headerRight: () => (
               <NotificationButton
                 image={
-                  <Icon
-                    name={'ellipsis-v'}
-                    size={iconSize}
-                    color={palette.white}
-                    style={styles.buttonHeader}
-                  />
+                  <Cog width={iconSize} height={iconSize} color={palette.white} style={styles.buttonHeader}/>
                 }
               />
+              
             ),
           }}
         />
