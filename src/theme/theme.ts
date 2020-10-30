@@ -1,7 +1,7 @@
 // Here we define all our colors
 export const palette = {
   black: '#000000',
-  grey: '#C6C6C6',
+  grey: '#F6F6F6',
   darkGrey: '#333',
   white: '#ffffff',
   darkPurple: '#8A3581',
