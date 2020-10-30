@@ -22,6 +22,9 @@ export const en = {
     choiceUE: {
       title: 'Smart choice',
     },
+    historyUE: {
+      title: 'History',
+    },
     title: 'UEs Guide',
   },
   profile: {

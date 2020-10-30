@@ -73,7 +73,7 @@ export const MainMenu: FunctionComponent = () => {
       name: 'logout',
       icon: 'sign-out',
       destination: 'logout',
-      color: palette.grey,
+      color: palette.darkGrey,
     },
   ];
 

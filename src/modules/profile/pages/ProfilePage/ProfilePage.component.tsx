@@ -17,7 +17,7 @@ const iconSize = 50;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: palette.white,
+    backgroundColor: palette.grey,
   },
   contentContainer: {
     alignItems: 'center',

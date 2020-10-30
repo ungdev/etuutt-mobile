@@ -4,7 +4,7 @@ import React, { FunctionComponent } from 'react';
 import { StyleSheet } from 'react-native';
 import Cog from '../../assets/icons/cog.svg';
 import Notifications from '../../assets/icons/notifications.svg';
-import Heart from '../../assets/icons/heart.svg';
+import Heartsolid from '../../assets/icons/heartsolid.svg';
 import i18n from '../modules/internationalization/service/i18n.service';
 import { ProfilePage } from '../modules/profile/pages';
 import { UENavigator } from '../modules/ues/navigation';
@@ -16,6 +16,7 @@ import { paths } from './paths';
 
 const RootStack = createStackNavigator();
 const iconSize = 28;
+const border = 32;
 
 const styles = StyleSheet.create({
   buttonHeader: {
@@ -56,7 +57,7 @@ export const RootNavigator: FunctionComponent = () => {
             headerRight: () => (
               <NotificationButton
                 image={
-                  <Cog width={iconSize} height={iconSize} color={palette.white} style={styles.buttonHeader}/>
+                  <Cog width={iconSize} height={iconSize} stroke={palette.white} strokeWidth={border} style={styles.buttonHeader}/>
                 }
               />
               
@@ -72,7 +73,7 @@ export const RootNavigator: FunctionComponent = () => {
             headerRight: () => (
               <FavorisButton
                 image={
-                  <Heart width={iconSize} height={iconSize} color={palette.white} style={styles.buttonHeader}/>
+                  <Heartsolid width={iconSize} height={iconSize} color={palette.white} style={styles.buttonHeader}/>
                 }
               />
             ),
