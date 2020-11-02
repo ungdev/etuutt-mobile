@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   icon: {
     width: '100%',
   },
-  container: { flex: 1, backgroundColor: palette.orange },
+  container: { flex: 1, backgroundColor: palette.blue },
   label: {
     ...typos.xxs,
     textAlign: 'center',

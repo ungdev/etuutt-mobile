@@ -30,13 +30,17 @@ const styles = StyleSheet.create({
     marginBottom: spacing * 4,
     textAlign: 'center',
   },
+  buttonHeader: {
+    marginLeft: 15,
+    marginRight: 15,
+  },
 });
 
-interface NotificationButtonProps {
+interface HeaderButtonProps {
   image: ReactNode;
 }
 
-export const NotificationButton: FunctionComponent<NotificationButtonProps> = ({ image }) => {
+export const HeaderButton: FunctionComponent<HeaderButtonProps> = ({ image }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const hideModal = () => setModalVisible(false);
   const showModal = () => setModalVisible(true);
@@ -54,7 +58,9 @@ export const NotificationButton: FunctionComponent<NotificationButtonProps> = ({
           </View>
         </View>
       </Modal>
-      <TouchableOpacity onPress={showModal}>{image}</TouchableOpacity>
+      <TouchableOpacity onPress={showModal} style={styles.buttonHeader}>
+        {image}
+      </TouchableOpacity>
     </View>
   );
 };
