@@ -54,31 +54,31 @@ export const ProfilePage: FunctionComponent = () => {
         <ProfileSection
           title={i18n.t('profile.section.studentNumber')}
           value="38277"
-          icon={<AdressCard color={palette.white} stroke={''} size={iconSize} />}
+          icon={<AdressCard color={palette.white} size={iconSize} />}
         />
         <HorizontalSpacer size={3} />
         <ProfileSection
           title={i18n.t('profile.section.branch')}
           value="TC01"
-          icon={<University color={palette.white} stroke={''} size={iconSize} />}
+          icon={<University color={palette.white} size={iconSize} />}
         />
         <HorizontalSpacer size={3} />
         <ProfileSection
           title={i18n.t('profile.section.email')}
           value="donald.trump@usa.com"
-          icon={<Envelope color={palette.white} stroke={''} size={iconSize} />}
+          icon={<Envelope color={palette.white} size={iconSize} />}
         />
         <HorizontalSpacer size={3} />
         <ProfileSection
           title={i18n.t('profile.section.gender')}
           value="Homme"
-          icon={<MaleFemale color={'transparent'} stroke={palette.white} size={iconSize} />}
+          icon={<MaleFemale color="transparent" secondaryColor={palette.white} size={iconSize} />}
         />
         <HorizontalSpacer size={3} />
         <ProfileSection
           title={i18n.t('profile.section.birthdate')}
           value="14/01/1946"
-          icon={<BirthdayCake color={palette.white} stroke={''} size={iconSize} />}
+          icon={<BirthdayCake color={palette.white} size={iconSize} />}
         />
         <HorizontalSpacer size={3} />
       </ScrollView>

@@ -9,11 +9,10 @@ import { ChoiceUE, HistoryUE, MyUE, SearchUE } from '../pages';
 
 const UETab = createMaterialTopTabNavigator();
 const bouncingTab = 30;
-const iconSize = 27;
+const iconSize = 26;
 
 const styles = StyleSheet.create({
   icon: {
-    width: '100%',
     marginTop: spacing * 1,
   },
   container: { flex: 1, backgroundColor: palette.blue },
@@ -58,7 +57,7 @@ export const UENavigator: FunctionComponent = () => {
           component={MyUE}
           options={{
             tabBarIcon: () => (
-              <ToolBox color={palette.white} stroke={palette.white} size={iconSize} />
+              <ToolBox color={palette.white} secondaryColor={palette.white} size={iconSize} />
             ),
             tabBarLabel: i18n.t('ue.myUE.title'),
           }}
@@ -68,7 +67,7 @@ export const UENavigator: FunctionComponent = () => {
           component={SearchUE}
           options={{
             tabBarIcon: () => (
-              <Search color={'transparent'} stroke={palette.white} size={iconSize} />
+              <Search color={'transparent'} secondaryColor={palette.white} size={iconSize} />
             ),
             tabBarLabel: i18n.t('ue.searchUE.title'),
           }}
@@ -77,7 +76,9 @@ export const UENavigator: FunctionComponent = () => {
           name={paths.ue.tabs.choiceUE.name}
           component={ChoiceUE}
           options={{
-            tabBarIcon: () => <Cogs color={'transparent'} stroke={palette.white} size={iconSize} />,
+            tabBarIcon: () => (
+              <Cogs color={'transparent'} secondaryColor={palette.white} size={iconSize} />
+            ),
             tabBarLabel: i18n.t('ue.choiceUE.title'),
           }}
         />
@@ -86,7 +87,7 @@ export const UENavigator: FunctionComponent = () => {
           component={HistoryUE}
           options={{
             tabBarIcon: () => (
-              <History color={'transparent'} stroke={palette.white} size={iconSize} />
+              <History color={'transparent'} secondaryColor={palette.white} size={iconSize} />
             ),
             tabBarLabel: i18n.t('ue.historyUE.title'),
           }}
