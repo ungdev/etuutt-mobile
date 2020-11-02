@@ -4,7 +4,7 @@ import { IconProps } from '../Icons.interface';
 import { getSvgProps } from '../Icons.utils';
 
 export const MaleFemale = (props: IconProps) => {
-  const { color, stroke } = props;
+  const { color, secondaryColor } = props;
 
   return (
     <Svg {...getSvgProps(props)} viewBox="0 0 512 512">
@@ -13,14 +13,14 @@ export const MaleFemale = (props: IconProps) => {
         cy={200}
         r={136}
         fill={color}
-        stroke={stroke}
+        stroke={secondaryColor}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={32}
       />
       <Path
         fill={color}
-        stroke={stroke}
+        stroke={secondaryColor}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={32}
