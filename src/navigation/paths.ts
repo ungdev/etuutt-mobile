@@ -17,7 +17,7 @@ export const paths = {
       searchUE: {
         name: 'searchUE',
       },
-      HistoryUE: {
+      historyUE: {
         name: 'historyUE',
       },
     },
