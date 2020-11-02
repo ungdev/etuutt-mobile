@@ -20,6 +20,7 @@ export const MainMenu: FunctionComponent = () => {
   };
   const content = [
     {
+      key: 1,
       visible: true,
       name: 'profile',
       icon: 'user-circle-o',
@@ -27,6 +28,7 @@ export const MainMenu: FunctionComponent = () => {
       color: palette.curiousBlue,
     },
     {
+      key: 2,
       visible: true,
       name: 'ue',
       icon: 'book',
@@ -34,6 +36,7 @@ export const MainMenu: FunctionComponent = () => {
       color: palette.orange,
     },
     {
+      key: 3,
       visible: true,
       name: 'timetable',
       icon: 'table',
@@ -41,6 +44,7 @@ export const MainMenu: FunctionComponent = () => {
       color: palette.yellow,
     },
     {
+      key: 4,
       visible: true,
       name: 'events',
       icon: 'calendar',
@@ -48,6 +52,7 @@ export const MainMenu: FunctionComponent = () => {
       color: palette.calypsoBlue,
     },
     {
+      key: 5,
       visible: true,
       name: 'trombi',
       icon: 'address-card-o',
@@ -55,6 +60,7 @@ export const MainMenu: FunctionComponent = () => {
       color: palette.red,
     },
     {
+      key: 6,
       visible: true,
       name: 'assos',
       icon: 'group',
@@ -62,6 +68,7 @@ export const MainMenu: FunctionComponent = () => {
       color: palette.green,
     },
     {
+      key: 7,
       visible: true,
       name: 'about',
       icon: 'info',
@@ -69,6 +76,7 @@ export const MainMenu: FunctionComponent = () => {
       color: palette.pink,
     },
     {
+      key: 8,
       visible: true,
       name: 'logout',
       icon: 'sign-out',
