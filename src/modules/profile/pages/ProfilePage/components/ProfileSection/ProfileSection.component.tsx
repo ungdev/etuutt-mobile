@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { palette, radius, spacing, typos } from '../../../../../../theme/theme';
 
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   leftContainer: { flex: 1 },
   rightContainer: {
     flex: 5,
-    paddingLeft: spacing * 2,
+    paddingLeft: spacing * 1,
   },
   title: {
     ...typos.mb,
@@ -28,14 +28,13 @@ const styles = StyleSheet.create({
 interface ProfileSectionProps {
   title: string;
   value: string;
-  icon: string;
+  icon: ReactNode;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const ProfileSection: FunctionComponent<ProfileSectionProps> = ({ title, value, icon }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.leftContainer} />
+      <View style={styles.leftContainer}>{icon}</View>
       <View style={styles.rightContainer}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.value}>{value}</Text>

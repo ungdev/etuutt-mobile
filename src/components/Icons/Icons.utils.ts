@@ -5,4 +5,5 @@ export const getSvgProps = (props: IconProps) => ({
   width: props.size,
   height: props.size,
   fill: 'none',
+  strokeWidth: props.strokeWidth,
 });
