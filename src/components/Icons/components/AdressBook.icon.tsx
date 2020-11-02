@@ -1,5 +1,5 @@
 import React from 'react';
-import Svg from 'react-native-svg';
+import Svg, { Path } from 'react-native-svg';
 import { IconProps } from '../Icons.interface';
 import { getSvgProps } from '../Icons.utils';
 
@@ -7,8 +7,8 @@ export const AdressBook = (props: IconProps) => {
   const { color, secondaryColor } = props;
 
   return (
-    <Svg {...getSvgProps(props)} viewBox="0 0 448 512">
-      <path
+    <Svg {...getSvgProps(props)} viewBox="0 0 448 520">
+      <Path
         fill={color}
         stroke={secondaryColor}
         strokeWidth={32}

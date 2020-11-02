@@ -7,7 +7,7 @@ export const Search = (props: IconProps) => {
   const { color, secondaryColor } = props;
 
   return (
-    <Svg {...getSvgProps(props)} viewBox="0 0 512 512">
+    <Svg {...getSvgProps(props)} viewBox="-10 0 562 492">
       <Path
         fill={color}
         stroke={secondaryColor}

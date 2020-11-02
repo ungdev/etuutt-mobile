@@ -1,5 +1,5 @@
 import React from 'react';
-import Svg, { Path } from 'react-native-svg';
+import Svg, { Circle, Path } from 'react-native-svg';
 import { IconProps } from '../Icons.interface';
 import { getSvgProps } from '../Icons.utils';
 
@@ -8,6 +8,15 @@ export const Accessibility = (props: IconProps) => {
 
   return (
     <Svg {...getSvgProps(props)} viewBox="0 0 512 512">
+      <Circle
+        fill={color}
+        stroke={secondaryColor}
+        strokeLinejoin="round"
+        strokeWidth={32}
+        cx={256}
+        cy={56}
+        r={40}
+      />
       <Path
         fill={color}
         stroke={secondaryColor}

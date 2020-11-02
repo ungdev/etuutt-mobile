@@ -7,7 +7,7 @@ export const History = (props: IconProps) => {
   const { color, secondaryColor } = props;
 
   return (
-    <Svg {...getSvgProps(props)} viewBox="0 0 512 512">
+    <Svg {...getSvgProps(props)} viewBox="0 -3 512 522">
       <Path
         fill={color}
         stroke={secondaryColor}
