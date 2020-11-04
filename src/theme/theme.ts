@@ -3,8 +3,9 @@ export const palette = {
   black: '#000000',
   grey: '#C6C6C6',
   darkGrey: '#333',
+  grey: '#928989',
   white: '#ffffff',
-  darkPurple: '#8A3581',
+  darkPurple: '#6C1664',
   purple: '#9C497C',
   orange: '#DA8F20',
   curiousBlue: '#34A9DB',
@@ -13,6 +14,7 @@ export const palette = {
   red: '#B11818',
   green: '#288642',
   pink: '#CD7069',
+  fuchsia: '#CD70C9',
   blue: '#0C5487',
 };
 

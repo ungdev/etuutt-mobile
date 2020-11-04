@@ -8,8 +8,11 @@ export const fr = {
       events: 'Événements',
       trombi: 'Trombinoscope',
       assos: 'Associations',
-      about: 'À propos',
-      logout: 'Se déconnecter',
+      map: "Plan de l'UTT",
+      flash_infos: 'Flash Infos',
+      galerie: 'Galerie Photos',
+      buck_utt: "Buck'UTT",
+      cumul_timetable: 'Cumul EDT',
     },
   },
   ue: {
@@ -21,6 +24,9 @@ export const fr = {
     },
     choiceUE: {
       title: 'Choix Intelligent',
+    },
+    historyUE: {
+      title: 'Historique',
     },
     title: 'Guide des UEs',
   },

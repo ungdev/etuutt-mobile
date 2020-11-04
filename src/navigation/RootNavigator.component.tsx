@@ -2,27 +2,20 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React, { FunctionComponent } from 'react';
 import { StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { Cog, Heart, Notifications } from '../components/Icons/index';
 import i18n from '../modules/internationalization/service/i18n.service';
 import { ProfilePage } from '../modules/profile/pages';
 import { UENavigator } from '../modules/ues/navigation';
 import { FavorisButton } from '../modules/ues/pages/ChoiceUE/components/FavorisButton.component';
 import { MainMenu } from '../pages';
 import { palette } from '../theme/theme';
-import { NotificationButton } from './components/NotificationButton.component';
+import { HeaderButton } from './components/HeaderButton.component';
 import { paths } from './paths';
 
 const RootStack = createStackNavigator();
 const iconSize = 28;
 
 const styles = StyleSheet.create({
-  buttonHeader: {
-    marginLeft: 15,
-    marginRight: 15,
-  },
-  headerTitle: {
-    color: palette.white,
-  },
   header: {
     backgroundColor: palette.blue,
   },
@@ -34,7 +27,8 @@ export const RootNavigator: FunctionComponent = () => {
       <RootStack.Navigator
         screenOptions={{
           headerStyle: styles.header,
-          headerTitleStyle: styles.headerTitle,
+          headerTintColor: 'white',
+          headerBackTitleVisible: false,
         }}
       >
         <RootStack.Screen
@@ -44,28 +38,12 @@ export const RootNavigator: FunctionComponent = () => {
             title: i18n.t('mainMenu.title'),
             headerTitleAlign: 'center',
             headerLeft: () => (
-              <NotificationButton
-                image={
-                  <Icon
-                    name={'bell'}
-                    size={iconSize}
-                    color={palette.white}
-                    style={styles.buttonHeader}
-                  />
-                }
+              <HeaderButton
+                image={<Notifications color={palette.white} stroke={''} size={iconSize} />}
               />
             ),
             headerRight: () => (
-              <NotificationButton
-                image={
-                  <Icon
-                    name={'ellipsis-v'}
-                    size={iconSize}
-                    color={palette.white}
-                    style={styles.buttonHeader}
-                  />
-                }
-              />
+              <HeaderButton image={<Cog color={palette.white} stroke={''} size={iconSize} />} />
             ),
           }}
         />
@@ -77,14 +55,7 @@ export const RootNavigator: FunctionComponent = () => {
             headerTitleAlign: 'center',
             headerRight: () => (
               <FavorisButton
-                image={
-                  <Icon
-                    name={'heart-o'}
-                    size={iconSize}
-                    color={palette.white}
-                    style={styles.buttonHeader}
-                  />
-                }
+                image={<Heart color={palette.white} stroke={palette.white} size={iconSize} />}
               />
             ),
           }}

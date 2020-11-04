@@ -6,10 +6,13 @@ export const en = {
       ue: 'UEs Guide',
       timetable: 'Timetable',
       events: 'Events',
-      trombi: 'Trombinoscope',
+      trombi: 'Trombi',
       assos: 'Associations',
-      about: 'About',
-      logout: 'Logout',
+      map: 'Map',
+      flash_infos: 'Flash News',
+      galerie: 'Photos',
+      buck_utt: "Buck'UTT",
+      cumul_timetable: 'Schedule ++',
     },
   },
   ue: {
@@ -21,6 +24,9 @@ export const en = {
     },
     choiceUE: {
       title: 'Smart choice',
+    },
+    historyUE: {
+      title: 'History',
     },
     title: 'UEs Guide',
   },
