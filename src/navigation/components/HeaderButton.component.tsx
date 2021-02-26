@@ -51,7 +51,6 @@ export const HeaderButton: FunctionComponent<HeaderButtonProps> = ({ image }) =>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Hello World!</Text>
-
             <TouchableHighlight style={styles.openButton} onPress={hideModal}>
               <Text style={styles.textStyle}>Hide Modal</Text>
             </TouchableHighlight>

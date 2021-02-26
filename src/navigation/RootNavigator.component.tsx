@@ -27,7 +27,7 @@ export const RootNavigator: FunctionComponent = () => {
       <RootStack.Navigator
         screenOptions={{
           headerStyle: styles.header,
-          headerTintColor: 'white',
+          headerTintColor: palette.white,
           headerBackTitleVisible: false,
         }}
       >
