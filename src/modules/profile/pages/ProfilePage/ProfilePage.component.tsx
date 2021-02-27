@@ -6,12 +6,14 @@ import {
   BirthdayCake,
   Envelope,
   MaleFemale,
+  ToolBox,
   University,
 } from '../../../../components/Icons';
 import { ProfilePicture } from '../../../../components/ProfilePicture';
 import { palette, spacing, typos } from '../../../../theme/theme';
 import i18n from '../../../internationalization/service/i18n.service';
-import { ProfileSection } from './components/ProfileSection';
+import { ProfileSection } from './components/ProfileSection/ProfileSection.component';
+import { ProfileUEList } from './components/ProfileSection/ProfileUEList.component';
 
 const PROFILE_PICTURE_SIZE = 120;
 const iconSize = 50;
@@ -79,6 +81,12 @@ export const ProfilePage: FunctionComponent = () => {
           title={i18n.t('profile.section.birthdate')}
           value="14/01/1946"
           icon={<BirthdayCake color={palette.white} size={iconSize} />}
+        />
+        <HorizontalSpacer size={3} />
+        <ProfileUEList
+          title={i18n.t('profile.section.uelist')}
+          value={['MATH01']}
+          icon={<ToolBox color={palette.white} size={iconSize} />}
         />
         <HorizontalSpacer size={3} />
       </ScrollView>

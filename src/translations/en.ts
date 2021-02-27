@@ -38,6 +38,7 @@ export const en = {
       email: 'Email',
       gender: 'Gender',
       birthdate: 'Birthdate',
+      uelist: "UE's List",
     },
   },
 };

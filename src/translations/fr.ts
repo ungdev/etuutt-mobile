@@ -38,6 +38,7 @@ export const fr = {
       email: 'E-Mail',
       gender: 'Sexe',
       birthdate: 'Date de naissance',
+      uelist: 'Liste des UEs',
     },
   },
 };
