@@ -9,7 +9,7 @@ import { UENavigator } from '../modules/ues/navigation';
 import { FavorisButton } from '../modules/ues/pages/ChoiceUE/components/FavorisButton.component';
 import { MainMenu } from '../pages';
 import { palette } from '../theme/theme';
-import { HeaderButton } from './components/HeaderButton.component';
+import { HeaderButton } from './components/HeaderButton';
 import { paths } from './paths';
 
 const RootStack = createStackNavigator();
@@ -38,12 +38,10 @@ export const RootNavigator: FunctionComponent = () => {
             title: i18n.t('mainMenu.title'),
             headerTitleAlign: 'center',
             headerLeft: () => (
-              <HeaderButton
-                image={<Notifications color={palette.white} stroke={''} size={iconSize} />}
-              />
+              <HeaderButton image={<Notifications color={palette.white} size={iconSize} />} />
             ),
             headerRight: () => (
-              <HeaderButton image={<Cog color={palette.white} stroke={''} size={iconSize} />} />
+              <HeaderButton image={<Cog color={palette.white} size={iconSize} />} />
             ),
           }}
         />
@@ -55,7 +53,9 @@ export const RootNavigator: FunctionComponent = () => {
             headerTitleAlign: 'center',
             headerRight: () => (
               <FavorisButton
-                image={<Heart color={palette.white} stroke={palette.white} size={iconSize} />}
+                image={
+                  <Heart color={palette.white} secondaryColor={palette.white} size={iconSize} />
+                }
               />
             ),
           }}
