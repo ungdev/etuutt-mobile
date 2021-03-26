@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     ...typos.xs,
     textAlign: 'center',
     color: palette.white,
+    marginTop: 6,
   },
   container: {
     width: Dimensions.get('screen').width / 3 - spacing * 2,

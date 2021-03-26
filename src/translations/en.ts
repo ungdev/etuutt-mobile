@@ -6,13 +6,19 @@ export const en = {
       ue: 'UEs Guide',
       timetable: 'Timetable',
       events: 'Events',
-      trombi: 'Trombi',
+      trombinoscope: 'Trombi',
       assos: 'Associations',
       map: 'Map',
       flash_infos: 'Flash News',
       galerie: 'Photos',
-      buck_utt: "Buck'UTT",
-      cumul_timetable: 'Schedule ++',
+      buckutt: "Buck'UTT",
+      cumultimetable: 'Cumul Schedule',
+      mails: 'Mails',
+      wiki: 'Wiki',
+      cloud: 'Cloud',
+      bu: 'Library',
+      downdetector: 'DownDetector',
+      covoit: 'Carpooling',
     },
   },
   ue: {
@@ -39,6 +45,69 @@ export const en = {
       gender: 'Gender',
       birthdate: 'Birthdate',
       uelist: "UE's List",
+    },
+  },
+  flash_infos: {
+    title: 'Flash News',
+  },
+  timetable: {
+    title: 'Timetable',
+  },
+  trombinoscope: {
+    title: 'Trombinoscope',
+  },
+  events: {
+    title: 'Events',
+  },
+  assos: {
+    title: 'Associations',
+    allAssos: {
+      title: "Assos'",
+    },
+    myAssos: {
+      title: 'My Assos',
+    },
+  },
+  galerie: {
+    title: 'Photos',
+  },
+  map: {
+    title: 'Map',
+  },
+  buckutt: {
+    title: "Buck'UTT",
+  },
+  cumultimetable: {
+    title: 'Cumulative Timetable',
+  },
+  mails: {
+    title: 'Mails',
+  },
+  wiki: {
+    title: 'Wiki',
+  },
+  cloud: {
+    title: 'Cloud',
+  },
+  bu: {
+    title: 'Library',
+  },
+  downdetector: {
+    title: 'Downdetector',
+  },
+  covoit: {
+    title: 'Carpooling',
+    allCovoits: {
+      title: "All Covoit'",
+    },
+    searchCovoit: {
+      title: 'Search',
+    },
+    myCovoits: {
+      title: 'My Carpooling',
+    },
+    myAlerts: {
+      title: 'My Alerts',
     },
   },
 };

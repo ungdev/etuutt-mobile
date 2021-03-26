@@ -6,13 +6,19 @@ export const fr = {
       ue: 'Guide des UEs',
       timetable: 'Emploi du temps',
       events: 'Événements',
-      trombi: 'Trombinoscope',
+      trombinoscope: 'Trombinoscope',
       assos: 'Associations',
       map: "Plan de l'UTT",
-      flash_infos: 'Flash Infos',
+      flashinfos: 'Flash Infos',
       galerie: 'Galerie Photos',
-      buck_utt: "Buck'UTT",
-      cumul_timetable: 'Cumul EDT',
+      buckutt: "Buck'UTT",
+      cumultimetable: 'Cumul EDT',
+      mails: 'Mails',
+      wiki: 'Wiki',
+      cloud: 'Cloud',
+      bu: 'B.U',
+      downdetector: 'DownDetector',
+      covoit: 'Covoiturage',
     },
   },
   ue: {
@@ -39,6 +45,69 @@ export const fr = {
       gender: 'Sexe',
       birthdate: 'Date de naissance',
       uelist: 'Liste des UEs',
+    },
+  },
+  flash_infos: {
+    title: 'Flash Infos',
+  },
+  timetable: {
+    title: 'Emploi du Temps',
+  },
+  trombinoscope: {
+    title: 'Trombinoscope',
+  },
+  events: {
+    title: 'Evénements',
+  },
+  assos: {
+    title: 'Associations',
+    allAssos: {
+      title: "Les Assos'",
+    },
+    myAssos: {
+      title: 'Mes Assos',
+    },
+  },
+  galerie: {
+    title: 'Photos',
+  },
+  map: {
+    title: 'Plan',
+  },
+  buckutt: {
+    title: "Buck'UTT",
+  },
+  cumultimetable: {
+    title: "Cumul d'Emploi du temps",
+  },
+  mails: {
+    title: 'Mails',
+  },
+  wiki: {
+    title: 'Wiki',
+  },
+  cloud: {
+    title: 'Cloud',
+  },
+  bu: {
+    title: 'B.U.',
+  },
+  downdetector: {
+    title: 'Etat des Services',
+  },
+  covoit: {
+    title: 'Covoiturage',
+    allCovoits: {
+      title: "Covoit'",
+    },
+    searchCovoit: {
+      title: 'Rechercher',
+    },
+    myCovoits: {
+      title: "Mes Covoits'",
+    },
+    myAlerts: {
+      title: 'Mes Alertes',
     },
   },
 };
