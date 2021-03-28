@@ -2,9 +2,10 @@ import Constants from 'expo-constants';
 import { useRef, useState } from 'react';
 import WebView from 'react-native-webview';
 import { WebViewNavigationEvent } from 'react-native-webview/lib/WebViewTypes';
+import config from '../../../../../../services/api/config';
 
 export const useLoginModal = (onCloseModal: () => void) => {
-  const baseUri = `https://etu.utt.fr/api/oauth/client-create?name=MyUTT&device=${Constants.deviceName}&device_uid=${Constants.deviceId}&scope=public`;
+  const baseUri = `https://etu.utt.fr/api/oauth/client-create?name=${config.etu_utt_app_name}&device=${Constants.deviceName}&device_uid=${Constants.deviceId}&scope=${config.etu_utt_scope}`;
   const [modalUri, setModalUri] = useState<string>(baseUri);
   const webViewRef = useRef<WebView>(null);
   const reloadWebview = () => {
@@ -13,12 +14,12 @@ export const useLoginModal = (onCloseModal: () => void) => {
 
   const onLoadStart = (event: WebViewNavigationEvent) => {
     if (event.nativeEvent.url.indexOf('http://etu.utt.fr/user') !== -1) {
-      setModalUri(baseUri);
+      setModalUri(modalUri);
     }
     if (event.nativeEvent.url.indexOf('http://etu.utt.fr/') !== -1) {
-      setModalUri(baseUri);
+      setModalUri(modalUri);
     }
-    if (event.nativeEvent.url.indexOf(`https://etu.utt.fr/api/redirect`) !== -1) {
+    if (event.nativeEvent.url.indexOf(`${config.etu_utt_baseuri}/api/redirect`) !== -1) {
       if (event.nativeEvent.url.indexOf('authentification_canceled') === -1) {
         onCloseModal();
       } else {

@@ -1,8 +1,29 @@
 import React, { FunctionComponent } from 'react';
-import { Modal, Text, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import WebView from 'react-native-webview';
+import { palette } from '../../../../../../theme/theme';
+import i18n from '../../../../../internationalization/service/i18n.service';
 import { useLoginModal } from './useLoginModal.hook';
+
+const styles = StyleSheet.create({
+  globalcontainer: {
+    flex: 1,
+  },
+
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+
+  topbutton: {
+    marginTop: 10,
+    padding: 10,
+  },
+
+  topbuttontext: {
+    color: palette.curiousBlue,
+  },
+});
 
 interface LoginModalProps {
   isVisible: boolean;
@@ -14,18 +35,13 @@ export const LoginModal: FunctionComponent<LoginModalProps> = ({ isVisible, onCl
 
   return (
     <Modal animationType={'slide'} visible={isVisible} onRequestClose={onCloseModal}>
-      <View style={{ flex: 1 }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}
-        >
-          <TouchableOpacity onPress={onCloseModal} style={{ marginTop: 20, padding: 10 }}>
-            <Text style={{ color: '#4098ff' }}>fermer</Text>
+      <View style={styles.globalcontainer}>
+        <View style={styles.container}>
+          <TouchableOpacity onPress={onCloseModal} style={styles.topbutton}>
+            <Text style={styles.topbuttontext}>{i18n.t('login.close')}</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={reloadWebview} style={{ marginTop: 20, padding: 10 }}>
-            <Text>Refresh</Text>
+          <TouchableOpacity onPress={reloadWebview} style={styles.topbutton}>
+            <Text style={styles.topbuttontext}>{i18n.t('login.refresh')}</Text>
           </TouchableOpacity>
         </View>
         <WebView
@@ -35,7 +51,6 @@ export const LoginModal: FunctionComponent<LoginModalProps> = ({ isVisible, onCl
           }}
           startInLoadingState
           originWhitelist={['*']}
-          style={{ marginTop: 20 }}
           javaScriptEnabled
           domStorageEnabled
           onLoadStart={onLoadStart}

@@ -1,6 +1,9 @@
 export const fr = {
   login: {
     title: 'Bienvenue',
+    buttonConnection: 'Connexion avec le site étudiant',
+    close: 'Fermer',
+    refresh: 'Actualiser',
   },
   mainMenu: {
     title: 'Mon Tableau de Bord',

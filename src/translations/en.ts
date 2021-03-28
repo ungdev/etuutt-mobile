@@ -1,6 +1,9 @@
 export const en = {
   login: {
     title: 'Welcome',
+    buttonConnection: 'Connection with the student website',
+    close: 'Close',
+    refresh: 'Refresh',
   },
   mainMenu: {
     title: 'My Dashboard',

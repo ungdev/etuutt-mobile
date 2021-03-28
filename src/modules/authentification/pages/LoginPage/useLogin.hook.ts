@@ -3,7 +3,6 @@ import { useNavigation } from '@react-navigation/core';
 import axios from 'axios';
 import moment from 'moment';
 import { useEffect, useState } from 'react';
-
 import config from '../../../../services/api/config';
 import {
   ACCESS_TOKEN_EXPIRATION_KEY,
@@ -16,7 +15,7 @@ export const useLogin = () => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const navigation = useNavigation();
 
-  const closeModal = () => {
+  const onCloseModal = () => {
     setIsModalVisible(false);
   };
 
@@ -59,7 +58,7 @@ export const useLogin = () => {
   const getToken = async () => {
     const expiration_date = await AsyncStorage.getItem(ACCESS_TOKEN_EXPIRATION_KEY);
     if (expiration_date !== null && moment().isBefore(expiration_date * 1000)) {
-      let token = await AsyncStorage.getItem(ACCESS_TOKEN_KEY);
+      const token = await AsyncStorage.getItem(ACCESS_TOKEN_KEY);
       return token;
     } else {
       return renewAccessToken();
@@ -68,8 +67,8 @@ export const useLogin = () => {
 
   const renewAccessToken = async () => {
     try {
-      let clientId = await AsyncStorage.getItem(CLIENT_ID_KEY);
-      let clientSecret = await AsyncStorage.getItem(CLIENT_SECRET_KEY);
+      const clientId = await AsyncStorage.getItem(CLIENT_ID_KEY);
+      const clientSecret = await AsyncStorage.getItem(CLIENT_SECRET_KEY);
       if (!clientId || !clientSecret) return null;
       const res = await api.post(
         `oauth/token?grant_type=client_credentials&scope=${config.etu_utt_scope}&client_id=${clientId}&client_secret=${clientSecret}`
@@ -78,15 +77,15 @@ export const useLogin = () => {
       await AsyncStorage.setItem(ACCESS_TOKEN_KEY, res.data.access_token);
       await AsyncStorage.setItem(ACCESS_TOKEN_EXPIRATION_KEY, res.data.expires);
       return res.data.access_token;
-    } catch (e) {
-      console.log(e);
+    } catch (event) {
+      console.log(event);
       throw 'NO_TOKEN';
     }
   };
 
   return {
     isModalVisible,
-    closeModal,
+    onCloseModal,
     openModal,
   };
 };

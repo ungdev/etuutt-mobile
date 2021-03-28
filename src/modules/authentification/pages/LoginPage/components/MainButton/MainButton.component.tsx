@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
     ...typos.xs,
     textAlign: 'center',
     color: palette.white,
-    marginTop: 6,
   },
   container: {
     height: 50,
