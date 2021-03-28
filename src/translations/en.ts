@@ -1,4 +1,7 @@
 export const en = {
+  login: {
+    title: 'Welcome',
+  },
   mainMenu: {
     title: 'My Dashboard',
     buttons: {

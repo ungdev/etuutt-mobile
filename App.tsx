@@ -6,3 +6,5 @@ const App = () => {
 };
 
 export default App;
+
+/*mettre config axios et redux*/

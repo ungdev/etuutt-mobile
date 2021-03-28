@@ -1,4 +1,7 @@
 export const fr = {
+  login: {
+    title: 'Bienvenue',
+  },
   mainMenu: {
     title: 'Mon Tableau de Bord',
     buttons: {
