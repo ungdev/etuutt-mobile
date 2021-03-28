@@ -32,12 +32,15 @@ const styles = StyleSheet.create({
   },
 });
 
-interface HeaderModalProps {
+interface NotificationsModalProps {
   onClose: () => void;
   modalVisible: boolean;
 }
 
-export const HeaderModal: FunctionComponent<HeaderModalProps> = ({ onClose, modalVisible }) => {
+export const NotificationsModal: FunctionComponent<NotificationsModalProps> = ({
+  onClose,
+  modalVisible,
+}) => {
   return (
     <Modal animationType="slide" transparent={true} visible={modalVisible}>
       <View style={styles.centeredView}>

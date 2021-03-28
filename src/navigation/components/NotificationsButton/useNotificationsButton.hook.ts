@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useHeaderButton = () => {
+export const useNotificationsButton = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const hideModal = () => setModalVisible(false);
   const showModal = () => setModalVisible(true);
