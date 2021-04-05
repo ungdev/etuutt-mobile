@@ -6,6 +6,7 @@ import { Blank_Page } from '../components/Blank_Page/BlankPage.component';
 import { Cog, Heart, Notifications } from '../components/Icons/index';
 import { AssosNavigator } from '../modules/assos/navigation';
 import { LoginPage } from '../modules/authentification';
+import { useAuthentification } from '../modules/authentification/hooks/useAuthentification.hook';
 import { CovoitNavigator } from '../modules/covoit/navigation';
 import i18n from '../modules/internationalization/service/i18n.service';
 import { ProfilePage } from '../modules/profile/pages';
@@ -14,12 +15,10 @@ import { FavorisButton } from '../modules/ues/pages/ChoiceUE/components/FavorisB
 import { MainMenu } from '../pages';
 import { palette } from '../theme/theme';
 import { NotificationsButton } from './components/NotificationsButton';
-import { SettingsButton } from './components/SettingsButton';
 import { paths } from './paths';
 
 const RootStack = createStackNavigator();
 const iconSize = 28;
-const userToken = true;
 
 const styles = StyleSheet.create({
   header: {
@@ -28,6 +27,8 @@ const styles = StyleSheet.create({
 });
 
 export const RootNavigator: FunctionComponent = () => {
+  const { isLoggedIn } = useAuthentification();
+
   return (
     <NavigationContainer>
       <RootStack.Navigator
@@ -37,7 +38,7 @@ export const RootNavigator: FunctionComponent = () => {
           headerBackTitleVisible: false,
         }}
       >
-        {userToken ? (
+        {!isLoggedIn ? (
           <RootStack.Screen
             name={'Login'}
             component={LoginPage}

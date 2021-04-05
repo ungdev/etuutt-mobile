@@ -1,8 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import { useNavigation } from '@react-navigation/core';
 import axios from 'axios';
 import moment from 'moment';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import config from '../../../../services/api/config';
 import {
   ACCESS_TOKEN_EXPIRATION_KEY,
@@ -10,10 +9,11 @@ import {
   CLIENT_ID_KEY,
   CLIENT_SECRET_KEY,
 } from '../../../../services/stockage/StorageKey';
+import { AuthentificationContext } from '../../context/authentification.context';
 
 export const useLogin = () => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
-  const navigation = useNavigation();
+  const { login: loginInContext } = useContext(AuthentificationContext);
 
   const onCloseModal = (url?: string) => {
     setIsModalVisible(false);
@@ -28,7 +28,10 @@ export const useLogin = () => {
 
   const autoLogin = async () => {
     try {
-      await getToken();
+      const token = await getToken();
+      if (token) {
+        loginInContext();
+      }
     } catch (event) {
       console.log(event);
     }

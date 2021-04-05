@@ -1,8 +1,16 @@
 import React from 'react';
+import { AuthentificationContext } from './src/modules/authentification/context/authentification.context';
+import { useAuthentificationContext } from './src/modules/authentification/hooks/useAuthentificationContext.hook';
 import { RootNavigator } from './src/navigation/RootNavigator.component';
 
 const App = () => {
-  return <RootNavigator />;
+  const { authentificationContextValue } = useAuthentificationContext();
+
+  return (
+    <AuthentificationContext.Provider value={authentificationContextValue}>
+      <RootNavigator />
+    </AuthentificationContext.Provider>
+  );
 };
 
 export default App;
