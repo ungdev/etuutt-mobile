@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage';
+import axios from 'axios';
 import moment from 'moment';
 import {
   ACCESS_TOKEN_EXPIRATION_KEY,
@@ -7,12 +8,16 @@ import {
   CLIENT_SECRET_KEY,
 } from '../../../services/stockage/StorageKey';
 import config from '../../api/config';
-import { api } from '../../api/services/api.service';
 
-export const getToken = async () => {
+export const api = axios.create({
+  baseURL: config.etu_utt_baseuri + '/api/',
+});
+
+export const getAccessToken = async () => {
   const expiration_date = await AsyncStorage.getItem(ACCESS_TOKEN_EXPIRATION_KEY);
   if (expiration_date !== null && moment().isBefore(Number(expiration_date) * 1000)) {
     const token = await AsyncStorage.getItem(ACCESS_TOKEN_KEY);
+    console.log('token = ', token);
 
     return token;
   } else {
@@ -24,6 +29,8 @@ const renewAccessToken = async () => {
   try {
     const clientId = await AsyncStorage.getItem(CLIENT_ID_KEY);
     const clientSecret = await AsyncStorage.getItem(CLIENT_SECRET_KEY);
+    console.log('client=', clientId);
+    console.log('secret=', clientSecret);
     if (!clientId || !clientSecret) {
       return null;
     }

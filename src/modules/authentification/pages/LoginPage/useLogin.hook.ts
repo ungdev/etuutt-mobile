@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { useContext, useState } from 'react';
 import { CLIENT_ID_KEY, CLIENT_SECRET_KEY } from '../../../../services/stockage/StorageKey';
 import { AuthentificationContext } from '../../context/authentification.context';
-import { getToken } from '../../services/authentification.service';
+import { getAccessToken } from '../../services/authentification.service';
 
 export const useLogin = () => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
@@ -21,7 +21,7 @@ export const useLogin = () => {
 
   const autoLogin = async () => {
     try {
-      const token = await getToken();
+      const token = await getAccessToken();
       if (token) {
         loginInContext();
       }

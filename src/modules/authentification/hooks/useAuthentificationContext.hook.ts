@@ -12,6 +12,7 @@ export const useAuthentificationContext = () => {
     setAuthentificationStatus('AUTHENTICATED');
   };
   const logout = () => {
+    //effacer Asyncstorage
     setAuthentificationStatus('UNAUTHENTICATED');
   };
 

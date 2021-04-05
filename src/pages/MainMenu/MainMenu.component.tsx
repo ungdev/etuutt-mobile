@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { FunctionComponent } from 'react';
+import useAxios from 'axios-hooks';
+import React, { FunctionComponent, useEffect } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { GridButton } from '../../components/GridButton';
 import {
@@ -32,7 +33,25 @@ const styles = StyleSheet.create({
   },
 });
 
+interface RawEvent {
+  id: string;
+  title: string;
+}
+
+interface EventsRequest {
+  events: RawEvent[];
+}
+
 export const MainMenu: FunctionComponent = () => {
+  const [{ data, loading, error }, refetch] = useAxios<EventsRequest>('events');
+  useEffect(() => {
+    if (error !== undefined) {
+      data?.events;
+      //si errror, j'affiche modal ou autre
+    }
+  }, [error]);
+  // console.log('test', data, error, loading);
+
   const { navigate } = useNavigation();
   const onButtonPress = (destination: string) => {
     navigate(destination);
@@ -175,6 +194,10 @@ export const MainMenu: FunctionComponent = () => {
       color: palette.green,
     },
   ];
+
+  /*if(loading){
+    return //spinner 
+  }*/
 
   return (
     <View style={styles.container}>
