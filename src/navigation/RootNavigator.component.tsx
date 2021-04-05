@@ -7,6 +7,7 @@ import { Cog, Heart, Notifications } from '../components/Icons/index';
 import { AssosNavigator } from '../modules/assos/navigation';
 import { LoginPage } from '../modules/authentification';
 import { useAuthentification } from '../modules/authentification/hooks/useAuthentification.hook';
+import { LoadingPage } from '../modules/authentification/pages/LoginPage/LoadingPage.component';
 import { CovoitNavigator } from '../modules/covoit/navigation';
 import i18n from '../modules/internationalization/service/i18n.service';
 import { ProfilePage } from '../modules/profile/pages';
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
 });
 
 export const RootNavigator: FunctionComponent = () => {
-  const { isLoggedIn } = useAuthentification();
+  const { authentificationStatus } = useAuthentification();
 
   return (
     <NavigationContainer>
@@ -38,7 +39,15 @@ export const RootNavigator: FunctionComponent = () => {
           headerBackTitleVisible: false,
         }}
       >
-        {!isLoggedIn ? (
+        {authentificationStatus === 'UNKNOWN' ? (
+          <RootStack.Screen
+            name={'Loading'}
+            component={LoadingPage}
+            options={{
+              headerShown: false,
+            }}
+          />
+        ) : authentificationStatus === 'UNAUTHENTICATED' ? (
           <RootStack.Screen
             name={'Login'}
             component={LoginPage}

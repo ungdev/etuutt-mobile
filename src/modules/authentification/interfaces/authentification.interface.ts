@@ -1,5 +1,7 @@
+export type AuthentificationStatus = 'AUTHENTICATED' | 'UNAUTHENTICATED' | 'UNKNOWN';
+
 export interface AuthentificationContextType {
-  isLoggedIn: boolean;
+  authentificationStatus: AuthentificationStatus;
   login: () => void;
   logout: () => void;
 }

@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { CLIENT_ID_KEY, CLIENT_SECRET_KEY } from '../../../../services/stockage/StorageKey';
 import { AuthentificationContext } from '../../context/authentification.context';
 import { getToken } from '../../services/authentification.service';
@@ -29,10 +29,6 @@ export const useLogin = () => {
       console.log(event);
     }
   };
-
-  useEffect(() => {
-    autoLogin();
-  }, []);
 
   const login = async (url: string) => {
     const params = url.split('?')[1].split('&');

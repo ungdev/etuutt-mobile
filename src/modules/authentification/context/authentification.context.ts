@@ -2,7 +2,7 @@ import { createContext } from 'react';
 import { AuthentificationContextType } from '../interfaces/authentification.interface';
 
 export const defaultAuthentificationContext: AuthentificationContextType = {
-  isLoggedIn: false,
+  authentificationStatus: 'UNKNOWN',
   login: () => {},
   logout: () => {},
 };

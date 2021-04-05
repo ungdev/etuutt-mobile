@@ -1,17 +1,22 @@
 import { useState } from 'react';
-import { AuthentificationContextType } from '../interfaces/authentification.interface';
+import {
+  AuthentificationContextType,
+  AuthentificationStatus,
+} from '../interfaces/authentification.interface';
 
 export const useAuthentificationContext = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [authentificationStatus, setAuthentificationStatus] = useState<AuthentificationStatus>(
+    'UNKNOWN'
+  );
   const login = () => {
-    setIsLoggedIn(true);
+    setAuthentificationStatus('AUTHENTICATED');
   };
   const logout = () => {
-    setIsLoggedIn(false);
+    setAuthentificationStatus('UNAUTHENTICATED');
   };
 
   const authentificationContextValue: AuthentificationContextType = {
-    isLoggedIn,
+    authentificationStatus,
     login,
     logout,
   };
