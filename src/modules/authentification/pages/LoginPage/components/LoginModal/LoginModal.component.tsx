@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 
 interface LoginModalProps {
   isVisible: boolean;
-  onCloseModal: () => void;
+  onCloseModal: (url?: string) => void;
 }
 
 export const LoginModal: FunctionComponent<LoginModalProps> = ({ isVisible, onCloseModal }) => {
@@ -37,7 +37,7 @@ export const LoginModal: FunctionComponent<LoginModalProps> = ({ isVisible, onCl
     <Modal animationType={'slide'} visible={isVisible} onRequestClose={onCloseModal}>
       <View style={styles.globalcontainer}>
         <View style={styles.container}>
-          <TouchableOpacity onPress={onCloseModal} style={styles.topbutton}>
+          <TouchableOpacity onPress={() => onCloseModal()} style={styles.topbutton}>
             <Text style={styles.topbuttontext}>{i18n.t('login.close')}</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={reloadWebview} style={styles.topbutton}>

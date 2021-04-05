@@ -15,8 +15,11 @@ export const useLogin = () => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const navigation = useNavigation();
 
-  const onCloseModal = () => {
+  const onCloseModal = (url?: string) => {
     setIsModalVisible(false);
+    if (url !== undefined) {
+      login(url);
+    }
   };
 
   const openModal = () => {
@@ -25,10 +28,7 @@ export const useLogin = () => {
 
   const autoLogin = async () => {
     try {
-      const token = await getToken();
-      if (token) {
-        navigation.navigate('MainMenu');
-      }
+      await getToken();
     } catch (event) {
       console.log(event);
     }
@@ -38,7 +38,7 @@ export const useLogin = () => {
     autoLogin();
   }, []);
 
-  const login = async (url) => {
+  const login = async (url: string) => {
     const params = url.split('?')[1].split('&');
     const clientId = params[0].split('=')[1];
     const clientSecret = params[1].split('=')[1];
