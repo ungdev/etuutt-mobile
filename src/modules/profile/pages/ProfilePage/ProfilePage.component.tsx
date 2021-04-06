@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
+import useAxios from 'axios-hooks';
+import React, { FunctionComponent, useEffect } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { HorizontalSpacer } from '../../../../components/HorizontalSpacer';
 import {
   AdressCard,
   BirthdayCake,
@@ -43,52 +43,56 @@ const styles = StyleSheet.create({
 });
 
 export const ProfilePage: FunctionComponent = () => {
+  const [{ data, loading, error }, refetch] = useAxios('private/user/account');
+  useEffect(() => {
+    if (error !== undefined) {
+      data?.account;
+      //si errror, j'affiche modal ou autre
+    }
+  }, [error]);
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
-        <ProfilePicture
-          size={PROFILE_PICTURE_SIZE}
-          imageUri="https://img.lemde.fr/2020/03/24/0/0/3479/2319/688/0/60/0/80264c8_WAS471_HEALTH-CORONAVIRUS-USA_0324_11.JPG"
-        />
-        <Text style={styles.fullName}>DONALD TRUMP</Text>
+        <ProfilePicture size={PROFILE_PICTURE_SIZE} imageUri="" />
+        <Text style={styles.fullName}>{data.data.fullName}</Text>
         <View style={styles.separator} />
-        <HorizontalSpacer size={3} />
+
         <ProfileSection
           title={i18n.t('profile.section.studentNumber')}
-          value="38277"
+          value={data.data.studentId}
           icon={<AdressCard color={palette.white} size={iconSize} />}
         />
-        <HorizontalSpacer size={3} />
+
         <ProfileSection
           title={i18n.t('profile.section.branch')}
-          value="TC01"
+          value={data.data.branch}
           icon={<University color={palette.white} size={iconSize} />}
         />
-        <HorizontalSpacer size={3} />
+
         <ProfileSection
           title={i18n.t('profile.section.email')}
-          value="donald.trump@usa.com"
+          value={data.data.email}
           icon={<Envelope color={palette.white} size={iconSize} />}
         />
-        <HorizontalSpacer size={3} />
+
         <ProfileSection
           title={i18n.t('profile.section.gender')}
-          value="Homme"
+          value={data.data.sex === 'male' ? 'Homme' : 'Femme'}
           icon={<MaleFemale color="transparent" secondaryColor={palette.white} size={iconSize} />}
         />
-        <HorizontalSpacer size={3} />
+
         <ProfileSection
           title={i18n.t('profile.section.birthdate')}
           value="14/01/1946"
           icon={<BirthdayCake color={palette.white} size={iconSize} />}
         />
-        <HorizontalSpacer size={3} />
+
         <ProfileUEList
           title={i18n.t('profile.section.uelist')}
-          value={['MATH01']}
+          value={data.data.uvs}
           icon={<ToolBox color={palette.white} size={iconSize} />}
         />
-        <HorizontalSpacer size={3} />
       </ScrollView>
     </View>
   );

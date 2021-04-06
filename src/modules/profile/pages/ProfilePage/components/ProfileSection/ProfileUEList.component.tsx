@@ -1,6 +1,9 @@
-import React, { FunctionComponent, ReactNode } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { FunctionComponent } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { HorizontalSpacer } from '../../../../../../components/HorizontalSpacer';
 import { palette, radius, spacing, typos } from '../../../../../../theme/theme';
+import { UeProfileSectionProps } from '../../interfaces/ueProfileSection.interface';
+import { Tag } from '../TagUe.component';
 
 const styles = StyleSheet.create({
   container: {
@@ -25,36 +28,26 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginTop: 5,
-  },
-  itemUes: {
-    borderRadius: radius.extraSmall,
-    backgroundColor: palette.red,
-    width: '33%',
-  },
-  textUEs: {
-    textAlign: 'center',
-    color: palette.white,
+    alignItems: 'center',
   },
 });
 
-interface ProfileUEListProps {
-  title: string;
-  value: Array<string>;
-  icon: ReactNode;
-}
-
-export const ProfileUEList: FunctionComponent<ProfileUEListProps> = ({ title, value, icon }) => {
+export const ProfileUEList: FunctionComponent<UeProfileSectionProps> = ({ title, value, icon }) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.leftContainer}>{icon}</View>
-      <View style={styles.rightContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <View style={styles.ues}>
-          <TouchableOpacity style={styles.itemUes}>
-            <Text style={styles.textUEs}>{value}</Text>
-          </TouchableOpacity>
+    <>
+      <HorizontalSpacer size={3} />
+      <View style={styles.container}>
+        <View style={styles.leftContainer}>{icon}</View>
+        <View style={styles.rightContainer}>
+          <Text style={styles.title}>{title}</Text>
+          <View style={styles.ues}>
+            {value.map((item) => {
+              return <Tag key={item}>{item}</Tag>;
+            })}
+          </View>
         </View>
       </View>
-    </View>
+      <HorizontalSpacer size={3} />
+    </>
   );
 };
