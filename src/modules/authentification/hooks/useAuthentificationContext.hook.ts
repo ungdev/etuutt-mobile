@@ -1,4 +1,11 @@
+import AsyncStorage from '@react-native-community/async-storage';
 import { useState } from 'react';
+import {
+  ACCESS_TOKEN_EXPIRATION_KEY,
+  ACCESS_TOKEN_KEY,
+  CLIENT_ID_KEY,
+  CLIENT_SECRET_KEY,
+} from '../../../services/stockage/StorageKey';
 import {
   AuthentificationContextType,
   AuthentificationStatus,
@@ -11,9 +18,16 @@ export const useAuthentificationContext = () => {
   const login = () => {
     setAuthentificationStatus('AUTHENTICATED');
   };
-  const logout = () => {
-    //effacer Asyncstorage
-    setAuthentificationStatus('UNAUTHENTICATED');
+  const logout = async () => {
+    try {
+      await AsyncStorage.removeItem(ACCESS_TOKEN_EXPIRATION_KEY);
+      await AsyncStorage.removeItem(ACCESS_TOKEN_KEY);
+      await AsyncStorage.removeItem(CLIENT_ID_KEY);
+      await AsyncStorage.removeItem(CLIENT_SECRET_KEY);
+      setAuthentificationStatus('UNAUTHENTICATED');
+    } catch (event) {
+      console.log(event);
+    }
   };
 
   const authentificationContextValue: AuthentificationContextType = {

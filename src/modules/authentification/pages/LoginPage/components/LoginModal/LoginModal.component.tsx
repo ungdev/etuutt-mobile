@@ -1,11 +1,16 @@
 import React, { FunctionComponent } from 'react';
-import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Modal, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import WebView from 'react-native-webview';
 import { palette } from '../../../../../../theme/theme';
 import i18n from '../../../../../internationalization/service/i18n.service';
 import { useLoginModal } from './useLoginModal.hook';
 
 const styles = StyleSheet.create({
+  safeView: {
+    flex: 1,
+    backgroundColor: palette.blue,
+  },
+
   globalcontainer: {
     flex: 1,
   },
@@ -21,7 +26,7 @@ const styles = StyleSheet.create({
   },
 
   topbuttontext: {
-    color: palette.curiousBlue,
+    color: palette.white,
   },
 });
 
@@ -35,27 +40,29 @@ export const LoginModal: FunctionComponent<LoginModalProps> = ({ isVisible, onCl
 
   return (
     <Modal animationType={'slide'} visible={isVisible} onRequestClose={onCloseModal}>
-      <View style={styles.globalcontainer}>
-        <View style={styles.container}>
-          <TouchableOpacity onPress={() => onCloseModal()} style={styles.topbutton}>
-            <Text style={styles.topbuttontext}>{i18n.t('login.close')}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={reloadWebview} style={styles.topbutton}>
-            <Text style={styles.topbuttontext}>{i18n.t('login.refresh')}</Text>
-          </TouchableOpacity>
+      <SafeAreaView style={styles.safeView}>
+        <View style={styles.globalcontainer}>
+          <View style={styles.container}>
+            <TouchableOpacity onPress={() => onCloseModal()} style={styles.topbutton}>
+              <Text style={styles.topbuttontext}>{i18n.t('login.close')}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={reloadWebview} style={styles.topbutton}>
+              <Text style={styles.topbuttontext}>{i18n.t('login.refresh')}</Text>
+            </TouchableOpacity>
+          </View>
+          <WebView
+            ref={webViewRef}
+            source={{
+              uri: modalUri,
+            }}
+            startInLoadingState
+            originWhitelist={['*']}
+            javaScriptEnabled
+            domStorageEnabled
+            onLoadStart={onLoadStart}
+          />
         </View>
-        <WebView
-          ref={webViewRef}
-          source={{
-            uri: modalUri,
-          }}
-          startInLoadingState
-          originWhitelist={['*']}
-          javaScriptEnabled
-          domStorageEnabled
-          onLoadStart={onLoadStart}
-        />
-      </View>
+      </SafeAreaView>
     </Modal>
   );
 };

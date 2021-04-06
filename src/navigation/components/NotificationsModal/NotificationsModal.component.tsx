@@ -35,11 +35,13 @@ const styles = StyleSheet.create({
 interface NotificationsModalProps {
   onClose: () => void;
   modalVisible: boolean;
+  logout: () => void;
 }
 
 export const NotificationsModal: FunctionComponent<NotificationsModalProps> = ({
   onClose,
   modalVisible,
+  logout,
 }) => {
   return (
     <Modal animationType="slide" transparent={true} visible={modalVisible}>
@@ -48,6 +50,9 @@ export const NotificationsModal: FunctionComponent<NotificationsModalProps> = ({
           <Text style={styles.modalText}>Hello World!</Text>
           <TouchableHighlight style={styles.openButton} onPress={onClose}>
             <Text style={styles.textStyle}>Hide Modal</Text>
+          </TouchableHighlight>
+          <TouchableHighlight style={styles.openButton} onPress={logout}>
+            <Text style={styles.textStyle}>Se déconnecter</Text>
           </TouchableHighlight>
         </View>
       </View>
