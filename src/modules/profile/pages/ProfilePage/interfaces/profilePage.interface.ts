@@ -3,5 +3,5 @@ export interface RawAccount {
 }
 
 export interface ProfilePageRequest {
-  account: RawAccount;
+  account: RawAccount[];
 }

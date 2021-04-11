@@ -41,7 +41,7 @@ export const ProfileUEList: FunctionComponent<UeProfileSectionProps> = ({ title,
         <View style={styles.rightContainer}>
           <Text style={styles.title}>{title}</Text>
           <View style={styles.ues}>
-            {value.map((item) => {
+            {value?.map((item) => {
               return <Tag key={item}>{item}</Tag>;
             })}
           </View>
