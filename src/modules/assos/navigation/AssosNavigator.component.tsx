@@ -5,7 +5,7 @@ import { Handshake, People } from '../../../components/Icons/index';
 import { paths } from '../../../navigation/paths';
 import { palette, spacing, typos } from '../../../theme/theme';
 import i18n from '../../internationalization/service/i18n.service';
-import { AllAssos, MyAssos } from '../pages';
+import { AllAssosPage, MyAssos } from '../pages';
 
 const AssosTab = createMaterialTopTabNavigator();
 const bouncingTab = 30;
@@ -54,7 +54,7 @@ export const AssosNavigator: FunctionComponent = () => {
       >
         <AssosTab.Screen
           name={paths.assos.tabs.allAssos.name}
-          component={AllAssos}
+          component={AllAssosPage}
           options={{
             tabBarIcon: () => (
               <People color={palette.white} secondaryColor={palette.white} size={iconSize} />

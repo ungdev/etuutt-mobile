@@ -1,1 +1,1 @@
-export * from './AllAssos.component';
+export * from './AllAssosPage.component';
