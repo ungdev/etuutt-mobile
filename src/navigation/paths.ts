@@ -30,18 +30,18 @@ export const paths = {
   },
   assos: {
     name: 'assos',
-    tabs: {
-      allAssosNavigator: {
-        name: 'AllAssosNavigator',
+    assosNavigator: {
+      tabs: {
+        name: 'assosTabNavigator',
         allAssos: {
           name: 'allAssos',
         },
-        assoDetail: {
-          name: 'assoDetail',
+        myAssos: {
+          name: 'myAssos',
         },
       },
-      myAssos: {
-        name: 'myAssos',
+      detailAsso: {
+        name: 'assoDetail',
       },
     },
   },

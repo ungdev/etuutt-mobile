@@ -25,6 +25,9 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: palette.blue,
   },
+  containerHeader: {
+    justifyContent: 'center',
+  },
 });
 
 export const RootNavigator: FunctionComponent = () => {
@@ -37,6 +40,8 @@ export const RootNavigator: FunctionComponent = () => {
           headerStyle: styles.header,
           headerTintColor: palette.white,
           headerBackTitleVisible: false,
+          headerTitleContainerStyle: styles.containerHeader,
+          headerTitleStyle: styles.containerHeader,
         }}
       >
         {authentificationStatus === 'UNKNOWN' ? (
@@ -133,6 +138,7 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.assos.name}
               component={AssosNavigator}
               options={{
+                headerShown: false,
                 title: i18n.t('assos.title'),
                 headerTitleAlign: 'center',
               }}
