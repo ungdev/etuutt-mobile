@@ -3,12 +3,14 @@ import React, { FunctionComponent, useEffect } from 'react';
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { Envelope, Mails } from '../../../../components/Icons';
 import { LoadingPage } from '../../../../components/LoadingPage';
 import { paths } from '../../../../navigation/paths';
 import { Marging, Padding, palette, radius } from '../../../../theme/theme';
 import { useDetailsAsso } from '../../hooks/useDetailsAsso.hook';
 import { getImageLink } from '../AllAssos/services/getImageLink.service';
 import { Header } from '../components/Header.component';
+import { Accordion } from './components/Accordion/Accordion.component';
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -25,10 +27,11 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: '50%',
     alignItems: 'center',
+    marginTop: Marging.small,
   },
   logo: {
-    width: 180,
-    height: 180,
+    width: 150,
+    height: 150,
   },
   mainInfosContainer: {
     width: '50%',
@@ -59,7 +62,6 @@ const styles = StyleSheet.create({
   logoSocialContainer: {
     width: '100%',
     alignItems: 'center',
-    backgroundColor: palette.yellow,
     flexDirection: 'row',
     justifyContent: 'center',
   },
@@ -68,6 +70,9 @@ const styles = StyleSheet.create({
     color: palette.curiousBlue,
     borderRadius: radius.round,
     marginHorizontal: Marging.large,
+  },
+  contactsContainer: {
+    width: '100%',
   },
 });
 
@@ -136,7 +141,15 @@ export const AssoDetail: FunctionComponent = (route) => {
                   onPress={() => {}}
                 />
               </View>
-              <View style={styles.contactsContainer}></View>
+              <View style={styles.contactsContainer}>
+                <Accordion
+                  title="TITRE"
+                  list={[
+                    { icon: Mails, name: 'Email', value: 'test@test.fr' },
+                    { icon: Envelope, name: 'Téléphone', value: '01.02.03.04.05' },
+                  ]}
+                />
+              </View>
               <View style={styles.descriptionContainer}></View>
               <View style={styles.bureauContainer}></View>
               <View style={styles.membresContainer}></View>
