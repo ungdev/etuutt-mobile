@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 export const AllAssosPage: FunctionComponent = () => {
   const { navigate } = useNavigation();
   const onButtonPress = (destination: string) => {
-    navigate(destination);
+    navigate('assoDetail', { destination });
   };
   const { data, error, isLoading } = useAssosList();
 
@@ -44,6 +44,7 @@ export const AllAssosPage: FunctionComponent = () => {
                 onPress={() => onButtonPress(item.login)}
               />
             )}
+            onEndReachedThreshold={0.5}
             //TODO refresh control
           />
         </View>

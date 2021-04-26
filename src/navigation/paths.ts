@@ -31,8 +31,14 @@ export const paths = {
   assos: {
     name: 'assos',
     tabs: {
-      allAssos: {
-        name: 'allAssos',
+      allAssosNavigator: {
+        name: 'AllAssosNavigator',
+        allAssos: {
+          name: 'allAssos',
+        },
+        assoDetail: {
+          name: 'assoDetail',
+        },
       },
       myAssos: {
         name: 'myAssos',

@@ -5,7 +5,8 @@ import { Handshake, People } from '../../../components/Icons/index';
 import { paths } from '../../../navigation/paths';
 import { palette, spacing, typos } from '../../../theme/theme';
 import i18n from '../../internationalization/service/i18n.service';
-import { AllAssosPage, MyAssos } from '../pages';
+import { MyAssos } from '../pages';
+import { AllAssosNavigator } from '../pages/AllAssosNavigator/AllAssosNavigator.component';
 
 const AssosTab = createMaterialTopTabNavigator();
 const bouncingTab = 30;
@@ -37,7 +38,7 @@ export const AssosNavigator: FunctionComponent = () => {
     <SafeAreaView style={styles.container}>
       <AssosTab.Navigator
         tabBarPosition="bottom"
-        initialRouteName={paths.assos.tabs.allAssos.name}
+        initialRouteName={paths.assos.tabs.allAssosNavigator.name}
         springConfig={{ damping: bouncingTab }}
         tabBarOptions={{
           showIcon: true,
@@ -53,8 +54,8 @@ export const AssosNavigator: FunctionComponent = () => {
         }}
       >
         <AssosTab.Screen
-          name={paths.assos.tabs.allAssos.name}
-          component={AllAssosPage}
+          name={paths.assos.tabs.allAssosNavigator.name}
+          component={AllAssosNavigator}
           options={{
             tabBarIcon: () => (
               <People color={palette.white} secondaryColor={palette.white} size={iconSize} />
