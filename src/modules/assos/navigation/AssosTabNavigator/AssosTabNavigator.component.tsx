@@ -43,7 +43,7 @@ export const AssosTabNavigator: FunctionComponent = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableWithoutFeedback onPress={() => onButtonBackPress(paths.mainMenu)}>
+      <TouchableWithoutFeedback onPress={() => onButtonBackPress(paths.mainMenu.name)}>
         <Header bigtitle="Associations" />
       </TouchableWithoutFeedback>
       <TabNavigator.Navigator
