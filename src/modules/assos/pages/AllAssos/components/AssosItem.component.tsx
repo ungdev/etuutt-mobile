@@ -10,10 +10,11 @@ interface AssosItemProps {
 
 const styles = StyleSheet.create({
   title: {
-    ...typos.xs,
+    ...typos.xxs,
     textAlign: 'center',
-    color: palette.white,
-    marginTop: 6,
+    color: palette.black,
+    marginTop: 10,
+    padding: 2,
   },
   container: {
     width: Dimensions.get('screen').width / 3 - spacing * 2,
@@ -22,6 +23,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     margin: spacing,
     borderRadius: radius.small,
+    borderColor: palette.blue,
+    borderWidth: 3,
   },
   imageItem: {
     width: Dimensions.get('window').width / 4 - 25,

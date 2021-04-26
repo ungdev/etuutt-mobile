@@ -101,7 +101,7 @@ export const typos = {
     fontWeight: weights.bold,
   },
   xxs: {
-    fontSize: 11,
+    fontSize: 14,
     lineHeight: 13,
     fontWeight: weights.medium,
   },
