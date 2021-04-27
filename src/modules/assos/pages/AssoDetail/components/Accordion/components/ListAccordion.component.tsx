@@ -31,9 +31,10 @@ const styles = StyleSheet.create({
 });
 
 interface TabItem {
-  icon: FunctionComponent<IconProps>;
-  name: string;
+  icon?: FunctionComponent<IconProps>;
+  name?: string;
   value: string;
+  onPress: string;
 }
 
 interface ListAccordionProps {
@@ -75,6 +76,7 @@ export const ListAccordion: FunctionComponent<ListAccordionProps> = ({ title, it
             value={item.value}
             key={key}
             isLast={key === items.length - 1}
+            onPress={item.onPress}
           />
         ))}
       </Animated.View>

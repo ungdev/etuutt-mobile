@@ -5,6 +5,7 @@ export interface Asso {
   login: string;
   name: string;
   mail: string;
+  phone: string;
   description: string;
   descriptionShort: string;
   website: string;

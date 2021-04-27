@@ -3,14 +3,17 @@ import React, { FunctionComponent, useEffect } from 'react';
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Envelope, Mails } from '../../../../components/Icons';
+import { Arobase, GlobeWeb } from '../../../../components/Icons';
+import { Phone } from '../../../../components/Icons/components/Phone.icon';
 import { LoadingPage } from '../../../../components/LoadingPage';
 import { paths } from '../../../../navigation/paths';
 import { Marging, Padding, palette, radius } from '../../../../theme/theme';
+import i18n from '../../../internationalization/service/i18n.service';
 import { useDetailsAsso } from '../../hooks/useDetailsAsso.hook';
 import { getImageLink } from '../AllAssos/services/getImageLink.service';
 import { Header } from '../components/Header.component';
 import { Accordion } from './components/Accordion/Accordion.component';
+import { ListSimple } from './components/ListSimple/ListSimple.component';
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -73,6 +76,12 @@ const styles = StyleSheet.create({
   },
   contactsContainer: {
     width: '100%',
+    height: 'auto',
+    padding: Padding.small,
+  },
+  descriptionContainer: {
+    width: '100%',
+    padding: Padding.small,
   },
 });
 
@@ -104,7 +113,7 @@ export const AssoDetail: FunctionComponent = (route) => {
             <Header bigtitle={data.data.name} />
           </TouchableWithoutFeedback>
           <View style={styles.container}>
-            <ScrollView contentContainerStyle={styles.safeArea}>
+            <ScrollView style={styles.safeArea}>
               <View style={styles.mainInfos}>
                 <View style={styles.imageContainer}>
                   <Image
@@ -143,14 +152,35 @@ export const AssoDetail: FunctionComponent = (route) => {
               </View>
               <View style={styles.contactsContainer}>
                 <Accordion
-                  title="TITRE"
+                  title={i18n.t('assos.assoDetail.contacts')}
                   list={[
-                    { icon: Mails, name: 'Email', value: 'test@test.fr' },
-                    { icon: Envelope, name: 'Téléphone', value: '01.02.03.04.05' },
+                    {
+                      icon: () => <Phone color={palette.white} size={40} />,
+                      name: i18n.t('assos.assoDetail.phone'),
+                      value: data.data.phone,
+                      onPress: 'call',
+                    },
+                    {
+                      icon: () => <GlobeWeb color={palette.white} size={40} />,
+                      name: i18n.t('assos.assoDetail.website'),
+                      value: data.data.website,
+                      onPress: 'website',
+                    },
+                    {
+                      icon: () => <Arobase color={palette.white} size={45} />,
+                      name: i18n.t('assos.assoDetail.mail'),
+                      value: data.data.mail,
+                      onPress: 'mail', //laisser le mail en dernier (comme une asso à toujours un mail, ça permet de garder les angles arrondi du dernier item de l'accordion)
+                    },
                   ]}
                 />
               </View>
-              <View style={styles.descriptionContainer}></View>
+              <View style={styles.descriptionContainer}>
+                <ListSimple
+                  title={i18n.t('assos.assoDetail.description')}
+                  value={data.data.descriptionShort}
+                />
+              </View>
               <View style={styles.bureauContainer}></View>
               <View style={styles.membresContainer}></View>
             </ScrollView>

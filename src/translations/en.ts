@@ -73,6 +73,13 @@ export const en = {
     myAssos: {
       title: 'My Assos',
     },
+    assoDetail: {
+      contacts: 'Contacts',
+      mail: 'Mail',
+      phone: 'Phone',
+      website: 'Website',
+      description: 'Description',
+    },
   },
   galerie: {
     title: 'Photos',
@@ -115,5 +122,13 @@ export const en = {
     myAlerts: {
       title: 'My Alerts',
     },
+  },
+  services: {
+    ok: 'Ok',
+    cancel: 'Cancel',
+    askCall: 'Do you want to call or send a message?',
+    actionCall: 'Call',
+    actionMessage: 'Message',
+    askSendMail: 'Do you want to send an email to this association?',
   },
 };

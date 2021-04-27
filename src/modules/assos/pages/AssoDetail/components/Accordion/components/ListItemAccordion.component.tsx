@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { IconProps } from '../../../../../../../components/Icons/Icons.interface';
 import { Padding, palette } from '../../../../../../../theme/theme';
+import { checkFunction } from '../../../services/checkFunction.service';
 export const LIST_ITEM_HEIGHT = 57;
 
 const styles = StyleSheet.create({
@@ -12,6 +13,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: Padding.small,
     borderTopWidth: 1,
+    borderColor: palette.white,
     height: LIST_ITEM_HEIGHT,
     width: '100%',
   },
@@ -28,19 +30,25 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   logoContainer: {
-    width: '20%',
+    width: '15%',
     justifyContent: 'center',
-    alignSelf: 'center',
+    alignContent: 'stretch',
+    paddingHorizontal: Padding.medium,
   },
   infosContainer: {
-    width: '80%',
+    width: '85%',
+    paddingHorizontal: Padding.medium,
+  },
+  infosContainerWithoutIcon: {
+    width: '100%',
+    paddingHorizontal: Padding.medium,
   },
 });
 
 const iconSize = '90%';
 
 interface ListItemAccordionProps {
-  onPress?: () => void;
+  onPress: string;
   Icon?: FunctionComponent<IconProps>;
   title?: string;
   value: string;
@@ -56,27 +64,54 @@ export const ListItemAccordion: FunctionComponent<ListItemAccordionProps> = ({
   isLast,
 }) => {
   const bottomRadius = isLast ? 8 : 0;
+  if (value === null || value === '' || value === 'undefined') {
+    return null;
+  } else if (Icon === undefined || title === undefined) {
+    return (
+      <View
+        style={[
+          styles.container,
+          {
+            borderBottomLeftRadius: bottomRadius,
+            borderBottomRightRadius: bottomRadius,
+          },
+        ]}
+      >
+        <TouchableOpacity
+          style={styles.itemContainer}
+          onPress={() => checkFunction(onPress, value)}
+        >
+          <View style={styles.infosContainerWithoutIcon}>
+            <Text style={styles.text}>{value}</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    );
+  } else {
+    return (
+      <View
+        style={[
+          styles.container,
+          {
+            borderBottomLeftRadius: bottomRadius,
+            borderBottomRightRadius: bottomRadius,
+          },
+        ]}
+      >
+        <TouchableOpacity
+          style={styles.itemContainer}
+          onPress={() => checkFunction(onPress, value)}
+        >
+          <View style={styles.logoContainer}>
+            <Icon size={iconSize} color={palette.white} />
+          </View>
 
-  return (
-    <View
-      style={[
-        styles.container,
-        {
-          borderBottomLeftRadius: bottomRadius,
-          borderBottomRightRadius: bottomRadius,
-        },
-      ]}
-    >
-      <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
-        <View style={styles.logoContainer}>
-          <Icon size={iconSize} color={palette.white} />
-        </View>
-
-        <View style={styles.infosContainer}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.text}>{value}</Text>
-        </View>
-      </TouchableOpacity>
-    </View>
-  );
+          <View style={styles.infosContainer}>
+            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.text}>{value}</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 };
