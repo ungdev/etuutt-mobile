@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { FunctionComponent, useEffect } from 'react';
-import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Arobase, GlobeWeb } from '../../../../components/Icons';
@@ -13,6 +13,7 @@ import { useDetailsAsso } from '../../hooks/useDetailsAsso.hook';
 import { getImageLink } from '../AllAssos/services/getImageLink.service';
 import { Header } from '../components/Header.component';
 import { Accordion } from './components/Accordion/Accordion.component';
+import { ListAccordionMembers } from './components/Accordion/components/ListAccordionMembers.component';
 import { ListSimple } from './components/ListSimple/ListSimple.component';
 
 const styles = StyleSheet.create({
@@ -83,6 +84,10 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: Padding.small,
   },
+  membersContainer: {
+    width: '100%',
+    padding: Padding.small,
+  },
 });
 
 export const AssoDetail: FunctionComponent = (route) => {
@@ -104,88 +109,102 @@ export const AssoDetail: FunctionComponent = (route) => {
   } else if (data === undefined) {
     return <View />;
   } else {
+    let groups = [];
+    const { members } = data.data._embed;
+    members.forEach((member) => {
+      const groupId = member.group.id;
+      if (!groups.find((group) => group.id === groupId)) groups.push(member.group);
+    });
+
+    groups = groups.sort((a, b) => {
+      if (a.position > b.position) return 1;
+      if (a.position < b.position) return -1;
+      return 0;
+    });
+
     return (
       <>
-        <SafeAreaView style={styles.safeArea}>
-          <TouchableWithoutFeedback
-            onPress={() => onButtonBackPress(paths.assos.assosNavigator.tabs.name)}
-          >
-            <Header bigtitle={data.data.name} />
-          </TouchableWithoutFeedback>
-          <View style={styles.container}>
-            <ScrollView style={styles.safeArea}>
-              <View style={styles.mainInfos}>
-                <View style={styles.imageContainer}>
-                  <Image
-                    source={{
-                      uri: getImageLink(data.data),
-                    }}
-                    style={styles.logo}
-                  />
-                </View>
+        <TouchableWithoutFeedback
+          onPress={() => onButtonBackPress(paths.assos.assosNavigator.tabs.name)}
+        >
+          <Header bigtitle={data.data.name} />
+        </TouchableWithoutFeedback>
+        <View style={styles.container}>
+          <ScrollView style={styles.safeArea}>
+            <View style={styles.mainInfos}>
+              <View style={styles.imageContainer}>
+                <Image
+                  source={{
+                    uri: getImageLink(data.data),
+                  }}
+                  style={styles.logo}
+                />
+              </View>
 
-                <View style={styles.mainInfosContainer}>
-                  <View style={styles.mainInfosPresident}>
-                    <Text style={styles.title}>Président</Text>
-                    <Text style={styles.text}>NOM PRENOM</Text>
-                  </View>
-                  <View style={styles.mainInfosAskJoin}>
-                    <TouchableOpacity>
-                      <Text style={styles.text}>Demander à rejoindre</Text>
-                    </TouchableOpacity>
-                  </View>
+              <View style={styles.mainInfosContainer}>
+                <View style={styles.mainInfosPresident}>
+                  <Text style={styles.title}>Président</Text>
+                  <Text style={styles.text}>NOM PRENOM</Text>
+                </View>
+                <View style={styles.mainInfosAskJoin}>
+                  <TouchableOpacity>
+                    <Text style={styles.text}>Demander à rejoindre</Text>
+                  </TouchableOpacity>
                 </View>
               </View>
-              <View style={styles.logoSocialContainer}>
-                <Icon
-                  style={styles.socialLogo}
-                  name="logo-facebook"
-                  color={palette.curiousBlue}
-                  onPress={() => {}}
-                />
-                <Icon
-                  style={styles.socialLogo}
-                  name="logo-twitter"
-                  color={palette.curiousBlue}
-                  onPress={() => {}}
-                />
+            </View>
+            <View style={styles.logoSocialContainer}>
+              <Icon
+                style={styles.socialLogo}
+                name="logo-facebook"
+                color={palette.curiousBlue}
+                onPress={() => {}}
+              />
+              <Icon
+                style={styles.socialLogo}
+                name="logo-twitter"
+                color={palette.curiousBlue}
+                onPress={() => {}}
+              />
+            </View>
+            <View style={styles.contactsContainer}>
+              <Accordion
+                title={i18n.t('assos.assoDetail.contacts')}
+                list={[
+                  {
+                    icon: () => <Phone color={palette.white} size={40} />,
+                    name: i18n.t('assos.assoDetail.phone'),
+                    value: data.data.phone,
+                    onPress: 'call',
+                  },
+                  {
+                    icon: () => <GlobeWeb color={palette.white} size={40} />,
+                    name: i18n.t('assos.assoDetail.website'),
+                    value: data.data.website,
+                    onPress: 'website',
+                  },
+                  {
+                    icon: () => <Arobase color={palette.white} size={45} />,
+                    name: i18n.t('assos.assoDetail.mail'),
+                    value: data.data.mail,
+                    onPress: 'mail', //laisser le mail en dernier (comme une asso à toujours un mail, ça permet de garder les angles arrondi du dernier item de l'accordion)
+                  },
+                ]}
+              />
+            </View>
+            <View style={styles.descriptionContainer}>
+              <ListSimple
+                title={i18n.t('assos.assoDetail.description')}
+                value={data.data.descriptionShort}
+              />
+            </View>
+            {groups.map((group) => (
+              <View style={styles.membersContainer} key={group.id}>
+                <ListAccordionMembers id={group.id} title={group.name} items={members} />
               </View>
-              <View style={styles.contactsContainer}>
-                <Accordion
-                  title={i18n.t('assos.assoDetail.contacts')}
-                  list={[
-                    {
-                      icon: () => <Phone color={palette.white} size={40} />,
-                      name: i18n.t('assos.assoDetail.phone'),
-                      value: data.data.phone,
-                      onPress: 'call',
-                    },
-                    {
-                      icon: () => <GlobeWeb color={palette.white} size={40} />,
-                      name: i18n.t('assos.assoDetail.website'),
-                      value: data.data.website,
-                      onPress: 'website',
-                    },
-                    {
-                      icon: () => <Arobase color={palette.white} size={45} />,
-                      name: i18n.t('assos.assoDetail.mail'),
-                      value: data.data.mail,
-                      onPress: 'mail', //laisser le mail en dernier (comme une asso à toujours un mail, ça permet de garder les angles arrondi du dernier item de l'accordion)
-                    },
-                  ]}
-                />
-              </View>
-              <View style={styles.descriptionContainer}>
-                <ListSimple
-                  title={i18n.t('assos.assoDetail.description')}
-                  value={data.data.descriptionShort}
-                />
-              </View>
-              <View style={styles.bureauContainer}></View>
-              <View style={styles.membresContainer}></View>
-            </ScrollView>
-          </View>
-        </SafeAreaView>
+            ))}
+          </ScrollView>
+        </View>
       </>
     );
   }

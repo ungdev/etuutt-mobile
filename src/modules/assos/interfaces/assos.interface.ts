@@ -1,4 +1,3 @@
-import { Embed } from '../../../interfaces/embed.interface';
 import { Link } from '../../../interfaces/link.interface';
 
 export interface Asso {
@@ -10,5 +9,5 @@ export interface Asso {
   descriptionShort: string;
   website: string;
   _links: Link[];
-  _embed: Embed[];
+  _embed: any;
 }

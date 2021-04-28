@@ -66,7 +66,7 @@ export const ListItemAccordion: FunctionComponent<ListItemAccordionProps> = ({
   const bottomRadius = isLast ? 8 : 0;
   if (value === null || value === '' || value === 'undefined') {
     return null;
-  } else if (Icon === undefined || title === undefined) {
+  } else if (Icon === undefined) {
     return (
       <View
         style={[
@@ -82,6 +82,7 @@ export const ListItemAccordion: FunctionComponent<ListItemAccordionProps> = ({
           onPress={() => checkFunction(onPress, value)}
         >
           <View style={styles.infosContainerWithoutIcon}>
+            <Text style={styles.title}>{title}</Text>
             <Text style={styles.text}>{value}</Text>
           </View>
         </TouchableOpacity>
