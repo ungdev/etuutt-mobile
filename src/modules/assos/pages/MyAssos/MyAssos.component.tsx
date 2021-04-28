@@ -48,7 +48,7 @@ export const MyAssos: FunctionComponent = () => {
                 <AssosItem
                   title={item._embed.organization}
                   image={getImageLink(item)}
-                  onPress={() => onButtonPress(item.login)}
+                  onPress={() => onButtonPress(item._embed.organization)}
                 />
               )}
               onEndReachedThreshold={0.5}

@@ -122,6 +122,18 @@ export const AssoDetail: FunctionComponent = (route) => {
       return 0;
     });
 
+    const findPresident = (members) => {
+      let resultat = 'null';
+      members.forEach((member) => {
+        if (member.role === 'president') {
+          resultat = member._embed.user.fullName;
+        }
+      });
+      return resultat;
+    };
+
+    const president = findPresident(members);
+
     return (
       <>
         <TouchableWithoutFeedback
@@ -144,7 +156,7 @@ export const AssoDetail: FunctionComponent = (route) => {
               <View style={styles.mainInfosContainer}>
                 <View style={styles.mainInfosPresident}>
                   <Text style={styles.title}>Président</Text>
-                  <Text style={styles.text}>NOM PRENOM</Text>
+                  <Text style={styles.text}>{president}</Text>
                 </View>
                 <View style={styles.mainInfosAskJoin}>
                   <TouchableOpacity>
