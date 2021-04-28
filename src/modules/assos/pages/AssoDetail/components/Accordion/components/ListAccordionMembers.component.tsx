@@ -48,9 +48,20 @@ export const ListAccordionMembers: FunctionComponent<ListAccordionProps> = ({
   items,
   id,
 }) => {
+  const calculate = (items) => {
+    let size = 0;
+    items.forEach((member) => {
+      if (member.group.id === id) {
+        size = size + 1;
+      }
+    });
+
+    return size;
+  };
+
   const [open, setOpen] = useState(false);
   const transition = useTransition(open, not(bin(open)), bin(open), 400, Easing.inOut(Easing.ease));
-  const height = bInterpolate(transition, 0, LIST_ITEM_HEIGHT * items.length);
+  const height = bInterpolate(transition, 0, LIST_ITEM_HEIGHT * calculate(items));
   const bottomRadius = interpolate(transition, {
     inputRange: [0, 16 / 400],
     outputRange: [8, 0],
@@ -86,7 +97,7 @@ export const ListAccordionMembers: FunctionComponent<ListAccordionProps> = ({
               title={member.role}
               value={member._embed.user.fullName}
               key={member._embed.user.studentId}
-              isLast={id === member.length - 1}
+              isLast={false}
               onPress={member._embed.user.onPress}
             />
           ))}

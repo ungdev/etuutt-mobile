@@ -38,7 +38,7 @@ interface ListSimpleProps {
 export const ListSimple: FunctionComponent<ListSimpleProps> = ({ title, value }) => {
   const [open, setOpen] = useState(false);
   const transition = useTransition(open, not(bin(open)), bin(open), 400, Easing.inOut(Easing.ease));
-  const height = bInterpolate(transition, 0, LIST_ITEM_HEIGHT * 10);
+  const height = bInterpolate(transition, 0, LIST_ITEM_HEIGHT * 5);
   const bottomRadius = interpolate(transition, {
     inputRange: [0, 16 / 400],
     outputRange: [8, 0],
