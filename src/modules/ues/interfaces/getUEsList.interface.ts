@@ -1,7 +1,7 @@
 import { Pagination } from '../../../interfaces/pagination.interface';
-import { UE } from './ue.interface';
+import { GetUE } from './getUE.interface';
 
 export interface GetUEList {
-  data: UE;
+  data: GetUE;
   pagination: Pagination;
 }

@@ -13,6 +13,7 @@ import i18n from '../modules/internationalization/service/i18n.service';
 import { ProfilePage } from '../modules/profile/pages';
 import { UENavigator } from '../modules/ues/navigation';
 import { FavorisButton } from '../modules/ues/pages/ChoiceUE/components/FavorisButton.component';
+import { UEDetail } from '../modules/ues/pages/DetailUE/DetailUE.component';
 import { MainMenu } from '../pages';
 import { palette } from '../theme/theme';
 import { NotificationsButton } from './components/NotificationsButton';
@@ -108,6 +109,13 @@ export const RootNavigator: FunctionComponent = () => {
                     }
                   />
                 ),
+              }}
+            />
+            <RootStack.Screen
+              name={paths.ue.detailUE.name}
+              component={UEDetail}
+              options={{
+                headerShown: false,
               }}
             />
             <RootStack.Screen

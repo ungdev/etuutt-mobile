@@ -7,6 +7,9 @@ export const paths = {
   },
   ue: {
     name: 'ue',
+    detailUE: {
+      name: 'detailUE',
+    },
     tabs: {
       myUE: {
         name: 'myUE',

@@ -33,6 +33,8 @@ export const en = {
     },
     searchUE: {
       title: 'Search',
+      searchBar: 'Search UE',
+      noUE: 'No corresponding UE',
     },
     choiceUE: {
       title: 'Smart choice',
@@ -41,6 +43,19 @@ export const en = {
       title: 'History',
     },
     title: 'UEs Guide',
+    detailUE: {
+      course: 'Cours',
+      program: 'Program',
+      objective: 'Objectives',
+      comments: 'Comments',
+      annales: 'Annales',
+      slot: 'See slots',
+      ECTS: 'ECTS Credits ',
+      autumn: 'Autumn',
+      spring: 'Spring',
+      antecedents: 'Antecedents : ',
+      minor: 'Minor : ',
+    },
   },
   profile: {
     title: 'My Profile',

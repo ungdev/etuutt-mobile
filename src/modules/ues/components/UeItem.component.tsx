@@ -70,12 +70,13 @@ interface UeItemProps {
   code: string;
   name: string;
   category: string;
+  onPress: () => void;
 }
 
-export const UeItem: FunctionComponent<UeItemProps> = ({ code, name, category }) => {
+export const UeItem: FunctionComponent<UeItemProps> = ({ code, name, category, onPress }) => {
   return (
     <View style={[styles.container, changeColor(category)]}>
-      <TouchableOpacity style={styles.itemContainer} onPress={() => {}}>
+      <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
         <View style={styles.logoContainer}>
           <Text style={styles.textLogoContainer}>{category}</Text>
         </View>
