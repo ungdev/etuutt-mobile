@@ -10,6 +10,9 @@ export const paths = {
     detailUE: {
       name: 'detailUE',
     },
+    commentsUE: {
+      name: 'commentsUE',
+    },
     tabs: {
       myUE: {
         name: 'myUE',

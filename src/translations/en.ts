@@ -56,6 +56,9 @@ export const en = {
       antecedents: 'Antecedents : ',
       minor: 'Minor : ',
     },
+    commentsUE: {
+      noComments: 'No comments for this UE',
+    },
   },
   profile: {
     title: 'My Profile',

@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { FunctionComponent, useEffect } from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { Heart } from '../../../../components/Icons';
 import { LoadingPage } from '../../../../components/LoadingPage';
@@ -58,11 +58,12 @@ const checkAntecedent = (antecedents: string) => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    flexDirection: 'column',
+    backgroundColor: palette.blue,
   },
   container: {
     flex: 1,
     width: '100%',
+    flexDirection: 'column',
     backgroundColor: palette.white,
   },
   mainInfos: {
@@ -143,6 +144,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignSelf: 'center',
   },
+  button: {
+    width: '49%',
+    padding: Padding.small,
+    borderRadius: radius.extraSmall,
+    flexDirection: 'column',
+    alignSelf: 'center',
+  },
   margin: {
     marginRight: '2%',
   },
@@ -155,6 +163,9 @@ export const UEDetail: FunctionComponent = (route) => {
   const ue = route.route.params.destination;
   const { data, error, isLoading } = useUEDetails(ue);
   const { navigate } = useNavigation();
+  const onButtonPress = (destination: string, nameUE: string) => {
+    navigate(paths.ue.commentsUE.name, { destination, nameUE });
+  };
   const onButtonBackPress = (destination: string) => {
     navigate(destination);
   };
@@ -175,108 +186,98 @@ export const UEDetail: FunctionComponent = (route) => {
         <TouchableWithoutFeedback onPress={() => onButtonBackPress(paths.ue.name)}>
           <Header bigtitle={data.code} />
         </TouchableWithoutFeedback>
-        <View style={styles.container}>
-          <ScrollView style={styles.safeArea}>
-            <View style={styles.mainInfos}>
-              <View style={styles.title}>
-                <Text style={styles.titleText}>{data.name}</Text>
-              </View>
-              <TouchableOpacity style={styles.favoris}>
-                <Heart color={palette.white} secondaryColor={palette.black} size={40} />
-              </TouchableOpacity>
-            </View>
-
-            <View style={[styles.containerInfosBig, changeColor('first', data.category)]}>
-              <Text style={styles.textCapital}>{data.diplomes}</Text>
-              <Text style={styles.textCapital}>{data.category}</Text>
-              <View style={styles.flexDirectionRow}>
-                <View style={styles.flexDirectionRow}>{checkAntecedent(data.antecedents)}</View>
-              </View>
-              <View style={styles.flexDirectionRow}>{checkMinor(data.mineurs)}</View>
-            </View>
-
-            <View style={styles.containerSecond}>
-              <View
-                style={[
-                  styles.containerInfosSmall,
-                  changeColor('second', data.category),
-                  styles.margin,
-                ]}
-              >
-                <Text style={styles.text}>{isAutumnAvailable(data.automne)}</Text>
-                <Text style={styles.text}>{isSpringAvailable(data.printemps)}</Text>
-                <Text style={styles.text}>{''}</Text>
-                <Text style={styles.text}>
-                  {data.credits} {i18n.t('ue.detailUE.ECTS')}
-                </Text>
-              </View>
-              <View style={[styles.containerInfosSmall, changeColor('second', data.category)]}>
-                <View style={styles.flexDirectionRow}>
-                  <Text style={styles.textLeft}>{i18n.t('ue.detailUE.course')}</Text>
-                  <Text style={styles.textRight}>{data.cm} H</Text>
+        <SafeAreaView style={styles.safeArea}>
+          <View style={styles.container}>
+            <ScrollView style={styles.container}>
+              <View style={styles.mainInfos}>
+                <View style={styles.title}>
+                  <Text style={styles.titleText}>{data.name}</Text>
                 </View>
-                <View style={styles.flexDirectionRow}>
-                  <Text style={styles.textLeft}>TD</Text>
-                  <Text style={styles.textRight}>{data.td} H</Text>
-                </View>
-                <View style={styles.flexDirectionRow}>
-                  <Text style={styles.textLeft}>TP</Text>
-                  <Text style={styles.textRight}>{data.tp} H</Text>
-                </View>
-                <View style={styles.flexDirectionRow}>
-                  <Text style={styles.textLeft}>THE</Text>
-                  <Text style={styles.textRight}>{data.the} H</Text>
-                </View>
-              </View>
-            </View>
-
-            <View style={[styles.containerInfosBig, changeColor('second', data.category)]}>
-              <Text style={styles.textTitle}>{i18n.t('ue.detailUE.objective')}</Text>
-              <Text style={styles.text}>{data.objectifs}</Text>
-            </View>
-
-            <View style={[styles.containerInfosBig, changeColor('third', data.category)]}>
-              <Text style={styles.textTitle}>{i18n.t('ue.detailUE.program')}</Text>
-              <Text style={styles.text}>{data.programme}</Text>
-            </View>
-
-            <View style={styles.containerSecond}>
-              <View
-                style={[
-                  styles.containerInfosSmall,
-                  changeColor('first', data.category),
-                  styles.margin,
-                ]}
-              >
-                <TouchableOpacity>
-                  <Text style={styles.textButton}>{i18n.t('ue.detailUE.comments')}</Text>
+                <TouchableOpacity style={styles.favoris}>
+                  <Heart color={palette.white} secondaryColor={palette.black} size={40} />
                 </TouchableOpacity>
               </View>
 
-              <View
-                style={[
-                  styles.containerInfosSmall,
-                  changeColor('first', data.category),
-                  styles.margin,
-                ]}
-              >
+              <View style={[styles.containerInfosBig, changeColor('first', data.category)]}>
+                <Text style={styles.textCapital}>{data.diplomes}</Text>
+                <Text style={styles.textCapital}>{data.category}</Text>
+                <View style={styles.flexDirectionRow}>
+                  <View style={styles.flexDirectionRow}>{checkAntecedent(data.antecedents)}</View>
+                </View>
+                <View style={styles.flexDirectionRow}>{checkMinor(data.mineurs)}</View>
+              </View>
+
+              <View style={styles.containerSecond}>
+                <View
+                  style={[
+                    styles.containerInfosSmall,
+                    changeColor('second', data.category),
+                    styles.margin,
+                  ]}
+                >
+                  <Text style={styles.text}>{isAutumnAvailable(data.automne)}</Text>
+                  <Text style={styles.text}>{isSpringAvailable(data.printemps)}</Text>
+                  <Text style={styles.text}>{''}</Text>
+                  <Text style={styles.text}>
+                    {data.credits} {i18n.t('ue.detailUE.ECTS')}
+                  </Text>
+                </View>
+                <View style={[styles.containerInfosSmall, changeColor('second', data.category)]}>
+                  <View style={styles.flexDirectionRow}>
+                    <Text style={styles.textLeft}>{i18n.t('ue.detailUE.course')}</Text>
+                    <Text style={styles.textRight}>{data.cm} H</Text>
+                  </View>
+                  <View style={styles.flexDirectionRow}>
+                    <Text style={styles.textLeft}>TD</Text>
+                    <Text style={styles.textRight}>{data.td} H</Text>
+                  </View>
+                  <View style={styles.flexDirectionRow}>
+                    <Text style={styles.textLeft}>TP</Text>
+                    <Text style={styles.textRight}>{data.tp} H</Text>
+                  </View>
+                  <View style={styles.flexDirectionRow}>
+                    <Text style={styles.textLeft}>THE</Text>
+                    <Text style={styles.textRight}>{data.the} H</Text>
+                  </View>
+                </View>
+              </View>
+
+              <View style={[styles.containerInfosBig, changeColor('second', data.category)]}>
+                <Text style={styles.textTitle}>{i18n.t('ue.detailUE.objective')}</Text>
+                <Text style={styles.text}>{data.objectifs}</Text>
+              </View>
+
+              <View style={[styles.containerInfosBig, changeColor('third', data.category)]}>
+                <Text style={styles.textTitle}>{i18n.t('ue.detailUE.program')}</Text>
+                <Text style={styles.text}>{data.programme}</Text>
+              </View>
+
+              <View style={styles.containerSecond}>
+                <View style={[styles.button, changeColor('first', data.category), styles.margin]}>
+                  <TouchableOpacity onPress={() => onButtonPress(data.slug, data.code)}>
+                    <Text style={styles.textButton}>{i18n.t('ue.detailUE.comments')}</Text>
+                  </TouchableOpacity>
+                </View>
+
+                <View style={[styles.button, changeColor('first', data.category), styles.margin]}>
+                  <TouchableOpacity>
+                    <Text style={styles.textButton}>{i18n.t('ue.detailUE.annales')}</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+
+              <View style={[styles.button, changeColor('first', data.category)]}>
                 <TouchableOpacity>
-                  <Text style={styles.textButton}>{i18n.t('ue.detailUE.annales')}</Text>
+                  <Text style={styles.textButton}>{i18n.t('ue.detailUE.slot')}</Text>
                 </TouchableOpacity>
               </View>
-            </View>
 
-            <View style={[styles.containerInfosSmall, changeColor('first', data.category)]}>
-              <TouchableOpacity>
-                <Text style={styles.textButton}>{i18n.t('ue.detailUE.slot')}</Text>
-              </TouchableOpacity>
-            </View>
-
-            <View>
-              <Text>{''}</Text>
-            </View>
-          </ScrollView>
-        </View>
+              <View>
+                <Text>{''}</Text>
+              </View>
+            </ScrollView>
+          </View>
+        </SafeAreaView>
       </>
     );
   }

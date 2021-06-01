@@ -56,6 +56,9 @@ export const fr = {
       antecedents: 'Antécédents : ',
       minor: 'Mineur : ',
     },
+    commentsUE: {
+      noComments: 'Aucun Commentaire pour cette UE',
+    },
   },
   profile: {
     title: 'Mon Profil',
