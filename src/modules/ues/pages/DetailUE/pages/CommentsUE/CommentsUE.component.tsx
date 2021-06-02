@@ -51,7 +51,7 @@ export const UEComments: FunctionComponent = (route) => {
     return (
       <>
         <TouchableWithoutFeedback onPress={() => onButtonBackPress(paths.ue.detailUE.name)}>
-          <Header bigtitle={nameUE} />
+          <Header bigtitle={nameUE + ' - ' + i18n.t('ue.commentsUE.title')} />
         </TouchableWithoutFeedback>
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.container}>

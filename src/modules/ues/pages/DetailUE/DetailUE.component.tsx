@@ -163,8 +163,11 @@ export const UEDetail: FunctionComponent = (route) => {
   const ue = route.route.params.destination;
   const { data, error, isLoading } = useUEDetails(ue);
   const { navigate } = useNavigation();
-  const onButtonPress = (destination: string, nameUE: string) => {
+  const onButtonPressComments = (destination: string, nameUE: string) => {
     navigate(paths.ue.commentsUE.name, { destination, nameUE });
+  };
+  const onButtonPressAnnales = (destination: string, nameUE: string) => {
+    navigate(paths.ue.annalesUE.name, { destination, nameUE });
   };
   const onButtonBackPress = (destination: string) => {
     navigate(destination);
@@ -254,13 +257,13 @@ export const UEDetail: FunctionComponent = (route) => {
 
               <View style={styles.containerSecond}>
                 <View style={[styles.button, changeColor('first', data.category), styles.margin]}>
-                  <TouchableOpacity onPress={() => onButtonPress(data.slug, data.code)}>
+                  <TouchableOpacity onPress={() => onButtonPressComments(data.slug, data.code)}>
                     <Text style={styles.textButton}>{i18n.t('ue.detailUE.comments')}</Text>
                   </TouchableOpacity>
                 </View>
 
                 <View style={[styles.button, changeColor('first', data.category), styles.margin]}>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={() => onButtonPressAnnales(data.slug, data.code)}>
                     <Text style={styles.textButton}>{i18n.t('ue.detailUE.annales')}</Text>
                   </TouchableOpacity>
                 </View>

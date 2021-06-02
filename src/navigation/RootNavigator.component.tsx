@@ -9,12 +9,15 @@ import { LoginPage } from '../modules/authentification';
 import { useAuthentification } from '../modules/authentification/hooks/useAuthentification.hook';
 import { LoadingPage } from '../modules/authentification/pages/LoginPage/LoadingPage.component';
 import { CovoitNavigator } from '../modules/covoit/navigation';
+import Events from '../modules/EventsBundle/screens/Events.component';
 import i18n from '../modules/internationalization/service/i18n.service';
 import { ProfilePage } from '../modules/profile/pages';
 import { UENavigator } from '../modules/ues/navigation';
 import { FavorisButton } from '../modules/ues/pages/ChoiceUE/components/FavorisButton.component';
 import { UEDetail } from '../modules/ues/pages/DetailUE/DetailUE.component';
-import { UEComments } from '../modules/ues/pages/DetailUE/pages/comments/CommentsUE.component';
+import { UEAnnales } from '../modules/ues/pages/DetailUE/pages/AnnalesUE/AnnalesUE.component';
+import { UEAnnaleViewer } from '../modules/ues/pages/DetailUE/pages/AnnalesUEViewer/AnnalesUEViewer.component';
+import { UEComments } from '../modules/ues/pages/DetailUE/pages/CommentsUE/CommentsUE.component';
 import { MainMenu } from '../pages';
 import { palette } from '../theme/theme';
 import { NotificationsButton } from './components/NotificationsButton';
@@ -127,6 +130,20 @@ export const RootNavigator: FunctionComponent = () => {
               }}
             />
             <RootStack.Screen
+              name={paths.ue.annalesUE.name}
+              component={UEAnnales}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <RootStack.Screen
+              name={paths.ue.annalesUEViewer.name}
+              component={UEAnnaleViewer}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <RootStack.Screen
               name={paths.timetable.name}
               component={Blank_Page}
               options={{
@@ -144,7 +161,7 @@ export const RootNavigator: FunctionComponent = () => {
             />
             <RootStack.Screen
               name={paths.events.name}
-              component={Blank_Page}
+              component={Events}
               options={{
                 title: i18n.t('events.title'),
                 headerTitleAlign: 'center',

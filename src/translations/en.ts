@@ -57,7 +57,12 @@ export const en = {
       minor: 'Minor : ',
     },
     commentsUE: {
+      title: 'Comments',
       noComments: 'No comments for this UE',
+    },
+    annalesUE: {
+      title: 'Passed Papers',
+      noAnnales: 'No passed papers for this UE',
     },
   },
   profile: {

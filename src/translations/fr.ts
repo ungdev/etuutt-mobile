@@ -37,7 +37,7 @@ export const fr = {
       noUE: 'Aucune UE correspondante',
     },
     choiceUE: {
-      title: 'Choix Intelligent',
+      title: 'Choix',
     },
     historyUE: {
       title: 'Historique',
@@ -57,7 +57,12 @@ export const fr = {
       minor: 'Mineur : ',
     },
     commentsUE: {
+      title: 'Commentaires',
       noComments: 'Aucun Commentaire pour cette UE',
+    },
+    annalesUE: {
+      title: 'Annales',
+      noAnnales: 'Aucune Annale pour cette UE',
     },
   },
   profile: {

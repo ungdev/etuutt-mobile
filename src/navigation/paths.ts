@@ -13,6 +13,12 @@ export const paths = {
     commentsUE: {
       name: 'commentsUE',
     },
+    annalesUE: {
+      name: 'annalesUE',
+    },
+    annalesUEViewer: {
+      name: 'annalesUEViewer',
+    },
     tabs: {
       myUE: {
         name: 'myUE',
