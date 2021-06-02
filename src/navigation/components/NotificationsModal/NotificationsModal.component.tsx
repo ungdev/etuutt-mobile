@@ -1,34 +1,51 @@
 import React, { FunctionComponent } from 'react';
-import { Modal, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
-import { palette, radius, shadows, spacing } from '../../../theme/theme';
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { CloseCicle } from '../../../components/Icons';
+import { Marging, Padding, palette, radius, shadows, typos } from '../../../theme/theme';
 
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
+    width: '100%',
     justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: spacing * 4,
   },
   modalView: {
-    margin: spacing * 4,
+    width: '98%',
+    height: '20%',
+    alignSelf: 'center',
+    flexDirection: 'column',
     backgroundColor: palette.white,
     borderRadius: radius.medium,
-    padding: spacing * 9,
-    alignItems: 'center',
+    padding: Padding.large,
     ...shadows.lightShadow,
   },
-  openButton: {
-    backgroundColor: palette.purple,
+  closeButton: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    width: '20%',
+    alignItems: 'flex-end',
+    borderRadius: radius.medium,
+    padding: Padding.small,
+    margin: Marging.small,
+  },
+  logoutButton: {
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 0,
+    alignSelf: 'center',
+    width: '100%',
+    height: 50,
+    backgroundColor: palette.blue,
     color: palette.white,
     borderRadius: radius.medium,
-    padding: spacing * 2,
+    padding: Padding.medium,
+    margin: Marging.medium,
   },
   textStyle: {
-    color: palette.white,
-  },
-  modalText: {
-    marginBottom: spacing * 4,
     textAlign: 'center',
+    color: palette.white,
+    fontSize: typos.xs.fontSize,
   },
 });
 
@@ -47,13 +64,13 @@ export const NotificationsModal: FunctionComponent<NotificationsModalProps> = ({
     <Modal animationType="slide" transparent={true} visible={modalVisible}>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <Text style={styles.modalText}>Hello World!</Text>
-          <TouchableHighlight style={styles.openButton} onPress={onClose}>
-            <Text style={styles.textStyle}>Hide Modal</Text>
-          </TouchableHighlight>
-          <TouchableHighlight style={styles.openButton} onPress={logout}>
+          <TouchableOpacity style={styles.closeButton} onPress={onClose}>
+            <CloseCicle color={palette.blue} size={32} />
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.logoutButton} onPress={logout}>
             <Text style={styles.textStyle}>Se déconnecter</Text>
-          </TouchableHighlight>
+          </TouchableOpacity>
         </View>
       </View>
     </Modal>

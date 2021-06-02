@@ -1,4 +1,3 @@
-//Header 2 is created due to a problem with the second navigation "stack navigation" in artist bundle
 import React, { FunctionComponent } from 'react';
 import { Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -50,7 +49,7 @@ const styles = StyleSheet.create({
     }),
   },
   designtitle: {
-    fontSize: 20,
+    fontSize: 18,
     textAlign: 'center',
     fontWeight: 'bold',
     color: palette.white,

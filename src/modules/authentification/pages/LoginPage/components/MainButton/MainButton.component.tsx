@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { palette, typos } from '../../../../../../theme/theme';
+import { Padding, palette, radius, typos } from '../../../../../../theme/theme';
 
 interface MainButtonProps {
   onPress: () => void;
@@ -14,15 +14,14 @@ const styles = StyleSheet.create({
     color: palette.white,
   },
   container: {
-    height: 50,
+    height: 60,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
-    marginTop: 20,
-    width: 250,
-    borderRadius: 30,
-    backgroundColor: palette.curiousBlue,
+    width: '80%',
+    borderRadius: radius.medium,
+    padding: Padding.medium,
+    backgroundColor: palette.blue,
   },
 });
 

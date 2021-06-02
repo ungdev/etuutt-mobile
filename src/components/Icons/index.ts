@@ -11,6 +11,7 @@ export * from './components/Calendar.icon';
 export * from './components/CarSide.icon';
 export * from './components/CarSolid.icon';
 export * from './components/Clone.icon';
+export * from './components/CloseCircle.icon';
 export * from './components/Cloud.icon';
 export * from './components/Cog.icon';
 export * from './components/Cogs.icon';

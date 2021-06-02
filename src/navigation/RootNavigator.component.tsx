@@ -25,6 +25,7 @@ import { paths } from './paths';
 
 const RootStack = createStackNavigator();
 const iconSize = 28;
+const titleSize = 18;
 
 const styles = StyleSheet.create({
   header: {
@@ -62,6 +63,9 @@ export const RootNavigator: FunctionComponent = () => {
             name={'Login'}
             component={LoginPage}
             options={{
+              headerTitleStyle: {
+                fontSize: titleSize,
+              },
               title: i18n.t('login.title'),
               headerTitleAlign: 'center',
             }}
@@ -72,6 +76,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.mainMenu.name}
               component={MainMenu}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('mainMenu.title'),
                 headerTitleAlign: 'center',
                 headerLeft: () => (
@@ -88,6 +95,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.profile.name}
               component={ProfilePage}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('profile.title'),
                 headerTitleAlign: 'center',
               }}
@@ -96,6 +106,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.flash_infos.name}
               component={Blank_Page}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('flash_infos.title'),
                 headerTitleAlign: 'center',
               }}
@@ -104,6 +117,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.ue.name}
               component={UENavigator}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('ue.title'),
                 headerTitleAlign: 'center',
                 headerRight: () => (
@@ -147,6 +163,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.timetable.name}
               component={Blank_Page}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('timetable.title'),
                 headerTitleAlign: 'center',
               }}
@@ -155,6 +174,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.trombinoscope.name}
               component={Blank_Page}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('trombinoscope.title'),
                 headerTitleAlign: 'center',
               }}
@@ -163,6 +185,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.events.name}
               component={Events}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('events.title'),
                 headerTitleAlign: 'center',
               }}
@@ -180,6 +205,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.galerie.name}
               component={Blank_Page}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('galerie.title'),
                 headerTitleAlign: 'center',
               }}
@@ -188,6 +216,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.map.name}
               component={Blank_Page}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('map.title'),
                 headerTitleAlign: 'center',
               }}
@@ -196,6 +227,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.buckutt.name}
               component={Blank_Page}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('buckutt.title'),
                 headerTitleAlign: 'center',
               }}
@@ -204,6 +238,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.cumultimetable.name}
               component={Blank_Page}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('cumultimetable.title'),
                 headerTitleAlign: 'center',
               }}
@@ -212,6 +249,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.mails.name}
               component={Blank_Page}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('mails.title'),
                 headerTitleAlign: 'center',
               }}
@@ -220,6 +260,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.wiki.name}
               component={Blank_Page}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('wiki.title'),
                 headerTitleAlign: 'center',
               }}
@@ -228,6 +271,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.cloud.name}
               component={Blank_Page}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('cloud.title'),
                 headerTitleAlign: 'center',
               }}
@@ -236,6 +282,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.bu.name}
               component={Blank_Page}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('bu.title'),
                 headerTitleAlign: 'center',
               }}
@@ -244,6 +293,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.downdetector.name}
               component={Blank_Page}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('downdetector.title'),
                 headerTitleAlign: 'center',
               }}
@@ -252,6 +304,9 @@ export const RootNavigator: FunctionComponent = () => {
               name={paths.covoit.name}
               component={CovoitNavigator}
               options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
                 title: i18n.t('covoit.title'),
                 headerTitleAlign: 'center',
               }}
