@@ -1,6 +1,14 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { FunctionComponent, useEffect } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { Heart } from '../../../../components/Icons';
 import { LoadingPage } from '../../../../components/LoadingPage';
@@ -157,6 +165,25 @@ const styles = StyleSheet.create({
   flexDirectionRow: {
     flexDirection: 'row',
   },
+  containerNoInfos: {
+    flex: 1,
+    width: '100%',
+    flexDirection: 'column',
+    backgroundColor: palette.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textNoInfos: {
+    justifyContent: 'center',
+    textAlign: 'center',
+    color: palette.black,
+    padding: Padding.large,
+  },
+  image: {
+    resizeMode: 'cover',
+    height: 200,
+    width: 200,
+  },
 });
 
 export const UEDetail: FunctionComponent = (route) => {
@@ -172,7 +199,6 @@ export const UEDetail: FunctionComponent = (route) => {
   const onButtonBackPress = (destination: string) => {
     navigate(destination);
   };
-
   useEffect(() => {
     if (error !== undefined) {
       //TODO service Alert(error)
@@ -182,7 +208,19 @@ export const UEDetail: FunctionComponent = (route) => {
   if (isLoading === true) {
     return <LoadingPage />;
   } else if (data === undefined) {
-    return <View />;
+    return (
+      <>
+        <TouchableWithoutFeedback onPress={() => onButtonBackPress(paths.ue.name)}>
+          <Header bigtitle={ue} />
+        </TouchableWithoutFeedback>
+        <SafeAreaView style={styles.safeArea}>
+          <View style={styles.containerNoInfos}>
+            <Image style={styles.image} source={require('../../../../../assets/homer_doh.png')} />
+            <Text style={styles.textNoInfos}>{i18n.t('ue.detailUE.noInfos')}</Text>
+          </View>
+        </SafeAreaView>
+      </>
+    );
   } else {
     return (
       <>

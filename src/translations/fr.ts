@@ -55,6 +55,8 @@ export const fr = {
       spring: 'Printemps',
       antecedents: 'Antécédents : ',
       minor: 'Mineur : ',
+      noInfos:
+        "Désolé, nous n'avons pas récupéré d'informations sur cette UE mais on est sur le coup !",
     },
     commentsUE: {
       title: 'Commentaires',

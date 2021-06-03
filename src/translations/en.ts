@@ -55,6 +55,7 @@ export const en = {
       spring: 'Spring',
       antecedents: 'Antecedents : ',
       minor: 'Minor : ',
+      noInfos: 'Sorry, we did not get any information about this UE but we are on it!',
     },
     commentsUE: {
       title: 'Comments',
