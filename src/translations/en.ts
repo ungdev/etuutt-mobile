@@ -27,6 +27,12 @@ export const en = {
       covoit: 'Carpooling',
     },
   },
+  settings: {
+    title: 'Settings',
+  },
+  customNotifications: {
+    title: 'Notifications',
+  },
   ue: {
     myUE: {
       title: 'My UEs',

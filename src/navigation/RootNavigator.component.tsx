@@ -11,7 +11,11 @@ import { LoadingPage } from '../modules/authentification/pages/LoginPage/Loading
 import { CovoitNavigator } from '../modules/covoit/navigation';
 import Events from '../modules/EventsBundle/screens/Events.component';
 import i18n from '../modules/internationalization/service/i18n.service';
+import { NotificationsButton } from '../modules/notifications/pages/CustomNotifications/components/NotificationsButton/index';
+import { CustomNotifications } from '../modules/notifications/pages/CustomNotifications/CustomNotifications.component';
 import { ProfilePage } from '../modules/profile/pages';
+import { SettingsPage } from '../modules/settings';
+import { SettingsButton } from '../modules/settings/components/SettingsButton';
 import { UENavigator } from '../modules/ues/navigation';
 import { FavorisButton } from '../modules/ues/pages/ChoiceUE/components/FavorisButton.component';
 import { UEDetail } from '../modules/ues/pages/DetailUE/DetailUE.component';
@@ -20,7 +24,6 @@ import { UEAnnaleViewer } from '../modules/ues/pages/DetailUE/pages/AnnalesUEVie
 import { UEComments } from '../modules/ues/pages/DetailUE/pages/CommentsUE/CommentsUE.component';
 import { MainMenu } from '../pages';
 import { palette } from '../theme/theme';
-import { NotificationsButton } from './components/NotificationsButton';
 import { paths } from './paths';
 
 const RootStack = createStackNavigator();
@@ -87,7 +90,7 @@ export const RootNavigator: FunctionComponent = () => {
                   />
                 ),
                 headerRight: () => (
-                  <NotificationsButton image={<Cog color={palette.white} size={iconSize} />} />
+                  <SettingsButton image={<Cog color={palette.white} size={iconSize} />} />
                 ),
               }}
             />
@@ -100,6 +103,42 @@ export const RootNavigator: FunctionComponent = () => {
                 },
                 title: i18n.t('profile.title'),
                 headerTitleAlign: 'center',
+              }}
+            />
+            <RootStack.Screen
+              name={paths.settings.name}
+              component={SettingsPage}
+              options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
+                title: i18n.t('settings.title'),
+                headerTitleAlign: 'center',
+              }}
+            />
+            <RootStack.Screen
+              name={paths.customNotifications.name}
+              component={CustomNotifications}
+              options={{
+                headerTitleStyle: {
+                  fontSize: titleSize,
+                },
+                title: i18n.t('customNotifications.title'),
+                headerTitleAlign: 'center',
+                cardStyleInterpolator: ({ current, layouts }) => {
+                  return {
+                    cardStyle: {
+                      transform: [
+                        {
+                          translateX: current.progress.interpolate({
+                            inputRange: [0, 1],
+                            outputRange: [-layouts.screen.width, 0],
+                          }),
+                        },
+                      ],
+                    },
+                  };
+                },
               }}
             />
             <RootStack.Screen

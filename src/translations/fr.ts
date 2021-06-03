@@ -27,6 +27,12 @@ export const fr = {
       covoit: 'Covoiturage',
     },
   },
+  settings: {
+    title: 'Préférences',
+  },
+  customNotifications: {
+    title: 'Notifications',
+  },
   ue: {
     myUE: {
       title: 'Mes UEs',
