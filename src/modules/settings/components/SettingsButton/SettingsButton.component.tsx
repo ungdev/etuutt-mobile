@@ -1,7 +1,7 @@
+import { useNavigation } from '@react-navigation/core';
 import React, { FunctionComponent, ReactNode } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { SettingsModal } from '../SettingsModal/SettingsModal.component';
-import { useSettingsNavigation } from './useSettingsNavigation.hook';
+import { paths } from '../../../../navigation/paths';
 
 const styles = StyleSheet.create({
   buttonHeader: {
@@ -15,12 +15,14 @@ interface SettingsButtonProps {
 }
 
 export const SettingsButton: FunctionComponent<SettingsButtonProps> = ({ image }) => {
-  const { hideSettings, isVisible, showSettings } = useSettingsNavigation();
+  const { navigate } = useNavigation();
+  const onButtonPressComments = () => {
+    navigate(paths.settings.name);
+  };
 
   return (
     <View>
-      <SettingsModal onClose={hideSettings} isVisible={isVisible} />
-      <TouchableOpacity onPress={showSettings} style={styles.buttonHeader}>
+      <TouchableOpacity onPress={() => onButtonPressComments()} style={styles.buttonHeader}>
         {image}
       </TouchableOpacity>
     </View>
