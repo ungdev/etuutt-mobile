@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
   itemUes: {
     borderRadius: radius.extraSmall,
-    backgroundColor: palette.red,
+    backgroundColor: palette.curiousBlue,
     width: '100%',
     height: 25,
     justifyContent: 'center',

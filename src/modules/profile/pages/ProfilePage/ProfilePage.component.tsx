@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import useAxios from 'axios-hooks';
+import moment from 'moment';
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import {
   AdressCard,
   BirthdayCake,
@@ -13,22 +14,30 @@ import {
 import { LoadingPage } from '../../../../components/LoadingPage';
 import { ProfilePicture } from '../../../../components/ProfilePicture';
 import { palette, spacing, typos } from '../../../../theme/theme';
+import config from '../../../api/config';
 import i18n from '../../../internationalization/service/i18n.service';
 import { ProfileSection } from './components/ProfileSection/ProfileSection.component';
 import { ProfileUEList } from './components/ProfileSection/ProfileUEList.component';
 
-const PROFILE_PICTURE_SIZE = 120;
+const PROFILE_PICTURE_SIZE = 130;
 const iconSize = 50;
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: palette.blue,
+  },
   container: {
     flex: 1,
+    width: '100%',
     backgroundColor: palette.white,
   },
-  contentContainer: {
-    alignItems: 'center',
+  mainInfos: {
     paddingTop: 20,
-    paddingHorizontal: spacing * 3,
+    alignItems: 'center',
+    width: '98%',
+    flexDirection: 'column',
+    alignSelf: 'center',
   },
   fullName: {
     ...typos.h2,
@@ -73,50 +82,60 @@ export const ProfilePage: FunctionComponent = () => {
   if (isLoading === true) {
     return <LoadingPage />;
   } else {
+    const date = moment(data?.data.birthday.date).format('DD/MM/YYYY');
+    const image = data?.data._links.find((link) => link.rel === 'user.image').uri;
+    const image_uri = `${config.etu_utt_baseuri}${image}`;
+
     return (
-      <View style={styles.container}>
-        <ScrollView contentContainerStyle={styles.contentContainer}>
-          <ProfilePicture size={PROFILE_PICTURE_SIZE} imageUri="" />
-          <Text style={styles.fullName}>{data?.data.fullName}</Text>
-          <View style={styles.separator} />
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.container}>
+          <ScrollView style={styles.container}>
+            <View style={styles.mainInfos}>
+              <ProfilePicture size={PROFILE_PICTURE_SIZE} imageUri={image_uri} />
+              <Text style={styles.fullName}>{data?.data.fullName}</Text>
+              <View style={styles.separator} />
 
-          <ProfileSection
-            title={i18n.t('profile.section.studentNumber')}
-            value={data?.data.studentId}
-            icon={<AdressCard color={palette.white} size={iconSize} />}
-          />
+              <ProfileSection
+                title={i18n.t('profile.section.studentNumber')}
+                value={data?.data.studentId}
+                icon={<AdressCard color={palette.white} size={iconSize} />}
+              />
 
-          <ProfileSection
-            title={i18n.t('profile.section.branch')}
-            value={data?.data.branch}
-            icon={<University color={palette.white} size={iconSize} />}
-          />
+              <ProfileSection
+                title={i18n.t('profile.section.branch')}
+                value={data?.data.branch}
+                icon={<University color={palette.white} size={iconSize} />}
+              />
 
-          <ProfileSection
-            title={i18n.t('profile.section.email')}
-            value={data?.data.email}
-            icon={<Envelope color={palette.white} size={iconSize} />}
-          />
+              <ProfileSection
+                title={i18n.t('profile.section.email')}
+                value={data?.data.email}
+                icon={<Envelope color={palette.white} size={iconSize} />}
+              />
 
-          <ProfileSection
-            title={i18n.t('profile.section.gender')}
-            value={data?.data.sex === 'male' ? 'Homme' : 'Femme'}
-            icon={<MaleFemale color="transparent" secondaryColor={palette.white} size={iconSize} />}
-          />
+              <ProfileSection
+                title={i18n.t('profile.section.gender')}
+                value={data?.data.sex === 'male' ? 'Homme' : 'Femme'}
+                icon={
+                  <MaleFemale color="transparent" secondaryColor={palette.white} size={iconSize} />
+                }
+              />
 
-          <ProfileSection
-            title={i18n.t('profile.section.birthdate')}
-            value="14/01/2000"
-            icon={<BirthdayCake color={palette.white} size={iconSize} />}
-          />
+              <ProfileSection
+                title={i18n.t('profile.section.birthdate')}
+                value={date}
+                icon={<BirthdayCake color={palette.white} size={iconSize} />}
+              />
 
-          <ProfileUEList
-            title={i18n.t('profile.section.uelist')}
-            value={data?.data.uvs}
-            icon={<ToolBox color={palette.white} size={iconSize} />}
-          />
-        </ScrollView>
-      </View>
+              <ProfileUEList
+                title={i18n.t('profile.section.uelist')}
+                value={data?.data.uvs}
+                icon={<ToolBox color={palette.white} size={iconSize} />}
+              />
+            </View>
+          </ScrollView>
+        </View>
+      </SafeAreaView>
     );
   }
 };
