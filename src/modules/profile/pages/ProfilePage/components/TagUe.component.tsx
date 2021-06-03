@@ -1,17 +1,9 @@
-import React, { FunctionComponent } from 'react';
+import { useNavigation } from '@react-navigation/core';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { paths } from '../../../../../navigation/paths';
 import { palette, radius } from '../../../../../theme/theme';
-
-export const Tag: FunctionComponent = (item) => {
-  return (
-    <View style={styles.containerItem}>
-      <TouchableOpacity style={styles.itemUes}>
-        <Text style={styles.textUEs}>{item.children}</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
 
 const styles = StyleSheet.create({
   containerItem: {
@@ -30,3 +22,19 @@ const styles = StyleSheet.create({
     color: palette.white,
   },
 });
+
+export const Tag: FunctionComponent = (item) => {
+  const { navigate } = useNavigation();
+  const onPress = (destination: ReactNode) => {
+    navigate(paths.ue.detailUE.name, { destination });
+  };
+  const code = item.children;
+
+  return (
+    <View style={styles.containerItem}>
+      <TouchableOpacity style={styles.itemUes} onPress={() => onPress(code)}>
+        <Text style={styles.textUEs}>{item.children}</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};

@@ -189,15 +189,15 @@ const styles = StyleSheet.create({
 export const UEDetail: FunctionComponent = (route) => {
   const ue = route.route.params.destination;
   const { data, error, isLoading } = useUEDetails(ue);
-  const { navigate } = useNavigation();
+  const { navigate, goBack } = useNavigation();
   const onButtonPressComments = (destination: string, nameUE: string) => {
     navigate(paths.ue.commentsUE.name, { destination, nameUE });
   };
   const onButtonPressAnnales = (destination: string, nameUE: string) => {
     navigate(paths.ue.annalesUE.name, { destination, nameUE });
   };
-  const onButtonBackPress = (destination: string) => {
-    navigate(destination);
+  const onButtonBackPress = () => {
+    goBack();
   };
   useEffect(() => {
     if (error !== undefined) {
@@ -210,7 +210,7 @@ export const UEDetail: FunctionComponent = (route) => {
   } else if (data === undefined) {
     return (
       <>
-        <TouchableWithoutFeedback onPress={() => onButtonBackPress(paths.ue.name)}>
+        <TouchableWithoutFeedback onPress={() => onButtonBackPress()}>
           <Header bigtitle={ue} />
         </TouchableWithoutFeedback>
         <SafeAreaView style={styles.safeArea}>
@@ -224,7 +224,7 @@ export const UEDetail: FunctionComponent = (route) => {
   } else {
     return (
       <>
-        <TouchableWithoutFeedback onPress={() => onButtonBackPress(paths.ue.name)}>
+        <TouchableWithoutFeedback onPress={() => onButtonBackPress()}>
           <Header bigtitle={data.code} />
         </TouchableWithoutFeedback>
         <SafeAreaView style={styles.safeArea}>
