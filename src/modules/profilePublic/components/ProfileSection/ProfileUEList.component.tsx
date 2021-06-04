@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { HorizontalSpacer } from '../../../../components/HorizontalSpacer';
 import { palette, radius, spacing, typos } from '../../../../theme/theme';
+import i18n from '../../../internationalization/service/i18n.service';
 import { UeProfileSectionProps } from '../../interfaces/ueProfileSection.interface';
 import { Tag } from '../TagUe.component';
 
@@ -29,6 +30,9 @@ const styles = StyleSheet.create({
     marginTop: 5,
     alignItems: 'center',
   },
+  noUE: {
+    color: palette.white,
+  },
 });
 
 export const ProfileUEList: FunctionComponent<UeProfileSectionProps> = ({ title, value, icon }) => {
@@ -41,11 +45,19 @@ export const ProfileUEList: FunctionComponent<UeProfileSectionProps> = ({ title,
           <Text style={styles.title}>{title}</Text>
           <View style={styles.ues}>
             {value?.map((item) => {
-              return (
-                <Tag key={item} code={item}>
-                  {item}
-                </Tag>
-              );
+              if (item !== '') {
+                return (
+                  <Tag key={item} code={item}>
+                    {item}
+                  </Tag>
+                );
+              } else {
+                return (
+                  <Text style={styles.noUE} key={item}>
+                    {i18n.t('profile.section.noUE')}
+                  </Text>
+                );
+              }
             })}
           </View>
         </View>

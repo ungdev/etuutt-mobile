@@ -81,6 +81,7 @@ export const en = {
       gender: 'Gender',
       birthdate: 'Birthdate',
       uelist: "UE's List",
+      noUE: 'No UE',
     },
   },
   flash_infos: {
@@ -171,6 +172,6 @@ export const en = {
     askCall: 'Do you want to call or send a message?',
     actionCall: 'Call',
     actionMessage: 'Message',
-    askSendMail: 'Do you want to send an email to this association?',
+    askSendMail: 'Do you want to send an email to this address?',
   },
 };

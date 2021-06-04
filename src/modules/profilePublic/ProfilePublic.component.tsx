@@ -1,8 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import useAxios from 'axios-hooks';
-import moment from 'moment';
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Alert, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import {
   AdressCard,
@@ -20,6 +19,7 @@ import { Header } from '../assos/pages/components/Header.component';
 import i18n from '../internationalization/service/i18n.service';
 import { ProfileSection } from './components/ProfileSection/ProfileSection.component';
 import { ProfileUEList } from './components/ProfileSection/ProfileUEList.component';
+import { convertDate } from './services/convertDate.service';
 
 const PROFILE_PICTURE_SIZE = 130;
 const iconSize = 50;
@@ -88,7 +88,7 @@ export const ProfilePublic: FunctionComponent = (route) => {
   if (isLoading === true) {
     return <LoadingPage />;
   } else {
-    const date = moment(data?.data.birthday).format('DD/MM/YYYY');
+    const date = convertDate(data?.data.birthday);
     const image = data?.data._links.find((link) => link.rel === 'user.image').uri;
     const image_uri = `${config.etu_utt_baseuri}${image}`;
 
@@ -102,7 +102,7 @@ export const ProfilePublic: FunctionComponent = (route) => {
             <ScrollView style={styles.container}>
               <View style={styles.mainInfos}>
                 <ProfilePicture size={PROFILE_PICTURE_SIZE} imageUri={image_uri} />
-                <Text style={styles.fullName}>{data?.data.fullName}</Text>
+
                 <View style={styles.separator} />
 
                 <ProfileSection
@@ -113,7 +113,7 @@ export const ProfilePublic: FunctionComponent = (route) => {
 
                 <ProfileSection
                   title={i18n.t('profile.section.branch')}
-                  value={data?.data.branch}
+                  value={data?.data.branch + ' ' + data?.data.level}
                   icon={<University color={palette.white} size={iconSize} />}
                 />
 
@@ -121,6 +121,7 @@ export const ProfilePublic: FunctionComponent = (route) => {
                   title={i18n.t('profile.section.email')}
                   value={data?.data.email}
                   icon={<Envelope color={palette.white} size={iconSize} />}
+                  onPress="mail"
                 />
 
                 <ProfileSection

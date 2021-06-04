@@ -170,15 +170,20 @@ export const AssoDetail: FunctionComponent = (route) => {
                   onPress={() => {}}
                 />
               </View>
-              {data.data.mail !== '' && data.data.phone !== '' && data.data.website !== '' && (
-                <View style={styles.contactsContainer}>
-                  <ContactsAssos
-                    mail={data.data.mail}
-                    phone={data.data.phone}
-                    website={data.data.website}
-                  />
-                </View>
-              )}
+              {data.data.mail !== '' &&
+                data.data.phone !== '' &&
+                data.data.website !== '' &&
+                data.data.mail !== null &&
+                data.data.phone !== null &&
+                data.data.website !== null && (
+                  <View style={styles.contactsContainer}>
+                    <ContactsAssos
+                      mail={data.data.mail}
+                      phone={data.data.phone}
+                      website={data.data.website}
+                    />
+                  </View>
+                )}
               {data.data.description !== null && data.data.description !== '' && (
                 <View style={styles.descriptionContainer}>
                   <DescriptionAssos description={data.data.description} />
