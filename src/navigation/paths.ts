@@ -11,6 +11,9 @@ export const paths = {
   profile: {
     name: 'profile',
   },
+  profilePublic: {
+    name: 'profilePublic',
+  },
   ue: {
     name: 'ue',
     detailUE: {

@@ -1,8 +1,9 @@
+import { useNavigation } from '@react-navigation/core';
 import React, { FunctionComponent } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { IconProps } from '../../../../../../components/Icons/Icons.interface';
+import { paths } from '../../../../../../navigation/paths';
 import { Padding, palette, typos } from '../../../../../../theme/theme';
-import { checkFunction } from '../../services/checkFunction.service';
 import { translateRole } from '../../services/translateRole.service';
 export const LIST_ITEM_HEIGHT = 70;
 
@@ -64,15 +65,16 @@ export const ListItemAccordion: FunctionComponent<ListItemAccordionProps> = ({
   title,
   value,
 }) => {
+  const { navigate } = useNavigation();
+  const onGoToProfilPublic = (destination: string) => {
+    navigate(paths.profilePublic.name, { destination });
+  };
   if (value === null || value === '' || value === 'undefined') {
     return null;
   } else if (Icon === undefined) {
     return (
       <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.itemContainer}
-          onPress={() => checkFunction('goProfilPublic', pseudo)}
-        >
+        <TouchableOpacity style={styles.itemContainer} onPress={() => onGoToProfilPublic(pseudo)}>
           <View style={styles.infosContainerWithoutIcon}>
             <Text style={styles.title}>{translateRole(title)}</Text>
             <Text style={styles.text}>{value}</Text>
@@ -83,10 +85,7 @@ export const ListItemAccordion: FunctionComponent<ListItemAccordionProps> = ({
   } else {
     return (
       <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.itemContainer}
-          onPress={() => checkFunction('goProfilPublic', pseudo)}
-        >
+        <TouchableOpacity style={styles.itemContainer} onPress={() => onGoToProfilPublic(pseudo)}>
           <View style={styles.logoContainer}>
             <Icon size={iconSize} color={palette.white} />
           </View>

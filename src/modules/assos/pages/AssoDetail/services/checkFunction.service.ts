@@ -9,10 +9,6 @@ export const checkFunction = (onPress: string, value: string) => {
     onSendMail(value);
   } else if (onPress === 'website') {
     onOpenWebsite(value);
-  } else if (onPress === 'goProfilPublic') {
-    console.log('login=', value);
-
-    return null;
   } else {
     return null;
   }

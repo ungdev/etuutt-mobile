@@ -14,6 +14,7 @@ import i18n from '../modules/internationalization/service/i18n.service';
 import { NotificationsButton } from '../modules/notifications/pages/CustomNotifications/components/NotificationsButton/index';
 import { CustomNotifications } from '../modules/notifications/pages/CustomNotifications/CustomNotifications.component';
 import { ProfilePage } from '../modules/profile/pages';
+import { ProfilePublic } from '../modules/profilePublic';
 import { SettingsPage } from '../modules/settings';
 import { SettingsButton } from '../modules/settings/components/SettingsButton';
 import { UENavigator } from '../modules/ues/navigation';
@@ -151,6 +152,13 @@ export const RootNavigator: FunctionComponent = () => {
                 },
                 title: i18n.t('flash_infos.title'),
                 headerTitleAlign: 'center',
+              }}
+            />
+            <RootStack.Screen
+              name={paths.profilePublic.name}
+              component={ProfilePublic}
+              options={{
+                headerShown: false,
               }}
             />
             <RootStack.Screen
