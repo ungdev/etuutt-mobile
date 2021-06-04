@@ -1,10 +1,8 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { FunctionComponent, useEffect } from 'react';
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Arobase, GlobeWeb } from '../../../../components/Icons';
-import { Phone } from '../../../../components/Icons/components/Phone.icon';
 import { LoadingPage } from '../../../../components/LoadingPage';
 import { paths } from '../../../../navigation/paths';
 import { Marging, Padding, palette, radius } from '../../../../theme/theme';
@@ -12,13 +10,15 @@ import i18n from '../../../internationalization/service/i18n.service';
 import { useDetailsAsso } from '../../hooks/useDetailsAsso.hook';
 import { getImageLink } from '../AllAssos/services/getImageLink.service';
 import { Header } from '../components/Header.component';
-import { Accordion } from './components/Accordion/Accordion.component';
-import { ListAccordionMembers } from './components/Accordion/components/ListAccordionMembers.component';
-import { ListSimple } from './components/ListSimple/ListSimple.component';
+import { ContactsAssos } from './components/Contacts/ContactsAssos.component';
+import { DescriptionAssos } from './components/Description/DescriptionAssos.component';
+import { ListAccordionMembers } from './components/Members/ListAccordionMembers.component';
+import { findPresident } from './services/findPresident.service';
 
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
+    backgroundColor: palette.blue,
   },
   container: {
     flex: 1,
@@ -119,20 +119,9 @@ export const AssoDetail: FunctionComponent = (route) => {
     groups = groups.sort((a, b) => {
       if (a.position > b.position) return 1;
       if (a.position < b.position) return -1;
+
       return 0;
     });
-
-    const findPresident = (members) => {
-      let resultat = 'null';
-      members.forEach((member) => {
-        if (member.role === 'president') {
-          resultat = member._embed.user.fullName;
-        }
-      });
-      return resultat;
-    };
-
-    const president = findPresident(members);
 
     return (
       <>
@@ -141,82 +130,68 @@ export const AssoDetail: FunctionComponent = (route) => {
         >
           <Header bigtitle={data.data.name} />
         </TouchableWithoutFeedback>
-        <View style={styles.container}>
-          <ScrollView style={styles.safeArea}>
-            <View style={styles.mainInfos}>
-              <View style={styles.imageContainer}>
-                <Image
-                  source={{
-                    uri: getImageLink(data.data),
-                  }}
-                  style={styles.logo}
+
+        <SafeAreaView style={styles.safeArea}>
+          <View style={styles.container}>
+            <ScrollView style={styles.container}>
+              <View style={styles.mainInfos}>
+                <View style={styles.imageContainer}>
+                  <Image
+                    source={{
+                      uri: getImageLink(data.data),
+                    }}
+                    style={styles.logo}
+                  />
+                </View>
+
+                <View style={styles.mainInfosContainer}>
+                  <View style={styles.mainInfosPresident}>
+                    <Text style={styles.title}>{i18n.t('assos.assoDetail.role.president')}</Text>
+                    <Text style={styles.text}>{findPresident(members)}</Text>
+                  </View>
+                  <View style={styles.mainInfosAskJoin}>
+                    <TouchableOpacity>
+                      <Text style={styles.text}>{i18n.t('assos.assoDetail.askToJoin')}</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.logoSocialContainer}>
+                <Icon
+                  style={styles.socialLogo}
+                  name="logo-facebook"
+                  color={palette.curiousBlue}
+                  onPress={() => {}}
+                />
+                <Icon
+                  style={styles.socialLogo}
+                  name="logo-instagram"
+                  color={palette.curiousBlue}
+                  onPress={() => {}}
                 />
               </View>
-
-              <View style={styles.mainInfosContainer}>
-                <View style={styles.mainInfosPresident}>
-                  <Text style={styles.title}>Président</Text>
-                  <Text style={styles.text}>{president}</Text>
+              {data.data.mail !== '' && data.data.phone !== '' && data.data.website !== '' && (
+                <View style={styles.contactsContainer}>
+                  <ContactsAssos
+                    mail={data.data.mail}
+                    phone={data.data.phone}
+                    website={data.data.website}
+                  />
                 </View>
-                <View style={styles.mainInfosAskJoin}>
-                  <TouchableOpacity>
-                    <Text style={styles.text}>Demander à rejoindre</Text>
-                  </TouchableOpacity>
+              )}
+              {data.data.description !== null && data.data.description !== '' && (
+                <View style={styles.descriptionContainer}>
+                  <DescriptionAssos description={data.data.description} />
                 </View>
-              </View>
-            </View>
-            <View style={styles.logoSocialContainer}>
-              <Icon
-                style={styles.socialLogo}
-                name="logo-facebook"
-                color={palette.curiousBlue}
-                onPress={() => {}}
-              />
-              <Icon
-                style={styles.socialLogo}
-                name="logo-twitter"
-                color={palette.curiousBlue}
-                onPress={() => {}}
-              />
-            </View>
-            <View style={styles.contactsContainer}>
-              <Accordion
-                title={i18n.t('assos.assoDetail.contacts')}
-                list={[
-                  {
-                    icon: () => <Phone color={palette.white} size={40} />,
-                    name: i18n.t('assos.assoDetail.phone'),
-                    value: data.data.phone,
-                    onPress: 'call',
-                  },
-                  {
-                    icon: () => <GlobeWeb color={palette.white} size={40} />,
-                    name: i18n.t('assos.assoDetail.website'),
-                    value: data.data.website,
-                    onPress: 'website',
-                  },
-                  {
-                    icon: () => <Arobase color={palette.white} size={45} />,
-                    name: i18n.t('assos.assoDetail.mail'),
-                    value: data.data.mail,
-                    onPress: 'mail', //laisser le mail en dernier (comme une asso à toujours un mail, ça permet de garder les angles arrondi du dernier item de l'accordion)
-                  },
-                ]}
-              />
-            </View>
-            <View style={styles.descriptionContainer}>
-              <ListSimple
-                title={i18n.t('assos.assoDetail.description')}
-                value={data.data.descriptionShort}
-              />
-            </View>
-            {groups.map((group) => (
-              <View style={styles.membersContainer} key={group.id}>
-                <ListAccordionMembers id={group.id} title={group.name} items={members} />
-              </View>
-            ))}
-          </ScrollView>
-        </View>
+              )}
+              {groups.map((group) => (
+                <View style={styles.membersContainer} key={group.id}>
+                  <ListAccordionMembers id={group.id} title={group.name} items={members} />
+                </View>
+              ))}
+            </ScrollView>
+          </View>
+        </SafeAreaView>
       </>
     );
   }

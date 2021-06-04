@@ -104,11 +104,23 @@ export const en = {
       title: 'My Assos',
     },
     assoDetail: {
+      noPresident: 'No President',
+      askToJoin: 'Ask To Join',
       contacts: 'Contacts',
       mail: 'Mail',
       phone: 'Phone',
       website: 'Website',
       description: 'Description',
+      role: {
+        manager: 'Manager',
+        president: 'President',
+        vice_president: 'Vice President',
+        secretary: 'Secretary',
+        vice_secretary: 'Vice Secretary',
+        treasurer: 'Treasurer',
+        vice_treasurer: 'Vice Treasurer',
+        member: 'Member',
+      },
     },
   },
   galerie: {

@@ -1,28 +1,31 @@
 import React, { FunctionComponent } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { IconProps } from '../../../../../../../components/Icons/Icons.interface';
-import { Padding, palette } from '../../../../../../../theme/theme';
-import { checkFunction } from '../../../services/checkFunction.service';
-export const LIST_ITEM_HEIGHT = 57;
+import { IconProps } from '../../../../../../components/Icons/Icons.interface';
+import { Padding, palette, typos } from '../../../../../../theme/theme';
+import { checkFunction } from '../../services/checkFunction.service';
+import { translateRole } from '../../services/translateRole.service';
+export const LIST_ITEM_HEIGHT = 70;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: palette.blue,
+    backgroundColor: palette.curiousBlue,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: Padding.small,
-    borderTopWidth: 1,
+    paddingVertical: Padding.large,
+    borderBottomWidth: 1,
     borderColor: palette.white,
     height: LIST_ITEM_HEIGHT,
     width: '100%',
   },
   title: {
-    fontSize: 16,
+    fontSize: typos.xs.fontSize,
+    fontWeight: 'bold',
     color: palette.white,
   },
   text: {
-    fontSize: 14,
+    fontSize: typos.xs.fontSize,
     color: palette.white,
   },
   itemContainer: {
@@ -48,41 +51,30 @@ const styles = StyleSheet.create({
 const iconSize = '90%';
 
 interface ListItemAccordionProps {
-  onPress: string;
+  pseudo: string;
   Icon?: FunctionComponent<IconProps>;
   title?: string;
   value: string;
   key?: number;
-  isLast?: boolean;
 }
 
 export const ListItemAccordion: FunctionComponent<ListItemAccordionProps> = ({
-  onPress,
+  pseudo,
   Icon,
   title,
   value,
-  isLast,
 }) => {
-  const bottomRadius = isLast ? 8 : 0;
   if (value === null || value === '' || value === 'undefined') {
     return null;
   } else if (Icon === undefined) {
     return (
-      <View
-        style={[
-          styles.container,
-          {
-            borderBottomLeftRadius: bottomRadius,
-            borderBottomRightRadius: bottomRadius,
-          },
-        ]}
-      >
+      <View style={styles.container}>
         <TouchableOpacity
           style={styles.itemContainer}
-          onPress={() => checkFunction(onPress, value)}
+          onPress={() => checkFunction('goProfilPublic', pseudo)}
         >
           <View style={styles.infosContainerWithoutIcon}>
-            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.title}>{translateRole(title)}</Text>
             <Text style={styles.text}>{value}</Text>
           </View>
         </TouchableOpacity>
@@ -90,18 +82,10 @@ export const ListItemAccordion: FunctionComponent<ListItemAccordionProps> = ({
     );
   } else {
     return (
-      <View
-        style={[
-          styles.container,
-          {
-            borderBottomLeftRadius: bottomRadius,
-            borderBottomRightRadius: bottomRadius,
-          },
-        ]}
-      >
+      <View style={styles.container}>
         <TouchableOpacity
           style={styles.itemContainer}
-          onPress={() => checkFunction(onPress, value)}
+          onPress={() => checkFunction('goProfilPublic', pseudo)}
         >
           <View style={styles.logoContainer}>
             <Icon size={iconSize} color={palette.white} />

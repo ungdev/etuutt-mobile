@@ -105,11 +105,23 @@ export const fr = {
       title: 'Mes Assos',
     },
     assoDetail: {
+      noPresident: 'Aucun Président',
+      askToJoin: 'Demander à Rejoindre',
       contacts: 'Contacts',
       mail: 'E-Mail',
       phone: 'Téléphone',
       website: 'Site Internet',
       description: 'Description',
+      role: {
+        manager: 'Responable',
+        president: 'Président',
+        vice_president: 'Vice Président',
+        secretary: 'Secrétaire',
+        vice_secretary: 'Vice Secrétaire',
+        treasurer: 'Trésorier',
+        vice_treasurer: 'Vice Trésorier',
+        member: 'Membre',
+      },
     },
   },
   galerie: {
