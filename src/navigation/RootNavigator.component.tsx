@@ -139,6 +139,7 @@ export const RootNavigator: FunctionComponent = () => {
                     },
                   };
                 },
+                gestureDirection: 'horizontal-inverted',
               }}
             />
             <RootStack.Screen
