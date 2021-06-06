@@ -33,6 +33,11 @@ const weights: {
   black: '900',
 };
 
+const font = {
+  regular: 'SFProText-Regular',
+  bold: 'SFProText-Bold',
+};
+
 //Here we define all our typos
 export const typos = {
   u: {
@@ -67,41 +72,49 @@ export const typos = {
   },
   l: {
     fontSize: 24,
+    fontFamily: font.regular,
     lineHeight: 32,
     fontWeight: weights.regular,
   },
   mb: {
     fontSize: 20,
+    fontFamily: font.regular,
     lineHeight: 23,
     fontWeight: weights.bold,
   },
   m: {
     fontSize: 20,
+    fontFamily: font.regular,
     lineHeight: 23,
     fontWeight: weights.regular,
   },
   s: {
     fontSize: 18,
+    fontFamily: font.regular,
     lineHeight: 24,
     fontWeight: weights.medium,
   },
   sb: {
     fontSize: 18,
+    fontFamily: font.regular,
     lineHeight: 24,
     fontWeight: weights.bold,
   },
   xs: {
     fontSize: 16,
+    fontFamily: font.regular,
     lineHeight: 24,
     fontWeight: weights.medium,
   },
   xsb: {
     fontSize: 16,
+    fontFamily: font.bold,
     lineHeight: 24,
     fontWeight: weights.bold,
   },
   xxs: {
     fontSize: 14,
+    fontFamily: font.regular,
     lineHeight: 13,
     fontWeight: weights.medium,
   },

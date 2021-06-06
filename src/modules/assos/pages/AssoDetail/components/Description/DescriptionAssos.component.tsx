@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     fontSize: typos.xs.fontSize,
     color: palette.white,
     textAlign: 'justify',
-    fontFamily: 'san Francisco',
+    fontFamily: typos.xs.fontFamily,
   },
   activeHeader: {
     borderTopLeftRadius: radius.small,
@@ -106,6 +106,14 @@ export const DescriptionAssos: FunctionComponent<DescriptionAssosProps> = ({ des
   };
 
   const renderContent = (section, _, isActive) => {
+    const filterDescription = (description: string) => {
+      return description
+        ? description
+            .replace(/<img.*?src="(.*?)"[^\>]+>/g, '')
+            .replace(/font-family:.*?[^\>]+>/g, '')
+        : '';
+    };
+
     return (
       <>
         {section[1].map(
@@ -118,7 +126,10 @@ export const DescriptionAssos: FunctionComponent<DescriptionAssosProps> = ({ des
                 animation={isActive ? 'fadeInDown' : undefined}
               >
                 <View style={styles.infosContainer}>
-                  <HTML baseFontStyle={styles.textBodyContainer} source={{ html: entries.value }} />
+                  <HTML
+                    baseFontStyle={styles.textBodyContainer}
+                    source={{ html: filterDescription(entries.value) }}
+                  />
                 </View>
               </Animatable.View>
             )
