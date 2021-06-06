@@ -1,7 +1,7 @@
 import config from '../../../../api/config';
-import { Asso } from '../../../interfaces/assos.interface';
+import { AssoListSimple } from '../../../interfaces/assosListSimple.interface';
 
-export const getImageLink = (asso: Asso) => {
+export const getImageLink = (asso: AssoListSimple) => {
   const link = asso._links.find((link) => link.rel === 'orga.image');
   const url = config.etu_utt_baseuri + (link ? link.uri : '');
 

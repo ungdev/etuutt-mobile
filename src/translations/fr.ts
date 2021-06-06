@@ -13,7 +13,7 @@ export const fr = {
       timetable: 'Emploi du temps',
       events: 'Événements',
       trombinoscope: 'Trombinoscope',
-      assos: 'Associations',
+      assos: 'Clubs & Assos',
       map: "Plan de l'UTT",
       flashinfos: 'Flash Infos',
       galerie: 'Galerie Photos',

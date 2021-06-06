@@ -16,6 +16,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
     padding: 2,
   },
+  titleSmall: {
+    ...typos.xxs,
+    textAlign: 'center',
+    color: palette.black,
+    marginTop: 4,
+    padding: 2,
+    fontSize: 11,
+  },
   container: {
     width: Dimensions.get('screen').width / 3 - spacing * 2,
     height: Dimensions.get('screen').width / 3 - spacing * 2,
@@ -36,7 +44,8 @@ export const AssosItem: FunctionComponent<AssosItemProps> = ({ title, image, onP
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image source={{ uri: image }} style={styles.imageItem} />
-      <Text style={styles.title}>{title}</Text>
+      {title.length <= 23 && <Text style={styles.title}>{title}</Text>}
+      {title.length > 23 && <Text style={styles.titleSmall}>{title}</Text>}
     </TouchableOpacity>
   );
 };
