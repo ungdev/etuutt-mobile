@@ -4,7 +4,7 @@ import { FlatList, SafeAreaView, StyleSheet, View } from 'react-native';
 import { LoadingPage } from '../../../../components/LoadingPage';
 import { paths } from '../../../../navigation/paths';
 import { palette } from '../../../../theme/theme';
-import { useAssosList } from '../../hooks/useAssosList.hook';
+import { useAssosListSimple } from '../../hooks/useAssosListSimple.hook';
 import { AssosItem } from './components/AssosItem.component';
 import { getImageLink } from './services/getImageLink.service';
 
@@ -23,7 +23,7 @@ export const AllAssosPage: FunctionComponent = () => {
   const onButtonPress = (destination: string) => {
     navigate(paths.assos.assosNavigator.detailAsso.name, { destination });
   };
-  const { data, error, isLoading } = useAssosList();
+  const { data, error, isLoading } = useAssosListSimple();
 
   useEffect(() => {
     if (error !== undefined) {

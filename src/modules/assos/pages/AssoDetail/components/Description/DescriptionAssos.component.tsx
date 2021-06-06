@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
     fontSize: typos.xs.fontSize,
     color: palette.white,
     textAlign: 'justify',
+    fontFamily: 'san Francisco',
   },
   activeHeader: {
     borderTopLeftRadius: radius.small,
