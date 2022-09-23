@@ -9,7 +9,7 @@ import { LoginPage } from '../modules/authentification';
 import { useAuthentification } from '../modules/authentification/hooks/useAuthentification.hook';
 import { LoadingPage } from '../modules/authentification/pages/LoginPage/LoadingPage.component';
 import { CovoitNavigator } from '../modules/covoit/navigation';
-import Events from '../modules/EventsBundle/screens/Events.component';
+//import Events from '../modules/EventsBundle/screens/Events.component';
 import i18n from '../modules/internationalization/service/i18n.service';
 import { NotificationsButton } from '../modules/notifications/pages/CustomNotifications/components/NotificationsButton/index';
 import { CustomNotifications } from '../modules/notifications/pages/CustomNotifications/CustomNotifications.component';
@@ -231,7 +231,7 @@ export const RootNavigator: FunctionComponent = () => {
             />
             <RootStack.Screen
               name={paths.events.name}
-              component={Events}
+              component={Blank_Page}
               options={{
                 headerTitleStyle: {
                   fontSize: titleSize,

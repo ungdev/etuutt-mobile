@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { Avatar } from 'react-native-elements';

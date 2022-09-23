@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useContext, useState } from 'react';
 import { CLIENT_ID_KEY, CLIENT_SECRET_KEY } from '../../../../services/stockage/StorageKey';
 import { AuthentificationContext } from '../../context/authentification.context';
