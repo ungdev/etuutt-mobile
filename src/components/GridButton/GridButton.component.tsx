@@ -3,7 +3,7 @@ import { Dimensions, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { palette, radius, spacing, typos } from '../../theme/theme';
 import { IconProps } from '../Icons/Icons.interface';
 
-const iconSize = '50%';
+const iconSize = 70;
 
 interface GridButtonProps {
   onPress: () => void;
@@ -15,10 +15,8 @@ interface GridButtonProps {
 const styles = StyleSheet.create({
   title: {
     ...typos.xs,
-    fontSize: 14,
     textAlign: 'center',
     color: palette.white,
-    marginTop: 6,
   },
   container: {
     width: Dimensions.get('screen').width / 3 - spacing * 2,

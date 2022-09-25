@@ -1,6 +1,5 @@
-export type SizeStatus = number | string;
 export interface IconProps {
-  size: SizeStatus;
+  size: number;
   color: string;
   secondaryColor?: string;
 }

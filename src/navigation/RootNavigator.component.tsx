@@ -2,56 +2,33 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React, { FunctionComponent } from 'react';
 import { StyleSheet } from 'react-native';
-import Cog from '../../assets/icons/cog.svg';
-import Notifications from '../../assets/icons/notifications.svg';
-import Heartsolid from '../../assets/icons/heartsolid.svg';
+import { Cog, Heart, Notifications } from '../components/Icons/index';
 import i18n from '../modules/internationalization/service/i18n.service';
-import { NotificationsButton } from '../modules/notifications/pages/CustomNotifications/components/NotificationsButton/index';
-import { CustomNotifications } from '../modules/notifications/pages/CustomNotifications/CustomNotifications.component';
 import { ProfilePage } from '../modules/profile/pages';
-import { ProfilePublic } from '../modules/profilePublic';
-import { SettingsPage } from '../modules/settings';
-import { SettingsButton } from '../modules/settings/components/SettingsButton';
 import { UENavigator } from '../modules/ues/navigation';
 import { FavorisButton } from '../modules/ues/pages/ChoiceUE/components/FavorisButton.component';
-import { UEDetail } from '../modules/ues/pages/DetailUE/DetailUE.component';
-import { UEAnnales } from '../modules/ues/pages/DetailUE/pages/AnnalesUE/AnnalesUE.component';
-import { UEAnnaleViewer } from '../modules/ues/pages/DetailUE/pages/AnnalesUEViewer/AnnalesUEViewer.component';
-import { UEComments } from '../modules/ues/pages/DetailUE/pages/CommentsUE/CommentsUE.component';
 import { MainMenu } from '../pages';
 import { palette } from '../theme/theme';
+import { HeaderButton } from './components/HeaderButton.component';
 import { paths } from './paths';
 
 const RootStack = createStackNavigator();
 const iconSize = 28;
-const border = 32;
 
 const styles = StyleSheet.create({
-  buttonHeader: {
-    marginLeft: 15,
-    marginRight: 15,
-    
-  },
   header: {
     backgroundColor: palette.blue,
   },
-  containerHeader: {
-    justifyContent: 'center',
-  },
 });
 
-
 export const RootNavigator: FunctionComponent = () => {
-  const { authentificationStatus } = useAuthentification();
-
   return (
     <NavigationContainer>
       <RootStack.Navigator
         screenOptions={{
           headerStyle: styles.header,
-          headerTitleStyle: styles.headerTitle,
-          headerBackTitleStyle: styles.headerTitle,
-          headerTintColor: "white",
+          headerTintColor: 'white',
+          headerBackTitleVisible: false,
         }}
       >
         <RootStack.Screen
@@ -61,19 +38,12 @@ export const RootNavigator: FunctionComponent = () => {
             title: i18n.t('mainMenu.title'),
             headerTitleAlign: 'center',
             headerLeft: () => (
-              <NotificationButton
-                image={
-                  <Notifications width={iconSize} height={iconSize} color={palette.white} style={styles.buttonHeader}/>
-                }
+              <HeaderButton
+                image={<Notifications color={palette.white} stroke={''} size={iconSize} />}
               />
             ),
             headerRight: () => (
-              <NotificationButton
-                image={
-                  <Cog width={iconSize} height={iconSize} stroke={palette.white} strokeWidth={border} style={styles.buttonHeader}/>
-                }
-              />
-              
+              <HeaderButton image={<Cog color={palette.white} stroke={''} size={iconSize} />} />
             ),
           }}
         />
@@ -85,9 +55,7 @@ export const RootNavigator: FunctionComponent = () => {
             headerTitleAlign: 'center',
             headerRight: () => (
               <FavorisButton
-                image={
-                  <Heartsolid width={iconSize} height={iconSize} color={palette.white} style={styles.buttonHeader}/>
-                }
+                image={<Heart color={palette.white} stroke={palette.white} size={iconSize} />}
               />
             ),
           }}
