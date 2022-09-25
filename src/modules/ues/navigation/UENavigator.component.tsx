@@ -1,14 +1,11 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import React, { FunctionComponent } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
-import Toolbox from '../../../../assets/icons/toolbox.svg';
-import Search from '../../../../assets/icons/search.svg';
-import Cogs from '../../../../assets/icons/cogs.svg';
-import History from '../../../../assets/icons/history.svg';
+import { Cogs, History, Search, ToolBox } from '../../../components/Icons/index';
 import { paths } from '../../../navigation/paths';
 import { palette, spacing, typos } from '../../../theme/theme';
 import i18n from '../../internationalization/service/i18n.service';
-import { ChoiceUE, MyUE, SearchUE, HistoryUE } from '../pages';
+import { ChoiceUE, HistoryUE, MyUE, SearchUE } from '../pages';
 
 const UETab = createMaterialTopTabNavigator();
 const bouncingTab = 30;
@@ -36,8 +33,6 @@ const styles = StyleSheet.create({
 });
 
 export const UENavigator: FunctionComponent = () => {
-  
-
   return (
     <SafeAreaView style={styles.container}>
       <UETab.Navigator
@@ -61,8 +56,8 @@ export const UENavigator: FunctionComponent = () => {
           name={paths.ue.tabs.myUE.name}
           component={MyUE}
           options={{
-            tabBarIcon: ()=> (
-              <Toolbox width={iconSize} height={iconSize} color={palette.white}/>
+            tabBarIcon: () => (
+              <ToolBox color={palette.white} secondaryColor={palette.white} size={iconSize} />
             ),
             tabBarLabel: i18n.t('ue.myUE.title'),
           }}
@@ -71,8 +66,8 @@ export const UENavigator: FunctionComponent = () => {
           name={paths.ue.tabs.searchUE.name}
           component={SearchUE}
           options={{
-            tabBarIcon: ()=> (
-              <Search width={iconSize} height={iconSize} color={palette.white}/>
+            tabBarIcon: () => (
+              <Search color={'transparent'} secondaryColor={palette.white} size={iconSize} />
             ),
             tabBarLabel: i18n.t('ue.searchUE.title'),
           }}
@@ -81,8 +76,8 @@ export const UENavigator: FunctionComponent = () => {
           name={paths.ue.tabs.choiceUE.name}
           component={ChoiceUE}
           options={{
-            tabBarIcon: ()=> (
-              <Cogs width={iconSize} height={iconSize} color={palette.white}/>
+            tabBarIcon: () => (
+              <Cogs color={'transparent'} secondaryColor={palette.white} size={iconSize} />
             ),
             tabBarLabel: i18n.t('ue.choiceUE.title'),
           }}
@@ -91,8 +86,8 @@ export const UENavigator: FunctionComponent = () => {
           name={paths.ue.tabs.historyUE.name}
           component={HistoryUE}
           options={{
-            tabBarIcon: ()=> (
-              <History width={iconSize} height={iconSize} color={palette.white}/>
+            tabBarIcon: () => (
+              <History color={'transparent'} secondaryColor={palette.white} size={iconSize} />
             ),
             tabBarLabel: i18n.t('ue.historyUE.title'),
           }}

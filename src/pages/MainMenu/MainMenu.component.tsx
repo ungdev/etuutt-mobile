@@ -1,22 +1,15 @@
 import { useNavigation } from '@react-navigation/native';
-import useAxios from 'axios-hooks';
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { GridButton } from '../../components/GridButton';
 import {
   AdressBook,
-  Alert,
   Book,
-  BookReader,
-  Bulb,
   Calendar,
-  CarSolid,
   Clone,
-  Cloud,
   Euro,
   Images,
   Location,
-  Mails,
   Megaphone,
   Timetable,
   UserCircle,
@@ -33,25 +26,7 @@ const styles = StyleSheet.create({
   },
 });
 
-interface RawEvent {
-  id: string;
-  title: string;
-}
-
-interface EventsRequest {
-  events: RawEvent[];
-}
-
 export const MainMenu: FunctionComponent = () => {
-  const [{ data, loading, error }, refetch] = useAxios<EventsRequest>('events');
-  useEffect(() => {
-    if (error !== undefined) {
-      data?.events;
-      //si errror, j'affiche modal ou autre
-    }
-  }, [error]);
-  // console.log('test', data, error, loading);
-
   const { navigate } = useNavigation();
   const onButtonPress = (destination: string) => {
     navigate(destination);
@@ -70,7 +45,7 @@ export const MainMenu: FunctionComponent = () => {
       visible: true,
       name: 'flash_infos',
       Icon: Megaphone,
-      destination: paths.flash_infos.name,
+      destination: 'flash_infos',
       color: palette.darkPurple,
     },
     {
@@ -86,15 +61,15 @@ export const MainMenu: FunctionComponent = () => {
       visible: true,
       name: 'timetable',
       Icon: Timetable,
-      destination: paths.timetable.name,
+      destination: 'timetable',
       color: palette.yellow,
     },
     {
       key: 5,
       visible: true,
-      name: 'trombinoscope',
+      name: 'trombi',
       Icon: AdressBook,
-      destination: paths.trombinoscope.name,
+      destination: 'trombi',
       color: palette.red,
     },
     {
@@ -102,7 +77,7 @@ export const MainMenu: FunctionComponent = () => {
       visible: true,
       name: 'events',
       Icon: Calendar,
-      destination: paths.events.name,
+      destination: 'events',
       color: palette.calypsoBlue,
     },
     {
@@ -110,7 +85,7 @@ export const MainMenu: FunctionComponent = () => {
       visible: true,
       name: 'assos',
       Icon: Users,
-      destination: paths.assos.name,
+      destination: 'assos',
       color: palette.green,
     },
     {
@@ -118,7 +93,7 @@ export const MainMenu: FunctionComponent = () => {
       visible: true,
       name: 'galerie',
       Icon: Images,
-      destination: paths.galerie.name,
+      destination: 'galerie',
       color: palette.purple,
     },
     {
@@ -126,78 +101,26 @@ export const MainMenu: FunctionComponent = () => {
       visible: true,
       name: 'map',
       Icon: Location,
-      destination: paths.map.name,
+      destination: 'map',
       color: palette.grey,
     },
     {
       key: 10,
       visible: true,
-      name: 'buckutt',
+      name: 'buck_utt',
       Icon: Euro,
-      destination: paths.buckutt.name,
+      destination: 'buck_utt',
       color: palette.fuchsia,
     },
     {
       key: 11,
       visible: true,
-      name: 'cumultimetable',
+      name: 'cumul_timetable',
       Icon: Clone,
-      destination: paths.cumultimetable.name,
-      color: palette.curiousBlue,
-    },
-    {
-      key: 12,
-      visible: true,
-      name: 'mails',
-      Icon: Mails,
-      destination: paths.mails.name,
-      color: palette.yellow,
-    },
-    {
-      key: 13,
-      visible: true,
-      name: 'wiki',
-      Icon: Bulb,
-      destination: paths.wiki.name,
+      destination: 'cumul_timetable',
       color: palette.grey,
     },
-    {
-      key: 14,
-      visible: true,
-      name: 'cloud',
-      Icon: Cloud,
-      destination: paths.cloud.name,
-      color: palette.orange,
-    },
-    {
-      key: 15,
-      visible: true,
-      name: 'bu',
-      Icon: BookReader,
-      destination: paths.bu.name,
-      color: palette.calypsoBlue,
-    },
-    {
-      key: 16,
-      visible: true,
-      name: 'downdetector',
-      Icon: Alert,
-      destination: paths.downdetector.name,
-      color: palette.red,
-    },
-    {
-      key: 17,
-      visible: true,
-      name: 'covoit',
-      Icon: CarSolid,
-      destination: paths.covoit.name,
-      color: palette.green,
-    },
   ];
-
-  /*if(loading){
-    return //spinner 
-  }*/
 
   return (
     <View style={styles.container}>

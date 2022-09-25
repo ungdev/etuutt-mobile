@@ -1,7 +1,7 @@
 // Here we define all our colors
 export const palette = {
   black: '#000000',
-  whitegrey: '#C6C6C6',
+  grey: '#C6C6C6',
   darkGrey: '#333',
   grey: '#928989',
   white: '#ffffff',
@@ -31,11 +31,6 @@ const weights: {
   bold: '700',
   heavy: '800',
   black: '900',
-};
-
-const font = {
-  regular: 'SFProText-Regular',
-  bold: 'SFProText-Bold',
 };
 
 //Here we define all our typos
@@ -72,49 +67,41 @@ export const typos = {
   },
   l: {
     fontSize: 24,
-    fontFamily: font.regular,
     lineHeight: 32,
     fontWeight: weights.regular,
   },
   mb: {
     fontSize: 20,
-    fontFamily: font.regular,
     lineHeight: 23,
     fontWeight: weights.bold,
   },
   m: {
     fontSize: 20,
-    fontFamily: font.regular,
     lineHeight: 23,
     fontWeight: weights.regular,
   },
   s: {
     fontSize: 18,
-    fontFamily: font.regular,
     lineHeight: 24,
     fontWeight: weights.medium,
   },
   sb: {
     fontSize: 18,
-    fontFamily: font.regular,
     lineHeight: 24,
     fontWeight: weights.bold,
   },
   xs: {
     fontSize: 16,
-    fontFamily: font.regular,
     lineHeight: 24,
     fontWeight: weights.medium,
   },
   xsb: {
     fontSize: 16,
-    fontFamily: font.bold,
     lineHeight: 24,
     fontWeight: weights.bold,
   },
   xxs: {
-    fontSize: 14,
-    fontFamily: font.regular,
+    fontSize: 11,
     lineHeight: 13,
     fontWeight: weights.medium,
   },
@@ -134,22 +121,9 @@ export const shadows = {
 };
 
 export const radius = {
-  medium: 15,
-  small: 10,
-  extraSmall: 5,
-  round: 500,
-};
-
-export const Padding = {
-  small: 5,
-  medium: 10,
-  large: 15,
-};
-
-export const Marging = {
-  small: 10,
-  medium: 15,
-  large: 20,
+  medium: 16,
+  small: 12,
+  extraSmall: 8,
 };
 
 export const spacing = 4;

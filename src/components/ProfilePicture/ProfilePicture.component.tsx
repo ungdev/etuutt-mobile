@@ -1,13 +1,14 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { FunctionComponent, useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native';
-import { Avatar } from 'react-native-elements';
-import { ACCESS_TOKEN_KEY } from '../../services/stockage/StorageKey';
+import React, { FunctionComponent } from 'react';
+import { Image, StyleSheet, View } from 'react-native';
 import { palette } from '../../theme/theme';
+
+const BORDER_SIZE = 6;
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: palette.blue,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
@@ -17,35 +18,18 @@ interface ProfilePictureProps {
 }
 
 export const ProfilePicture: FunctionComponent<ProfilePictureProps> = ({ imageUri, size }) => {
-  const [token, setToken] = useState('');
-
-  useEffect(() => {
-    let cancel = false;
-
-    const getAccessToken = async () => {
-      const tokenStorage = await AsyncStorage.getItem(ACCESS_TOKEN_KEY);
-
-      if (cancel) {
-        return;
-      }
-      setToken(tokenStorage);
-    };
-    getAccessToken();
-
-    return () => {
-      cancel = true;
-    };
-  }, [setToken, ACCESS_TOKEN_KEY]);
+  const imageSize = size - BORDER_SIZE;
 
   return (
-    <Avatar
-      source={{
-        uri: imageUri,
-        headers: { Authorization: `Bearer ${token}` },
-      }}
-      rounded
-      size={size}
-      containerStyle={styles.container}
-    />
+    <View style={[styles.container, { width: size, height: size, borderRadius: size / 2 }]}>
+      <Image
+        source={{ uri: imageUri }}
+        style={{
+          width: imageSize,
+          height: imageSize,
+          borderRadius: imageSize / 2,
+        }}
+      />
+    </View>
   );
 };
