@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "My UTT",
-    "slug": "myutt",
+    "slug": "myutt_test",
     "privacy": "public",
     "version": "2.0.0",
     "orientation": "portrait",
@@ -16,9 +16,6 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": ["**/*"],
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "fr.uttnetgroup.myutt"
@@ -26,6 +23,22 @@
     "android": {
       "package": "fr.uttnetgroup.myutt",
       "versionCode": 2000000
+    },
+    "packagerOpts": {
+      "config": "metro.config.js",
+      "sourceExts": [
+        "expo.ts",
+        "expo.tsx",
+        "expo.js",
+        "expo.jsx",
+        "ts",
+        "tsx",
+        "js",
+        "jsx",
+        "json",
+        "wasm",
+        "svg"
+      ]
     }
   }
 }
