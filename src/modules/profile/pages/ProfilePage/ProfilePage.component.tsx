@@ -16,10 +16,14 @@ import { ProfilePicture } from '../../../../components/ProfilePicture';
 import { palette, spacing, typos } from '../../../../theme/theme';
 import config from '../../../api/config';
 import i18n from '../../../internationalization/service/i18n.service';
-import { ProfileSection } from './components/ProfileSection/ProfileSection.component';
-import { ProfileUEList } from './components/ProfileSection/ProfileUEList.component';
+import Adresscard from '../../../../../assets/icons/addresscard.svg';
+import University from '../../../../../assets/icons/university.svg';
+import Envelope from '../../../../../assets/icons/envelope.svg';
+import Malefemale from '../../../../../assets/icons/malefemale.svg';
+import Birthdaycake from '../../../../../assets/icons/birthdaycake.svg';
+import { ProfileSection } from './components/ProfileSection';
 
-const PROFILE_PICTURE_SIZE = 130;
+const PROFILE_PICTURE_SIZE = 120;
 const iconSize = 50;
 
 const styles = StyleSheet.create({
@@ -29,8 +33,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    width: '100%',
-    backgroundColor: palette.white,
+    backgroundColor: palette.grey,
   },
   mainInfos: {
     paddingTop: 20,
@@ -54,88 +57,31 @@ const styles = StyleSheet.create({
 });
 
 export const ProfilePage: FunctionComponent = () => {
-  const [{ data, loading, error }, refetch] = useAxios('private/user/account');
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const navigation = useNavigation();
-
-  useEffect(() => {
-    if (loading) {
-      setIsLoading(true);
-    } else if (error) {
-      Alert.alert(
-        'Information',
-        error.message,
-        [
-          {
-            text: 'Cancel',
-            style: 'cancel',
-          },
-          { text: 'OK', onPress: () => navigation.goBack() },
-        ],
-        { cancelable: false }
-      );
-    } else {
-      setIsLoading(false);
-    }
-  }, [loading, error]);
-
-  if (isLoading === true) {
-    return <LoadingPage />;
-  } else {
-    const date = moment(data?.data.birthday.date).format('DD/MM/YYYY');
-    const image = data?.data._links.find((link) => link.rel === 'user.image').uri;
-    const image_uri = `${config.etu_utt_baseuri}${image}`;
-
-    return (
-      <SafeAreaView style={styles.safeArea}>
-        <View style={styles.container}>
-          <ScrollView style={styles.container}>
-            <View style={styles.mainInfos}>
-              <ProfilePicture size={PROFILE_PICTURE_SIZE} imageUri={image_uri} />
-              <Text style={styles.fullName}>{data?.data.fullName}</Text>
-              <View style={styles.separator} />
-
-              <ProfileSection
-                title={i18n.t('profile.section.studentNumber')}
-                value={data?.data.studentId}
-                icon={<AdressCard color={palette.white} size={iconSize} />}
-              />
-
-              <ProfileSection
-                title={i18n.t('profile.section.branch')}
-                value={data?.data.branch}
-                icon={<University color={palette.white} size={iconSize} />}
-              />
-
-              <ProfileSection
-                title={i18n.t('profile.section.email')}
-                value={data?.data.email}
-                icon={<Envelope color={palette.white} size={iconSize} />}
-              />
-
-              <ProfileSection
-                title={i18n.t('profile.section.gender')}
-                value={data?.data.sex === 'male' ? 'Homme' : 'Femme'}
-                icon={
-                  <MaleFemale color="transparent" secondaryColor={palette.white} size={iconSize} />
-                }
-              />
-
-              <ProfileSection
-                title={i18n.t('profile.section.birthdate')}
-                value={date}
-                icon={<BirthdayCake color={palette.white} size={iconSize} />}
-              />
-
-              <ProfileUEList
-                title={i18n.t('profile.section.uelist')}
-                value={data?.data.uvs}
-                icon={<ToolBox color={palette.white} size={iconSize} />}
-              />
-            </View>
-          </ScrollView>
-        </View>
-      </SafeAreaView>
-    );
-  }
+  return (
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.contentContainer}>
+        <ProfilePicture
+          size={PROFILE_PICTURE_SIZE}
+          imageUri="https://img.lemde.fr/2020/03/24/0/0/3479/2319/688/0/60/0/80264c8_WAS471_HEALTH-CORONAVIRUS-USA_0324_11.JPG"
+        />
+        <Text style={styles.fullName}>DONALD TRUMP</Text>
+        <View style={styles.separator} />
+        <HorizontalSpacer size={3} />
+  <ProfileSection title={i18n.t('profile.section.studentNumber')} value="38277" icon={<Adresscard width={iconSize} height={iconSize} color={palette.white}/>}/>
+        <HorizontalSpacer size={3} />
+        <ProfileSection title={i18n.t('profile.section.branch')} value="TC01" icon={<University width={iconSize} height={iconSize} color={palette.white}/>} />
+        <HorizontalSpacer size={3} />
+        <ProfileSection
+          title={i18n.t('profile.section.email')}
+          value="donald.trump@usa.com"
+          icon={<Envelope width={iconSize} height={iconSize} color={palette.white}/>}
+        />
+        <HorizontalSpacer size={3} />
+        <ProfileSection title={i18n.t('profile.section.gender')} value="Homme" icon={<Malefemale width={iconSize} height={iconSize} color={palette.white}/>} />
+        <HorizontalSpacer size={3} />
+        <ProfileSection title={i18n.t('profile.section.birthdate')} value="14/01/1946" icon={<Birthdaycake width={iconSize} height={iconSize} color={palette.white}/>} />
+        <HorizontalSpacer size={3} />
+      </ScrollView>
+    </View>
+  );
 };

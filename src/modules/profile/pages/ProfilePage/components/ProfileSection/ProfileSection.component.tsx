@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { Component, FunctionComponent, ReactNode } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { HorizontalSpacer } from '../../../../../../components/HorizontalSpacer';
 import { palette, radius, spacing, typos } from '../../../../../../theme/theme';
@@ -26,6 +26,12 @@ const styles = StyleSheet.create({
     color: palette.white,
   },
 });
+
+interface ProfileSectionProps {
+  title: string;
+  value: string;
+  icon: ReactNode;
+}
 
 export const ProfileSection: FunctionComponent<ProfileSectionProps> = ({ title, value, icon }) => {
   if (value === null || value === '' || value === 'undefined') {

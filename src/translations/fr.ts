@@ -48,6 +48,9 @@ export const fr = {
     historyUE: {
       title: 'Historique',
     },
+    historyUE: {
+      title: 'Historique',
+    },
     title: 'Guide des UEs',
     detailUE: {
       course: 'Cours',
