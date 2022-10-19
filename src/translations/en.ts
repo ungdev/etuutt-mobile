@@ -89,6 +89,32 @@ export const en = {
   },
   timetable: {
     title: 'Timetable',
+    days: {
+      monday: {
+        short: "Mon",
+        value: "Monday"
+      },
+      tuesday: {
+        short: "Tue",
+        value: "Tuesday"
+      },
+      wednesday: {
+        short: "Wed",
+        value: "Wednesday"
+      },
+      thursday: {
+        short: "Thu",
+        value: "Thursday"
+      },
+      friday: {
+        short: "Fri",
+        value: "Friday"
+      },
+      saturday: {
+        short: "Sat",
+        value: "Saturday"
+      },
+    }
   },
   trombinoscope: {
     title: 'Trombinoscope',

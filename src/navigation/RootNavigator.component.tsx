@@ -8,6 +8,7 @@ import { AssosNavigator } from '../modules/assos/navigation';
 import { LoginPage } from '../modules/authentification';
 import { useAuthentification } from '../modules/authentification/hooks/useAuthentification.hook';
 import { LoadingPage } from '../modules/authentification/pages/LoginPage/LoadingPage.component';
+import { TimetableNavigator } from '../modules/courses/pages/TimetablePage/navigation/TimetableNavigator.component';
 import { CovoitNavigator } from '../modules/covoit/navigation';
 //import Events from '../modules/EventsBundle/screens/Events.component';
 import i18n from '../modules/internationalization/service/i18n.service';
@@ -209,7 +210,7 @@ export const RootNavigator: FunctionComponent = () => {
             />
             <RootStack.Screen
               name={paths.timetable.name}
-              component={Blank_Page}
+              component={TimetableNavigator}
               options={{
                 headerTitleStyle: {
                   fontSize: titleSize,

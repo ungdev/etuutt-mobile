@@ -90,6 +90,32 @@ export const fr = {
   },
   timetable: {
     title: 'Emploi du Temps',
+    days: {
+      monday: {
+        short: "Lun",
+        value: "Lundi"
+      },
+      tuesday: {
+        short: "Mar",
+        value: "Mardi"
+      },
+      wednesday: {
+        short: "Mer",
+        value: "Mercredi"
+      },
+      thursday: {
+        short: "Jeu",
+        value: "Jeudi"
+      },
+      friday: {
+        short: "Ven",
+        value: "Vendredi"
+      },
+      saturday: {
+        short: "Sam",
+        value: "Samedi"
+      },
+    }
   },
   trombinoscope: {
     title: 'Trombinoscope',

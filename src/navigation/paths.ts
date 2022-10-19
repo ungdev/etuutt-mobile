@@ -80,6 +80,26 @@ export const paths = {
   },
   timetable: {
     name: 'timetable',
+    tabs: {
+      monday: {
+        name: "timetableMonday"
+      },
+      tuesday: {
+        name: "timetableTuesday"
+      },
+      wednesday: {
+        name: "timetableWednesday"
+      },
+      thursday: {
+        name: "timetableThursday"
+      },
+      friday: {
+        name: "timetableFriday"
+      },
+      saturday: {
+        name: "timetableSaturday"
+      },
+    }
   },
   cumultimetable: {
     name: 'cumul_timetable',
