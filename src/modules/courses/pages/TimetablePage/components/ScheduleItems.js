@@ -71,7 +71,6 @@ const ScheduleItems = props => {
       delete courses[key]
     }
   }
-  console.log(courses);
   return (
     <View
       style={{

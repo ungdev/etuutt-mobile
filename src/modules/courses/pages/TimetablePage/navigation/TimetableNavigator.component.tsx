@@ -9,6 +9,7 @@ import { palette, spacing, typos } from '../../../../../theme/theme';
 import i18n from '../../../../internationalization/service/i18n.service';
 
 import { TimetableDay } from '../components/TimetableDay.component';
+import getCurrentDayRoute from "../utils/getCurrentDay";
 
 const DayTab = createMaterialTopTabNavigator();
 const bouncingTab = 30;
@@ -35,13 +36,17 @@ const styles = StyleSheet.create({
     },
 });
 
+interface CoursesData {
+    data: Course[]
+}
+
 export const TimetableNavigator: FunctionComponent = () => {
-    const [{ data, loading, error }, refetch] = useAxios('private/user/schedule');
+    const [{ data, loading, error }, refetch] = useAxios<CoursesData, Error>('private/user/schedule');
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const navigation = useNavigation();
 
     // TODO: Make it current day (Monday by default if current day does not match)
-    const currentDayRootName = paths.timetable.tabs.monday.name;
+    const currentDayRootName = getCurrentDayRoute();
 
     useEffect(() => {
         if (loading) {
@@ -67,7 +72,7 @@ export const TimetableNavigator: FunctionComponent = () => {
     if (isLoading === true) {
         return <LoadingPage />;
     } else {
-        let coursesData = [];
+        let coursesData: Course[] = [];
         if (data)
             coursesData = data.data;
 

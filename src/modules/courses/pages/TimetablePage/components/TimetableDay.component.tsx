@@ -1,5 +1,6 @@
-import React, { FunctionComponent } from "react";
-import { SafeAreaView, StyleSheet, View, ScrollView, Text } from "react-native";
+import React from "react";
+import { StyleSheet, View, ScrollView, Text } from "react-native";
+import { MaterialTopTabScreenProps } from "@react-navigation/material-top-tabs"
 import { palette } from "../../../../../theme/theme";
 
 import ScheduleHours from "./ScheduleHours";
@@ -32,7 +33,21 @@ const styles = StyleSheet.create({
     }
 });
 
-export const TimetableDay = ({ route, navigation }) => {
+interface DayRouteProps {
+    dayName: string
+    courses: Course[]
+}
+
+type TimetableDayParamList = {
+    timetableMonday: DayRouteProps,
+    timetableTuesday: DayRouteProps,
+    timetableWednesday: DayRouteProps,
+    timetableThursday: DayRouteProps,
+    timetableFriday: DayRouteProps,
+    timetableSaturday: DayRouteProps,
+}
+
+export const TimetableDay = ({ navigation, route } : MaterialTopTabScreenProps<TimetableDayParamList, "timetableMonday">) => {
     return (
         <View style={styles.container}>
             <ScrollView style={styles.subcontainer}>
